@@ -2452,5 +2452,93 @@
 })();
 </script>
 
+  <script>
+  (function(){
+    var SUPABASE_URL = "https://fyvhtfbyothjozfwjcod.supabase.co/functions/v1/epti-waitlist-signup";
+    var SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ5dmh0ZmJ5b3Roam96ZndqY29kIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0NjcxODIsImV4cCI6MjA5MTA0MzE4Mn0.429Ys6T1pkYSRDdlt04S2auzySG1NgOE7akrtAxOc40";
+
+    function setStatus(form, type, msg){
+      var statusEl = form.querySelector('.waitlist-status');
+      if(!statusEl){
+        statusEl = document.createElement('div');
+        statusEl.className = 'waitlist-status';
+        statusEl.style.cssText = 'margin-top:.5rem;font-size:.85rem;line-height:1.4;';
+        form.appendChild(statusEl);
+      }
+      statusEl.dataset.type = type;
+      statusEl.style.color = type === 'error' ? '#c0392b' : (type === 'success' ? '#1d6f42' : '#666');
+      statusEl.textContent = msg;
+    }
+
+    function isValidEmail(e){
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+    }
+
+    async function submitWaitlist(form, evt){
+      evt.preventDefault();
+      var input = form.querySelector('input[type="email"]');
+      var btn = form.querySelector('button[type="submit"]');
+      if(!input) return;
+      var email = (input.value || '').trim().toLowerCase();
+      if(!isValidEmail(email)){
+        setStatus(form, 'error', "That doesn't look like a valid email.");
+        input.focus();
+        return;
+      }
+      var originalBtnHTML = btn ? btn.innerHTML : '';
+      if(btn){ btn.disabled = true; btn.dataset.busy = '1'; btn.innerHTML = 'Joining…'; }
+      setStatus(form, 'pending', 'Adding you to the waitlist…');
+      try {
+        var res = await fetch(SUPABASE_URL, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+            'authorization': 'Bearer ' + SUPABASE_ANON,
+            'apikey': SUPABASE_ANON
+          },
+          body: JSON.stringify({
+            email: email,
+            source: form.id || form.className || 'unknown',
+            page: location.pathname + location.search
+          })
+        });
+        var data = null;
+        try { data = await res.json(); } catch(e) {}
+        if(res.ok){
+          setStatus(form, 'success', "You're on the list — check your inbox for a welcome note.");
+          input.value = '';
+          if(btn){ btn.innerHTML = "You're in ✓"; }
+        } else {
+          var msg = (data && (data.message || data.error)) || 'Something went wrong. Please try again.';
+          if(res.status === 409 || /already/i.test(msg)){
+            setStatus(form, 'success', "You're already on the list — see you on launch day.");
+            if(btn){ btn.innerHTML = "Already in ✓"; }
+          } else {
+            setStatus(form, 'error', msg);
+            if(btn){ btn.disabled = false; btn.dataset.busy = ''; btn.innerHTML = originalBtnHTML; }
+          }
+        }
+      } catch(err){
+        setStatus(form, 'error', 'Network error. Please try again.');
+        if(btn){ btn.disabled = false; btn.dataset.busy = ''; btn.innerHTML = originalBtnHTML; }
+      }
+    }
+
+    function init(){
+      var forms = document.querySelectorAll('form[data-waitlist]');
+      forms.forEach(function(form){
+        if(form.dataset.wlHooked) return;
+        form.dataset.wlHooked = '1';
+        form.addEventListener('submit', function(e){ submitWaitlist(form, e); });
+      });
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
 </body>
 </html>
