@@ -1,0 +1,2456 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Epti — Train smarter. Cycle cleaner. Progress faster.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ====================== NAV ====================== -->
+<nav class="nav" data-screen-label="00 Nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#" aria-label="epti">
+      <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#coach">Coach E</a>
+      <a href="#community">Community</a>
+    </div>
+    <div class="nav-right">
+      <a class="btn primary" href="#download">Join waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================== HERO ====================== -->
+<header class="hero" data-screen-label="01 Hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="hero-kicker">
+        <span class="kicker-dot" aria-hidden="true"></span>
+        <span>The only fitness app for the <span class="italic">peptide community.</span></span>
+      </div>
+      <div class="pill">
+        <div class="pill-avatars">
+          <span><img src="https://i.pravatar.cc/120?img=12" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=47" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=33" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=60" alt="" loading="lazy" /></span>
+        </div>
+        <span>Join <strong>4,000+</strong> on the waitlist</span>
+        <span class="star">●</span>
+        <strong>Coming soon</strong>
+      </div>
+
+      <h1 class="h-display">
+        <span class="line">Train smarter.</span>
+        <span class="line">Cycle <span class="italic">cleaner.</span></span>
+        <span class="line">Progress faster.</span>
+      </h1>
+
+      <p class="lede">
+        Adaptive workouts, peptide protocol tracking, dose calculations,
+        bloodwork insights, and a private community — all in one app.
+      </p>
+
+      <form class="waitlist-form" id="waitlist-hero" data-waitlist novalidate>
+        <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+        <button type="submit">Get my launch-day code <span aria-hidden="true">→</span></button>
+      </form>
+
+      <div class="reward-note hero-reward">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 5.5h11v8h-11z" stroke-linejoin="round"/><path d="M2.5 5.5L8 9l5.5-3.5" stroke-linejoin="round"/></svg>
+        <span>Every waitlist signup gets an <strong>exclusive launch-day code</strong> in their inbox.</span>
+      </div>
+
+      <div class="coming-soon" id="download">
+        <span class="badge">
+          <svg viewBox="0 0 24 28" fill="currentColor"><path d="M17.05 14.4c.04 3.7 3.24 4.93 3.28 4.95-.03.09-.51 1.76-1.69 3.48-1.03 1.49-2.1 2.97-3.78 3-1.66.03-2.19-.99-4.09-.99-1.9 0-2.49.96-4.05 1.02-1.62.06-2.86-1.62-3.9-3.1C.71 19.74-.91 14.16 1.27 10.4c1.08-1.86 3.02-3.04 5.12-3.07 1.59-.03 3.1 1.07 4.07 1.07.97 0 2.81-1.32 4.74-1.13.81.03 3.08.33 4.54 2.46-.12.07-2.71 1.59-2.69 4.66M14 5.6c.86-1.04 1.44-2.49 1.28-3.93-1.24.05-2.74.83-3.63 1.87-.8.93-1.5 2.4-1.31 3.83 1.38.1 2.79-.7 3.66-1.76"/></svg>
+          iOS
+        </span>
+        <span class="badge">
+          <svg viewBox="0 0 24 26" fill="currentColor"><path d="M.91 1.18C.34 1.78 0 2.71 0 3.92v18.16c0 1.21.34 2.14.92 2.72l.07.07L11.18 14.5v-.99L1 1.11l-.09.07Zm14.55 16.93-3.4-3.43v-.39l3.4-3.43.08.05 4.04 2.34c1.15.66 1.15 1.74 0 2.41l-4.04 2.36-.08.05Zm-.92.89L11.07 14.5.92 24.78c.38.41 1.02.46 1.74.06l11.88-6.84-.01-.01Zm0-9.21L2.66 2.95C1.94 2.55 1.3 2.6.92 3.01L11.07 13.5l3.47-3.71Z"/></svg>
+          Android
+        </span>
+        <span>Coming soon to iOS &amp; Android</span>
+      </div>
+    </div>
+
+    <!-- HERO PHONE: live embed of the real Active Protocol screen -->
+    <style>
+      .epti-app-phone .phone {
+        width: 393px;
+        height: 850px;
+        border-radius: 52px;
+        padding: 12px;
+      }
+      .epti-app-phone .phone-screen {
+        background: oklch(0.965 0.008 95);
+        border-radius: 42px;
+      }
+      .epti-app-phone .phone-notch { z-index: 11; top: 10px; }
+      .epti-app-phone iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+        background: transparent;
+        border-radius: 42px;
+      }
+      @media (max-width: 720px) {
+        .epti-app-phone .phone { width: 340px; height: 730px; }
+      }
+    </style>
+    <div class="hero-phone-wrap epti-app-phone">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <iframe src="Epti%20App.html?embed=1" title="Epti — Active Protocol" loading="lazy"></iframe>
+        </div>
+      </div>
+    </div>
+    <!-- /HERO PHONE -->
+    <div style="display:none" aria-hidden="true">
+      <div class="phone">
+        <div class="phone-screen">
+          <div class="phone-notch"></div>
+          <div class="phone-glow"></div>
+          <div class="app">
+            <div class="phone-statusbar">
+              <span>9:41</span>
+              <div class="icons">
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7h2v6H1zM5 5h2v8H5zM9 3h2v10H9zM13 1h2v12h-2z"/></svg>
+                <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 3c2.4 0 4.6.9 6.3 2.4l1-1A11 11 0 0 0 8 1 11 11 0 0 0 .7 4.4l1 1A9 9 0 0 1 8 3Zm0 4c1.4 0 2.7.5 3.7 1.4l1-1A8 8 0 0 0 8 5a8 8 0 0 0-4.7 2.4l1 1A6 6 0 0 1 8 7Zm0 4c.6 0 1.1.2 1.5.6l-1.5 1.5L6.5 11.6c.4-.4.9-.6 1.5-.6Z"/></svg>
+                <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5"/><rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor"/><rect x="20.5" y="4" width="1" height="4" fill="currentColor"/></svg>
+              </div>
+            </div>
+
+            <div class="app-header">
+              <div>
+                <div class="greeting">MONDAY · WEEK 3 · CUT PHASE</div>
+                <div class="name">Morning, Alex</div>
+              </div>
+              <div class="avatar"><img src="https://i.pravatar.cc/120?img=68" alt="Alex" loading="lazy" /></div>
+            </div>
+
+            <div class="scroll">
+              <!-- Today's workout -->
+              <div class="home-workout">
+                <span class="label-mono">Today · 47 min</span>
+                <div class="title">Lower — Heavy Squat A</div>
+                <div class="subtitle">5 lifts · adjusted for low HRV</div>
+                <div class="stats">
+                  <div class="stat"><div class="v">12,420</div><div class="l">Volume lb</div></div>
+                  <div class="stat"><div class="v">RPE 7.5</div><div class="l">Target</div></div>
+                  <div class="stat"><div class="v">3 PRs</div><div class="l">In range</div></div>
+                </div>
+              </div>
+
+              <!-- AI insight strip -->
+              <div class="accent-strip" style="margin-top:10px">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 3a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0V4a1 1 0 0 1 1-1Zm0 9a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"/></svg>
+                <span>Sleep was 5h 42m — Coach E suggests reducing top set by 5%.</span>
+              </div>
+
+              <!-- Active stack -->
+              <div style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;">
+                <span class="label-mono">Active stack · 3</span>
+                <span class="label-mono" style="color:var(--accent)">SEE ALL</span>
+              </div>
+              <div class="stack-list">
+                <div class="stack-row">
+                  <div class="left">
+                    <div class="dot-v"></div>
+                    <div>
+                      <div class="name">BPC-157</div>
+                      <div class="meta">250mcg · subq · day 14/30</div>
+                    </div>
+                  </div>
+                  <div class="due">2h 14m</div>
+                </div>
+                <div class="stack-row">
+                  <div class="left">
+                    <div class="dot-v dim"></div>
+                    <div>
+                      <div class="name">TB-500</div>
+                      <div class="meta">2mg · 2×/wk · day 14/28</div>
+                    </div>
+                  </div>
+                  <div class="due" style="color:var(--text-3)">Wed</div>
+                </div>
+                <div class="stack-row">
+                  <div class="left">
+                    <div class="dot-v warn"></div>
+                    <div>
+                      <div class="name">Semaglutide</div>
+                      <div class="meta">0.25mg · weekly · low</div>
+                    </div>
+                  </div>
+                  <div class="due" style="color:var(--warn)">REORDER</div>
+                </div>
+              </div>
+
+              <!-- Recovery / Readiness -->
+              <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;">
+                <span class="label-mono">Readiness</span>
+                <span class="label-mono" style="color:var(--text-3)">UPDATED 6:12 AM</span>
+              </div>
+              <div class="app-card" style="margin-top:8px;padding:14px;display:flex;align-items:center;gap:14px;">
+                <div class="ring" style="--p:62"><div class="val">62</div></div>
+                <div style="flex:1;">
+                  <div style="font-size:13.5px;font-weight:500;letter-spacing:-0.015em;">Below baseline</div>
+                  <div class="label-mono" style="color:var(--text-3);margin-top:3px;">HRV 48 · RHR 56 · SLEEP 5H 42M</div>
+                </div>
+              </div>
+
+              <!-- Macros today -->
+              <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;">
+                <span class="label-mono">Macros · today</span>
+                <span class="label-mono" style="color:var(--accent)">CUT · −400 KCAL</span>
+              </div>
+              <div class="app-card" style="margin-top:8px;padding:14px;">
+                <div class="app-row" style="margin-bottom:10px;">
+                  <div style="font-size:22px;font-weight:500;letter-spacing:-0.03em;">1,420<span style="color:var(--text-3);font-size:13px;font-family:var(--mono);"> / 2,380</span></div>
+                  <div class="label-mono" style="color:var(--text-3);">KCAL</div>
+                </div>
+                <div style="height:4px;background:var(--surface-3);border-radius:2px;overflow:hidden;">
+                  <div style="height:100%;width:60%;background:var(--accent);border-radius:2px;"></div>
+                </div>
+                <div style="margin-top:12px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+                  <div>
+                    <div class="label-mono" style="color:var(--text-3)">PROTEIN</div>
+                    <div style="font-size:14px;font-weight:500;margin-top:3px;">126<span style="color:var(--text-3);font-family:var(--mono);font-size:11px;">/182g</span></div>
+                  </div>
+                  <div>
+                    <div class="label-mono" style="color:var(--text-3)">CARBS</div>
+                    <div style="font-size:14px;font-weight:500;margin-top:3px;">142<span style="color:var(--text-3);font-family:var(--mono);font-size:11px;">/240g</span></div>
+                  </div>
+                  <div>
+                    <div class="label-mono" style="color:var(--text-3)">FAT</div>
+                    <div style="font-size:14px;font-weight:500;margin-top:3px;">48<span style="color:var(--text-3);font-family:var(--mono);font-size:11px;">/72g</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Recent PR -->
+              <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;">
+                <span class="label-mono">This week</span>
+                <span class="label-mono" style="color:var(--text-3)">3 PRS · 2 LIFTS</span>
+              </div>
+              <div class="app-card" style="margin-top:8px;padding:14px;">
+                <div class="app-row">
+                  <div>
+                    <div class="label-mono" style="color:var(--text-3)">SQUAT · 1RM EST</div>
+                    <div style="font-size:24px;font-weight:500;letter-spacing:-0.03em;margin-top:4px;">485<span style="color:var(--text-3);font-size:12px;font-family:var(--mono);"> LB</span></div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div style="color:var(--accent);font-size:14px;font-weight:500;">+15 lb</div>
+                    <div class="label-mono" style="color:var(--text-3);margin-top:3px;">VS LAST CYCLE</div>
+                  </div>
+                </div>
+                <div style="margin-top:12px;height:36px;position:relative;">
+                  <svg viewBox="0 0 200 40" preserveAspectRatio="none" style="width:100%;height:100%;">
+                    <path d="M0,32 C20,30 40,28 60,24 C80,20 100,18 120,14 C140,10 160,7 200,4"
+                          fill="none" stroke="oklch(0.93 0.2 135)" stroke-width="1.8"/>
+                    <circle cx="200" cy="4" r="3" fill="oklch(0.93 0.2 135)"/>
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Bloodwork callout -->
+              <div class="app-card" style="margin-top:14px;background:var(--accent-dim);border-color:var(--accent-line);padding:14px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="font-family:var(--mono);font-size:9.5px;color:var(--accent);background:var(--bg);border:1px solid var(--accent-line);border-radius:4px;padding:2px 6px;letter-spacing:0.08em;flex-shrink:0;">LABS</div>
+                  <div style="font-size:12.5px;color:var(--text);line-height:1.4;">IGF-1 is up <strong>30%</strong> vs cycle 1. Next draw scheduled for Day 60 — in 16 days.</div>
+                </div>
+              </div>
+
+              <!-- Circle activity -->
+              <div style="margin-top:18px;display:flex;align-items:center;justify-content:space-between;">
+                <span class="label-mono">Inner circle</span>
+                <span class="label-mono" style="color:var(--accent)">8 ATHLETES</span>
+              </div>
+              <div class="app-card" style="margin-top:8px;padding:14px;display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:28px;height:28px;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="https://i.pravatar.cc/80?img=33" alt="Marcus" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+                  <div style="flex:1;min-width:0;">
+                    <div style="font-size:12.5px;font-weight:500;">Marcus hit a <span style="color:var(--accent);">PR</span></div>
+                    <div class="label-mono" style="color:var(--text-3);margin-top:2px;">DEADLIFT · 545 LB · 14M AGO</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:28px;height:28px;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="https://i.pravatar.cc/80?img=12" alt="Jordan" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+                  <div style="flex:1;min-width:0;">
+                    <div style="font-size:12.5px;font-weight:500;">Jordan shared <span style="color:var(--accent);">Recomp v3</span></div>
+                    <div class="label-mono" style="color:var(--text-3);margin-top:2px;">PROTOCOL · 12 WEEKS · 1H AGO</div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:28px;height:28px;border-radius:50%;overflow:hidden;flex-shrink:0;"><img src="https://i.pravatar.cc/80?img=49" alt="Lena" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;" /></div>
+                  <div style="flex:1;min-width:0;">
+                    <div style="font-size:12.5px;font-weight:500;">Lena completed <span style="color:var(--accent);">Day 30</span></div>
+                    <div class="label-mono" style="color:var(--text-3);margin-top:2px;">CYCLE · BPC + TB-500 · 3H AGO</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Streak footer -->
+              <div style="margin-top:14px;margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;padding:12px 14px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;">
+                <div>
+                  <div style="font-size:20px;font-weight:500;letter-spacing:-0.03em;">47 days</div>
+                  <div class="label-mono" style="color:var(--text-3);margin-top:3px;">LOGGED · TRAINED · DOSED</div>
+                </div>
+                <div style="font-family:var(--mono);font-size:10px;color:var(--accent);letter-spacing:0.08em;">STREAK ↑</div>
+              </div>
+
+              <!-- Scroll hint -->
+              <div style="margin-top:18px;text-align:center;padding-bottom:8px;">
+                <div class="label-mono" style="color:var(--text-3);opacity:0.5;">— END OF FEED —</div>
+              </div>
+            </div>
+
+            <div class="tabbar">
+              <div class="tab active">
+                <svg viewBox="0 0 18 18" fill="currentColor"><path d="M9 1 1 8h2v8h4V11h4v5h4V8h2L9 1Z"/></svg>
+                <span>HOME</span>
+              </div>
+              <div class="tab">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="6"/><path d="M9 5v4l3 2"/></svg>
+                <span>TRAIN</span>
+              </div>
+              <div class="tab">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="12" height="9" rx="2"/><path d="M7 6V3h4v3"/></svg>
+                <span>STACK</span>
+              </div>
+              <div class="tab">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 14c2-4 5-4 6 0s4 4 6 0"/></svg>
+                <span>INSIGHTS</span>
+              </div>
+              <div class="tab">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="6.5" r="3"/><path d="M3 16c0-3 3-5 6-5s6 2 6 5"/></svg>
+                <span>YOU</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== THESIS BANNER — OTHER APPS LOG. EPTI CONNECTS. ====================== -->
+<style>
+/* ---- Thesis banner (scoped) ---- */
+.thesis-banner {
+  position: relative;
+  padding: 150px 0 160px;
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  overflow: hidden;
+}
+.thesis-banner::before,
+.thesis-banner::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+.thesis-banner::before {
+  inset: -20% auto auto -10%;
+  width: 55%;
+  height: 110%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 14%, transparent), transparent 70%);
+  opacity: 0.7;
+}
+.thesis-banner::after {
+  /* hairline grid */
+  inset: 0;
+  background-image:
+    linear-gradient(to right, color-mix(in oklch, var(--text) 5%, transparent) 1px, transparent 1px);
+  background-size: 14.2857% 100%;
+  opacity: 0.5;
+  mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+}
+.thesis-banner .wrap { position: relative; z-index: 1; }
+
+.thesis-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+}
+.thesis-eyebrow .d {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+.thesis-eyebrow .sep {
+  width: 28px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.4;
+}
+
+/* The "other apps" crossed-out chip row */
+.thesis-strike {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
+  margin: 28px 0 36px;
+  align-items: center;
+}
+.thesis-strike .lbl {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.thesis-strike .chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 13px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  letter-spacing: -0.005em;
+  color: var(--text-3);
+}
+.thesis-strike .chip::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  height: 1.5px;
+  background: var(--text-3);
+  transform: translateY(-0.5px) rotate(-3deg);
+  opacity: 0.7;
+}
+
+/* The huge headline */
+.thesis-headline {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(56px, 11vw, 168px);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+  margin: 0;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 0.04em;
+}
+.thesis-headline .line {
+  display: block;
+  position: relative;
+}
+.thesis-headline .l1 {
+  color: var(--text-2);
+}
+.thesis-headline .l1 .crossed {
+  position: relative;
+  display: inline-block;
+}
+.thesis-headline .l1 .crossed::after {
+  content: "";
+  position: absolute;
+  left: -0.04em;
+  right: -0.04em;
+  top: 56%;
+  height: 0.055em;
+  background: var(--text-2);
+  transform: rotate(-2.6deg);
+  border-radius: 999px;
+  opacity: 0.45;
+}
+.thesis-headline .l2 {
+  color: var(--text);
+  display: flex;
+  align-items: baseline;
+  gap: 0.18em;
+  flex-wrap: wrap;
+  column-gap: 0.18em;
+}
+.thesis-headline .l2 .epti {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--accent-strong);
+  display: inline-flex;
+  align-items: baseline;
+}
+.thesis-headline .l2 .epti .dot {
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-left: 0.08em;
+  align-self: center;
+  transform: translateY(-0.04em);
+  box-shadow: 0 0 0 0.06em var(--accent-dim), 0 0 0.5em var(--accent);
+}
+.thesis-headline .l2 .connects {
+  font-family: var(--sans);
+}
+
+/* Footer row under headline */
+.thesis-foot {
+  margin-top: 56px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.thesis-foot .kicker {
+  max-width: 56ch;
+  font-family: var(--sans);
+  font-size: clamp(17px, 1.5vw, 22px);
+  line-height: 1.4;
+  letter-spacing: -0.012em;
+  color: var(--text-2);
+}
+.thesis-foot .kicker .serif-italic {
+  color: var(--text);
+}
+.thesis-foot .signals {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.thesis-foot .signals .sig {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px 6px 9px;
+  border: 1px solid var(--accent-line);
+  background: color-mix(in oklch, var(--accent) 9%, transparent);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--accent-ink);
+}
+.thesis-foot .signals .sig .d {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.thesis-foot .signals .arrow {
+  font-family: var(--mono);
+  font-size: 14px;
+  color: var(--text-3);
+  padding: 0 2px;
+}
+.thesis-foot .signals .sig.out {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+.thesis-foot .signals .sig.out .d {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--accent) 30%, transparent);
+}
+
+@media (max-width: 720px) {
+  .thesis-banner { padding: 96px 0 104px; }
+  .thesis-headline { font-size: clamp(48px, 14vw, 96px); letter-spacing: -0.04em; }
+  .thesis-foot { margin-top: 36px; }
+}
+</style>
+
+<section class="thesis-banner" data-screen-label="Thesis — other apps log, Epti connects">
+  <div class="wrap">
+    <div class="thesis-eyebrow">
+      <span class="d"></span>
+      <span>The thesis</span>
+      <span class="sep" aria-hidden="true"></span>
+      <span style="color:var(--text-3)">One app for the whole stack</span>
+    </div>
+
+    <div class="thesis-strike" aria-hidden="true">
+      <span class="lbl">Today, you flip between</span>
+      <span class="chip">Strava</span>
+      <span class="chip">MyFitnessPal</span>
+      <span class="chip">Notes.app</span>
+      <span class="chip">a spreadsheet</span>
+      <span class="chip">Whoop</span>
+      <span class="chip">Apple Health</span>
+      <span class="chip">a group chat</span>
+    </div>
+
+    <h2 class="thesis-headline">
+      <span class="line l1">Other apps <span class="crossed">log</span>.</span>
+      <span class="line l2">
+        <span class="epti">Epti<span class="dot" aria-hidden="true"></span></span>
+        <span class="connects">connects.</span>
+      </span>
+    </h2>
+
+    <div class="thesis-foot">
+      <p class="kicker">
+        Sleep talks to training. Labs talk to your plate. Protocol talks to recovery.
+        <span class="serif-italic">One missed dose, one rough night, one new lab</span> — and every recommendation re-tunes.
+      </p>
+      <div class="signals" aria-hidden="true">
+        <span class="sig"><span class="d"></span>Sleep</span>
+        <span class="sig"><span class="d"></span>Labs</span>
+        <span class="sig"><span class="d"></span>Doses</span>
+        <span class="sig"><span class="d"></span>Training</span>
+        <span class="arrow">→</span>
+        <span class="sig out"><span class="d"></span>Every next decision</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== SPORT MODES — ROTATING HEADLINE ====================== -->
+<style>
+/* ---- Sport modes section (scoped) ---- */
+.modes {
+  padding: 130px 0 140px;
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+  --rot-color: var(--accent);
+}
+.modes::before {
+  content: "";
+  position: absolute;
+  inset: -30% auto auto -15%;
+  width: 75%;
+  height: 130%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--rot-color) 22%, transparent), transparent 70%);
+  pointer-events: none;
+  transition: background 900ms ease;
+  z-index: 0;
+  opacity: 0.6;
+}
+.modes::after {
+  content: "";
+  position: absolute;
+  inset: auto -15% -30% auto;
+  width: 60%;
+  height: 110%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--rot-color) 10%, transparent), transparent 70%);
+  pointer-events: none;
+  transition: background 900ms ease;
+  z-index: 0;
+  opacity: 0.7;
+}
+.modes .wrap { position: relative; z-index: 1; }
+
+.modes-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.modes-count-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-2);
+}
+.modes-count-pill .d {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rot-color);
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--rot-color) 22%, transparent);
+  transition: background 600ms ease, box-shadow 600ms ease;
+}
+
+.modes-headline {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(46px, 7.4vw, 116px);
+  line-height: 1.02;
+  letter-spacing: -0.038em;
+  margin: 28px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.22em;
+  row-gap: 0.04em;
+  color: var(--text);
+}
+
+.rotator {
+  position: relative;
+  display: inline-block;
+  vertical-align: baseline;
+  line-height: 1;
+}
+.rotator-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+}
+.rotator-slot {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  vertical-align: baseline;
+  transition: width 560ms cubic-bezier(0.22, 1, 0.36, 1);
+  width: 0;
+}
+.rotator-word {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  color: var(--c, var(--accent-strong));
+  opacity: 0;
+  transform: translateY(0.5em);
+  transition:
+    opacity 380ms ease,
+    transform 480ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.rotator-word.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rotator-word.is-leaving {
+  opacity: 0;
+  transform: translateY(-0.55em);
+}
+/* Subtle highlighter behind the active word */
+.rotator-underline {
+  position: absolute;
+  left: 0;
+  bottom: -0.06em;
+  height: 0.07em;
+  background: var(--rot-color);
+  border-radius: 2px;
+  opacity: 0.22;
+  transition: width 560ms cubic-bezier(0.22, 1, 0.36, 1), background 600ms ease;
+}
+
+/* Meta strip — auto-tunes for active sport */
+.modes-meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 52px;
+  min-height: 36px;
+  flex-wrap: wrap;
+}
+.modes-meta-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+.modes-meta-label::after {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--text-3);
+  opacity: 0.6;
+}
+.modes-meta-track {
+  position: relative;
+  flex: 1;
+  min-width: 280px;
+  min-height: 36px;
+}
+.modes-meta-set {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 360ms ease, transform 420ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+.modes-meta-set.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.modes-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 13px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  white-space: nowrap;
+}
+.modes-meta-chip .d {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c, var(--accent));
+}
+
+/* Sport chip selector */
+.modes-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 60px;
+}
+.modes-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
+}
+.modes-chip .d {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c, var(--accent));
+  flex-shrink: 0;
+  transition: box-shadow 220ms ease;
+}
+.modes-chip:hover {
+  background: var(--surface-2);
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+.modes-chip.is-active {
+  background: color-mix(in oklch, var(--c, var(--accent)) 9%, var(--surface));
+  border-color: color-mix(in oklch, var(--c, var(--accent)) 55%, var(--line));
+  color: var(--text);
+  font-weight: 500;
+}
+.modes-chip.is-active .d {
+  box-shadow: 0 0 0 3px color-mix(in oklch, var(--c, var(--accent)) 22%, transparent);
+}
+
+/* Identity intro — sits above the rotating headline */
+.modes-intro {
+  margin: 26px 0 8px;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: clamp(17px, 1.45vw, 22px);
+  line-height: 1.45;
+  letter-spacing: -0.012em;
+  color: var(--text-2);
+  max-width: 58ch;
+}
+.modes-intro b {
+  font-weight: 500;
+  color: var(--text);
+}
+.modes-intro .serif-italic {
+  font-size: 1.08em;
+  color: var(--accent-strong);
+  letter-spacing: -0.02em;
+}
+
+/* Why-Epti claim block — the killer value prop */
+.modes-claim {
+  margin-top: 64px;
+  padding: 36px 40px 38px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 36px;
+  align-items: start;
+  position: relative;
+  overflow: hidden;
+}
+.modes-claim::after {
+  content: "";
+  position: absolute;
+  inset: auto -10% -60% auto;
+  width: 60%;
+  height: 200%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--rot-color, var(--accent)) 12%, transparent), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+  transition: background 900ms ease;
+}
+.modes-claim > * { position: relative; z-index: 1; }
+.modes-claim-eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 8px;
+  white-space: nowrap;
+}
+.modes-claim-eyebrow::before {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--accent-strong);
+  opacity: 0.8;
+}
+.modes-claim-body {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(22px, 2.3vw, 34px);
+  line-height: 1.18;
+  letter-spacing: -0.028em;
+  color: var(--text);
+  margin: 0;
+  max-width: 30ch;
+}
+.modes-claim-body .serif-italic {
+  color: var(--accent-strong);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.06em;
+  letter-spacing: -0.02em;
+}
+.modes-claim-body .amp {
+  display: inline-block;
+  font-family: var(--mono);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.5em;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  padding: 0.35em 0.7em;
+  margin: 0 0.2em;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  vertical-align: 0.4em;
+  background: var(--bg);
+}
+.modes-claim-sub {
+  grid-column: 2;
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  line-height: 1.55;
+  max-width: 56ch;
+}
+.modes-claim-sub .x {
+  color: var(--text-3);
+  text-decoration: line-through;
+  margin: 0 4px;
+}
+
+.modes-foot {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0;
+}
+.modes-foot .serif-italic {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  text-transform: none;
+  margin-left: 8px;
+}
+
+@media (max-width: 980px) {
+  .modes { padding: 80px 0 90px; }
+  .modes-headline { font-size: clamp(40px, 9vw, 68px); margin-top: 22px; }
+  .modes-meta { margin-top: 36px; }
+  .modes-meta-label::after { display: none; }
+  .modes-chips { margin-top: 44px; }
+  .modes-intro { margin: 20px 0 6px; }
+  .modes-claim {
+    grid-template-columns: 1fr;
+    padding: 26px 24px 28px;
+    gap: 18px;
+    margin-top: 48px;
+  }
+  .modes-claim-sub { grid-column: 1; }
+  .modes-foot { margin-top: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rotator-slot { transition: none; }
+  .rotator-word, .rotator-word.is-leaving { transform: none; transition: opacity 200ms ease; }
+  .modes-meta-set, .modes-meta-set.is-active { transform: none; transition: opacity 200ms ease; }
+  .modes::before, .modes::after, .modes-count-pill .d { transition: none; }
+}
+</style>
+
+<section class="modes" data-screen-label="Sport modes">
+  <div class="wrap">
+    <div class="modes-head">
+      <span class="eyebrow accent">Dedicated sport modes</span>
+      <span class="modes-count-pill"><span class="d"></span>10 built-in · more every cycle</span>
+    </div>
+
+    <p class="modes-intro">
+      The peptide community runs, hoops, rallies, rides, fights, swims. We don't just dose — we <b>train, taper, and compete</b>.
+      <span class="serif-italic">Epti is for the whole calendar.</span>
+    </p>
+
+    <h2 class="modes-headline modes-rotator-root">
+      <span class="modes-headline-static">Epti is for the</span><!--
+   --><span class="rotator">
+        <span class="rotator-ghost" aria-hidden="true">tennis players.</span>
+        <span class="rotator-slot" aria-live="polite" aria-atomic="true">
+          <span class="rotator-word is-active" style="--c: oklch(0.60 0.16 165)" data-meta="0">hoopers.</span>
+          <span class="rotator-word"            style="--c: oklch(0.55 0.16 295)" data-meta="1">runners.</span>
+          <span class="rotator-word"            style="--c: oklch(0.62 0.15 70)"  data-meta="2">cyclists.</span>
+          <span class="rotator-word"            style="--c: oklch(0.55 0.18 15)"  data-meta="3">fighters.</span>
+          <span class="rotator-word"            style="--c: oklch(0.58 0.14 230)" data-meta="4">swimmers.</span>
+          <span class="rotator-word"            style="--c: oklch(0.58 0.15 145)" data-meta="5">footballers.</span>
+          <span class="rotator-word"            style="--c: oklch(0.62 0.16 130)" data-meta="6">picklers.</span>
+          <span class="rotator-word"            style="--c: oklch(0.55 0.16 35)"  data-meta="7">gridironers.</span>
+          <span class="rotator-word"            style="--c: oklch(0.65 0.16 100)" data-meta="8">tennis players.</span>
+          <span class="rotator-word"            style="--c: oklch(0.55 0.15 270)" data-meta="9">spikers.</span>
+        </span>
+      </span>
+    </h2>
+
+    <div class="modes-meta">
+      <span class="modes-meta-label">Auto-tunes for</span>
+      <div class="modes-meta-track">
+        <div class="modes-meta-set is-active" style="--c: oklch(0.60 0.16 165)">
+          <span class="modes-meta-chip"><span class="d"></span>Vertical jump</span>
+          <span class="modes-meta-chip"><span class="d"></span>Court-time recovery</span>
+          <span class="modes-meta-chip"><span class="d"></span>In-season cut</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.55 0.16 295)">
+          <span class="modes-meta-chip"><span class="d"></span>VO₂ trend</span>
+          <span class="modes-meta-chip"><span class="d"></span>Weekly mileage</span>
+          <span class="modes-meta-chip"><span class="d"></span>Cadence drift</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.62 0.15 70)">
+          <span class="modes-meta-chip"><span class="d"></span>FTP curve</span>
+          <span class="modes-meta-chip"><span class="d"></span>TSS load</span>
+          <span class="modes-meta-chip"><span class="d"></span>Ride fuelling</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.55 0.18 15)">
+          <span class="modes-meta-chip"><span class="d"></span>Weight-cut window</span>
+          <span class="modes-meta-chip"><span class="d"></span>Sparring volume</span>
+          <span class="modes-meta-chip"><span class="d"></span>Discipline-aware</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.58 0.14 230)">
+          <span class="modes-meta-chip"><span class="d"></span>Stroke economy</span>
+          <span class="modes-meta-chip"><span class="d"></span>Yards / week</span>
+          <span class="modes-meta-chip"><span class="d"></span>Shoulder load</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.58 0.15 145)">
+          <span class="modes-meta-chip"><span class="d"></span>Sprint load</span>
+          <span class="modes-meta-chip"><span class="d"></span>Match-day taper</span>
+          <span class="modes-meta-chip"><span class="d"></span>Turf recovery</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.62 0.16 130)">
+          <span class="modes-meta-chip"><span class="d"></span>Court mileage</span>
+          <span class="modes-meta-chip"><span class="d"></span>Quick-turn recovery</span>
+          <span class="modes-meta-chip"><span class="d"></span>Joint mobility</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.55 0.16 35)">
+          <span class="modes-meta-chip"><span class="d"></span>Snap-count load</span>
+          <span class="modes-meta-chip"><span class="d"></span>Hit recovery</span>
+          <span class="modes-meta-chip"><span class="d"></span>Off-season size</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.65 0.16 100)">
+          <span class="modes-meta-chip"><span class="d"></span>Footwork load</span>
+          <span class="modes-meta-chip"><span class="d"></span>Serving volume</span>
+          <span class="modes-meta-chip"><span class="d"></span>Court taper</span>
+        </div>
+        <div class="modes-meta-set" style="--c: oklch(0.55 0.15 270)">
+          <span class="modes-meta-chip"><span class="d"></span>Block jump</span>
+          <span class="modes-meta-chip"><span class="d"></span>Approach speed</span>
+          <span class="modes-meta-chip"><span class="d"></span>Shoulder volume</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modes-chips" role="tablist" aria-label="Sport modes">
+      <button class="modes-chip is-active" type="button" data-i="0" style="--c: oklch(0.60 0.16 165)"><span class="d"></span>Hoopers</button>
+      <button class="modes-chip" type="button" data-i="1" style="--c: oklch(0.55 0.16 295)"><span class="d"></span>Runners</button>
+      <button class="modes-chip" type="button" data-i="2" style="--c: oklch(0.62 0.15 70)"><span class="d"></span>Cyclists</button>
+      <button class="modes-chip" type="button" data-i="3" style="--c: oklch(0.55 0.18 15)"><span class="d"></span>Fighters</button>
+      <button class="modes-chip" type="button" data-i="4" style="--c: oklch(0.58 0.14 230)"><span class="d"></span>Swimmers</button>
+      <button class="modes-chip" type="button" data-i="5" style="--c: oklch(0.58 0.15 145)"><span class="d"></span>Footballers</button>
+      <button class="modes-chip" type="button" data-i="6" style="--c: oklch(0.62 0.16 130)"><span class="d"></span>Picklers</button>
+      <button class="modes-chip" type="button" data-i="7" style="--c: oklch(0.55 0.16 35)"><span class="d"></span>Gridironers</button>
+      <button class="modes-chip" type="button" data-i="8" style="--c: oklch(0.65 0.16 100)"><span class="d"></span>Tennis players</button>
+      <button class="modes-chip" type="button" data-i="9" style="--c: oklch(0.55 0.15 270)"><span class="d"></span>Spikers</button>
+    </div>
+
+    <div class="modes-claim">
+      <span class="modes-claim-eyebrow">Why Epti</span>
+      <p class="modes-claim-body">
+        The only app that knows your <span class="serif-italic">training schedule</span><span class="amp">and</span>your <span class="serif-italic">peptide protocol</span>.
+      </p>
+      <p class="modes-claim-sub">
+        Same dashboard · same engine · same week. No more flipping between <span class="x">strava</span>, <span class="x">notes.app</span>, and <span class="x">a spreadsheet</span> to figure out whether your tempo run lands on a BPC dose day.
+      </p>
+    </div>
+
+    <p class="modes-foot">
+      Each mode rewires programming, recovery, metrics, and Coach E. <span class="serif-italic">Pick one. Or stack two.</span>
+    </p>
+  </div>
+</section>
+
+<script>
+(function() {
+  const root = document.querySelector('.modes-rotator-root');
+  if (!root) return;
+  const section = root.closest('.modes');
+  const slot = root.querySelector('.rotator-slot');
+  const ghost = root.querySelector('.rotator-ghost');
+  const words = Array.from(root.querySelectorAll('.rotator-word'));
+  if (!section || !slot || !ghost || !words.length) return;
+
+  const metaSets = Array.from(section.querySelectorAll('.modes-meta-set'));
+  const chips = Array.from(section.querySelectorAll('.modes-chip'));
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let active = 0;
+  let inView = true;
+  let userPaused = false;
+  let timer = null;
+
+  function measureWidth(text) {
+    ghost.textContent = text;
+    return ghost.getBoundingClientRect().width;
+  }
+  function colorOf(idx) {
+    return getComputedStyle(words[idx]).getPropertyValue('--c').trim();
+  }
+  function setActive(i) {
+    if (i === active || i < 0 || i >= words.length) return;
+    const prev = active;
+    active = i;
+    section.style.setProperty('--rot-color', colorOf(i));
+    slot.style.width = measureWidth(words[i].textContent) + 'px';
+    words.forEach((w, idx) => {
+      w.classList.remove('is-leaving');
+      w.classList.toggle('is-active', idx === i);
+    });
+    if (words[prev]) {
+      words[prev].classList.add('is-leaving');
+      setTimeout(() => { words[prev].classList.remove('is-leaving'); }, 620);
+    }
+    metaSets.forEach((m, idx) => m.classList.toggle('is-active', idx === i));
+    chips.forEach((c, idx) => c.classList.toggle('is-active', idx === i));
+  }
+  function shouldTick() { return inView && !userPaused && !prefersReduced; }
+  function scheduleNext() {
+    clearTimeout(timer);
+    if (!shouldTick()) return;
+    timer = setTimeout(() => {
+      setActive((active + 1) % words.length);
+      scheduleNext();
+    }, 2600);
+  }
+
+  function init() {
+    slot.style.width = measureWidth(words[0].textContent) + 'px';
+    section.style.setProperty('--rot-color', colorOf(0));
+    scheduleNext();
+  }
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(init);
+  } else {
+    setTimeout(init, 200);
+  }
+
+  // Chip interactions — pause auto-rotation for 8s after a manual pick
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const i = parseInt(chip.dataset.i, 10);
+      if (isNaN(i)) return;
+      setActive(i);
+      userPaused = true;
+      clearTimeout(timer);
+      setTimeout(() => { userPaused = false; scheduleNext(); }, 8000);
+    });
+  });
+
+  // Hover pause on headline
+  root.addEventListener('mouseenter', () => { userPaused = true; clearTimeout(timer); });
+  root.addEventListener('mouseleave', () => { userPaused = false; scheduleNext(); });
+
+  // Only tick when visible
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+      inView = entries[0].isIntersecting;
+      scheduleNext();
+    }, { threshold: 0.15 });
+    io.observe(root);
+  }
+
+  // Re-measure on resize
+  let raf = null;
+  window.addEventListener('resize', () => {
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      slot.style.width = measureWidth(words[active].textContent) + 'px';
+    });
+  });
+})();
+</script>
+
+<!-- ====================== HOW IT WORKS ====================== -->
+<section class="section" id="how" data-screen-label="03 How it works">
+  <div class="wrap">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:780px;">
+      <span class="eyebrow accent">How it works</span>
+      <h2 class="h-section">From your first vial to your <span class="italic">best lift</span> in minutes.</h2>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="num">01 / ONBOARD</div>
+        <h3>Onboard your stack.</h3>
+        <p>Tell Epti your goals, current protocols, and training history. Add vials with our guided flow — concentration, units, reconstitution math handled for you.</p>
+        <div class="step-visual">
+          <div class="dose-stats">
+            <div class="dose-stat"><div class="l">Vial</div><div class="v">5mg</div></div>
+            <div class="dose-stat"><div class="l">BAC</div><div class="v">2mL</div></div>
+            <div class="dose-stat"><div class="l">Per unit</div><div class="v">50mcg</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step">
+        <div class="num">02 / TRAIN</div>
+        <h3>Train with an engine that learns you.</h3>
+        <p>Log workouts, doses, sleep, and bloodwork. Our adaptive engine adjusts volume, intensity, and nutrition targets based on how you actually respond.</p>
+        <div class="step-visual">
+          <div class="ring-wrap">
+            <div class="ring" style="--p:72"><div class="val">72%</div></div>
+            <div>
+              <div class="label-mono" style="color:var(--text-3)">RECOVERY</div>
+              <div style="font-size:14px;color:var(--text);font-weight:500;margin-top:4px;">Adjust top set −5%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step">
+        <div class="num">03 / SHARE</div>
+        <h3>Share, compare, compete.</h3>
+        <p>Follow friends, borrow their protocols, join private circles, and watch your biomarkers and PRs trend in real time.</p>
+        <div class="step-visual">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="pill-avatars" style="display:flex;">
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:0;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=68" alt="" loading="lazy" /></span>
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=49" alt="" loading="lazy" /></span>
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=33" alt="" loading="lazy" /></span>
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=12" alt="" loading="lazy" /></span>
+            </div>
+            <div>
+              <div style="font-size:14px;color:var(--text);font-weight:500;">Inner circle · 8 athletes</div>
+              <div class="label-mono" style="color:var(--text-3);margin-top:4px;">3 SHARED PROTOCOLS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== MARQUEE ====================== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Adaptive engine</span>
+    <span>Vial math</span>
+    <span>Dose timing</span>
+    <span>Bloodwork overlays</span>
+    <span>Cycle compare</span>
+    <span>Coach E</span>
+    <span>Private circles</span>
+    <span>HRV-aware programming</span>
+    <span>Adaptive engine</span>
+    <span>Vial math</span>
+    <span>Dose timing</span>
+    <span>Bloodwork overlays</span>
+    <span>Cycle compare</span>
+    <span>Coach E</span>
+    <span>Private circles</span>
+    <span>HRV-aware programming</span>
+  </div>
+</div>
+
+<!-- ====================== FEATURE 1 — ADAPTIVE ENGINE ====================== -->
+<section class="section" id="features" data-screen-label="04 Adaptive engine">
+  <div class="wrap">
+    <div class="feature-row">
+      <div class="feature-copy">
+        <span class="eyebrow cat-activity">Adaptive engine</span>
+        <h2 class="h-section">A program that <span class="italic">rewrites itself</span> around you.</h2>
+        <p class="lede">Epti's adaptive engine continuously analyzes your training logs, recovery, peptide phase, and bloodwork to reshape your program week-over-week — not just rep schemes, but volume, macro targets, and recovery prescriptions.</p>
+
+        <ul class="subcaps">
+          <li><span class="num">01</span><span>Auto-deload detection from HRV, sleep, and RPE trends</span></li>
+          <li><span class="num">02</span><span>Macro targets that shift with your cycle phase (bulk / cut / cruise)</span></li>
+          <li><span class="num">03</span><span>11-zone recovery model — knows when BPC-157 or TB-500 is in your stack and weights tendon &amp; ligament loading accordingly</span></li>
+          <li><span class="num">04</span><span>PR tracking with your protocol overlaid — every 1RM plotted against peptide cycles, sleep, and bodyweight</span></li>
+          <li><span class="num">05</span><span>AI-generated programs: powerlifting, hybrid, basketball, cycling — plus templates for PPL, Upper/Lower, 5/3/1, GZCL</span></li>
+          <li><span class="num">06</span><span>Drift detection: flags when your protocol isn't producing expected results</span></li>
+        </ul>
+      </div>
+
+      <!-- Phone: Active Workout -->
+      <div class="feature-phone">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="app">
+              <div class="phone-statusbar">
+                <span>9:41</span>
+                <div class="icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7h2v6H1zM5 5h2v8H5zM9 3h2v10H9zM13 1h2v12h-2z"/></svg>
+                  <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5"/><rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor"/></svg>
+                </div>
+              </div>
+              <div class="app-header">
+                <div>
+                  <div class="greeting">SET 3 OF 5</div>
+                  <div class="name">Back Squat</div>
+                </div>
+                <div class="ring" style="--p:62;width:42px;height:42px;"><div class="val" style="font-size:10px">62</div></div>
+              </div>
+
+              <div class="scroll">
+                <!-- Adaptive suggestion -->
+                <div class="adaptive-card">
+                  <div class="l">⚡ Adaptive suggestion</div>
+                  <div class="t">Drop top set by 5% — recovery is 12% below baseline.</div>
+                </div>
+
+                <!-- Set list -->
+                <div style="margin-top:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
+                  <span class="label-mono">Working sets</span>
+                  <span class="label-mono" style="color:var(--accent)">EDIT</span>
+                </div>
+                <div class="workout-set-list">
+                  <div class="set-row">
+                    <span class="num">01</span>
+                    <span class="weight">315 lb</span>
+                    <span class="reps">5 reps</span>
+                    <span class="rpe">RPE 7</span>
+                  </div>
+                  <div class="set-row">
+                    <span class="num">02</span>
+                    <span class="weight">335 lb</span>
+                    <span class="reps">5 reps</span>
+                    <span class="rpe">RPE 7.5</span>
+                  </div>
+                  <div class="set-row active">
+                    <span class="num">03</span>
+                    <span class="weight">355 lb</span>
+                    <span class="reps">3 reps</span>
+                    <span class="rpe">RPE 8</span>
+                  </div>
+                  <div class="set-row">
+                    <span class="num">04</span>
+                    <span class="weight">365 lb</span>
+                    <span class="reps">3 reps</span>
+                    <span class="rpe">—</span>
+                  </div>
+                  <div class="set-row">
+                    <span class="num">05</span>
+                    <span class="weight">375 lb</span>
+                    <span class="reps">2 reps</span>
+                    <span class="rpe">—</span>
+                  </div>
+                </div>
+
+                <div class="app-card" style="margin-top:12px;padding:14px;display:flex;align-items:center;gap:12px;">
+                  <div class="ring" style="--p:78"><div class="val">78</div></div>
+                  <div style="flex:1">
+                    <div class="label-mono" style="color:var(--text-3)">SESSION PROGRESS</div>
+                    <div style="font-size:13.5px;font-weight:500;margin-top:3px;letter-spacing:-0.01em;">On pace · 18 min left</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tabbar">
+                <div class="tab"><span style="font-size:14px;">⏸</span><span>PAUSE</span></div>
+                <div class="tab active"><span style="font-size:14px;color:var(--accent)">✓</span><span>LOG SET</span></div>
+                <div class="tab"><span style="font-size:14px;">⏭</span><span>NEXT</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== COMPOUND LIBRARY ====================== -->
+<section class="section" data-screen-label="05 Library">
+  <div class="wrap">
+    <div class="library-showcase">
+      <div class="feature-copy">
+        <span class="eyebrow accent">Compound library</span>
+        <h2 class="h-section">Every peptide, <span class="italic">researched</span> before it's logged.</h2>
+        <p class="lede">A live, editorial library of every compound in the community — reconstitution math, half-lives, side-effect profiles, vendor COAs, and the studies behind the claims. So your protocol starts on something more than a Reddit thread.</p>
+
+        <div class="trending-row">
+          <div class="trending-card weight-loss">
+            <span class="tc-num">N°01</span>
+            <span class="tc-cat">Weight loss</span>
+            <span class="tc-name">Retatrutide</span>
+            <div class="tc-meta">
+              <span class="tc-users">3.4K users</span>
+              <span class="tc-trend">↑ 318 this week</span>
+            </div>
+          </div>
+          <div class="trending-card weight-loss">
+            <span class="tc-num">N°02</span>
+            <span class="tc-cat">Weight loss</span>
+            <span class="tc-name">Tirzepatide</span>
+            <div class="tc-meta">
+              <span class="tc-users">1.8K users</span>
+              <span class="tc-trend">↑ 56 this week</span>
+            </div>
+          </div>
+          <div class="trending-card healing">
+            <span class="tc-num">N°03</span>
+            <span class="tc-cat">Healing &amp; recovery</span>
+            <span class="tc-name">GHK-Cu</span>
+            <div class="tc-meta">
+              <span class="tc-users">1.6K users</span>
+              <span class="tc-trend">↑ 61 this week</span>
+            </div>
+          </div>
+        </div>
+
+        <ul class="subcaps" style="margin-top:36px;">
+          <li><span class="num">01</span><span>Editorial guides on reconstitution, injection technique, storage &amp; reading COAs</span></li>
+          <li><span class="num">02</span><span>69 compounds across weight loss, muscle growth, healing &amp; recovery</span></li>
+          <li><span class="num">03</span><span>Vendor index with community-verified COAs</span></li>
+        </ul>
+      </div>
+
+      <div class="library-phone-wrap">
+        <div class="phone-real lg">
+          <div class="phone-real-screen">
+            <div class="pr-statusbar">
+              <span class="pr-time">9:41</span>
+              <span class="pr-island" aria-hidden="true"></span>
+              <span class="pr-icons" aria-hidden="true">
+                <svg class="ico-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="5" y="6" width="3" height="6" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+                <svg class="ico-wifi" viewBox="0 0 16 12"><path d="M8 0a13.4 13.4 0 0 1 8 3l-2 2a10.5 10.5 0 0 0-12 0L0 3a13.4 13.4 0 0 1 8-3Zm0 5a8.4 8.4 0 0 1 5 1.8L11 8.8a5.4 5.4 0 0 0-6 0L3 6.8A8.4 8.4 0 0 1 8 5Zm0 4.7c.9 0 1.7.3 2.3.9L8 12 5.7 9.7a3.4 3.4 0 0 1 2.3-.9Z"/></svg>
+                <svg class="ico-battery" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5"/><rect x="2" y="2" width="18" height="8" rx="1.2" fill="currentColor"/><rect x="22.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+              </span>
+            </div>
+            <img src="assets/screen-discover.png" alt="Epti Discover tab showing the Beginner's Guide to peptide research and trending compounds Retatrutide, Tirzepatide, and GHK-Cu" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FEATURE 2 — PROTOCOLS ====================== -->
+<style>
+/* Protocol section phone tweak — match the Community / Apple Health treatment */
+.protocol-phone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.protocol-phone .phone-real {
+  transform: rotate(-2deg);
+  position: relative;
+  z-index: 1;
+}
+.protocol-phone::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% -20% -10%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 18%, transparent), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+}
+@media (max-width: 920px) {
+  .protocol-phone .phone-real { transform: none; }
+}
+</style>
+
+<section class="section" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);" data-screen-label="05 Protocols">
+  <div class="wrap">
+    <div class="feature-row reverse">
+      <div class="feature-copy">
+        <span class="eyebrow cat-recovery">Protocols</span>
+        <h2 class="h-section">Every vial. Every dose. Every cycle. <span class="italic">Tracked.</span></h2>
+        <p class="lede">Add a vial in 30 seconds. Epti handles the reconstitution math, calculates units to draw per dose, tracks remaining volume, warns before you run out, and logs every injection with site rotation and reminders.</p>
+
+        <ul class="subcaps">
+          <li><span class="num">01</span><span>Visual syringe diagram showing exactly how many units to draw</span></li>
+          <li><span class="num">02</span><span>Smart reminders with "DUE IN 15 MIN" status indicators</span></li>
+          <li><span class="num">03</span><span>Auto site rotation map (subq + IM)</span></li>
+          <li><span class="num">04</span><span>Cost-per-dose and cost-per-cycle tracking</span></li>
+          <li><span class="num">05</span><span>Cycle library: active, past, and archived protocols in one editorial timeline</span></li>
+        </ul>
+      </div>
+
+      <!-- Phone: Protocol detail (real screenshot) -->
+      <div class="feature-phone protocol-phone">
+        <div class="phone-real lg">
+          <div class="phone-real-screen">
+            <div class="pr-statusbar">
+              <span class="pr-time">9:41</span>
+              <span class="pr-island" aria-hidden="true"></span>
+              <span class="pr-icons" aria-hidden="true">
+                <svg class="ico-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="5" y="6" width="3" height="6" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+                <svg class="ico-wifi" viewBox="0 0 16 12"><path d="M8 0a13.4 13.4 0 0 1 8 3l-2 2a10.5 10.5 0 0 0-12 0L0 3a13.4 13.4 0 0 1 8-3Zm0 5a8.4 8.4 0 0 1 5 1.8L11 8.8a5.4 5.4 0 0 0-6 0L3 6.8A8.4 8.4 0 0 1 8 5Zm0 4.7c.9 0 1.7.3 2.3.9L8 12 5.7 9.7a3.4 3.4 0 0 1 2.3-.9Z"/></svg>
+                <svg class="ico-battery" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5"/><rect x="2" y="2" width="18" height="8" rx="1.2" fill="currentColor"/><rect x="22.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+              </span>
+            </div>
+            <img src="epti-protocol-detail.png" alt="Protocol detail: Recomp Finish + Skin Support — Retatrutide bottle showing 1.36 mg current level, 90-day medication chart, stats" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FEATURE 3 — INSIGHTS ====================== -->
+<section class="section" data-screen-label="06 Insights">
+  <div class="wrap">
+    <div class="feature-row">
+      <div class="feature-copy">
+        <span class="eyebrow cat-heart">Insights</span>
+        <h2 class="h-section">Watch your biomarkers <span class="italic">respond</span> to your protocol.</h2>
+        <p class="lede">Upload labs or sync Apple Health. Epti overlays bloodwork against your protocol timeline so you can finally see what's working — testosterone, IGF-1, lipids, inflammatory markers, glucose, and more.</p>
+
+        <ul class="subcaps">
+          <li><span class="num">01</span><span>Auto-parse common lab PDFs</span></li>
+          <li><span class="num">02</span><span>Side-by-side comparison across cycles</span></li>
+          <li><span class="num">03</span><span>Apple Health & wearable sync (HRV, sleep, RHR, weight)</span></li>
+          <li><span class="num">04</span><span>Biomarker anomaly alerts</span></li>
+          <li><span class="num">05</span><span>Beautiful trend charts with protocol overlays</span></li>
+        </ul>
+      </div>
+
+      <!-- Phone: Bloodwork -->
+      <div class="feature-phone">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="app">
+              <div class="phone-statusbar">
+                <span>9:41</span>
+                <div class="icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7h2v6H1zM5 5h2v8H5zM9 3h2v10H9zM13 1h2v12h-2z"/></svg>
+                  <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5"/><rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor"/></svg>
+                </div>
+              </div>
+
+              <div class="app-header">
+                <div>
+                  <div class="greeting">BIOMARKERS · 90 DAYS</div>
+                  <div class="name">IGF-1</div>
+                </div>
+                <div>
+                  <div style="font-size:18px;font-weight:500;letter-spacing:-0.02em;color:var(--accent);text-align:right;">+30%</div>
+                  <div class="label-mono" style="color:var(--text-3);text-align:right;margin-top:2px;">VS CYCLE 1</div>
+                </div>
+              </div>
+
+              <div class="scroll">
+                <div class="app-card chart-card">
+                  <div class="app-row" style="margin-bottom:6px;">
+                    <span style="font-family:var(--mono);font-size:10.5px;color:var(--text);">218 <span style="color:var(--text-3);">ng/mL</span></span>
+                    <span class="tag accent">CYCLE 2 · ACTIVE</span>
+                  </div>
+                  <div class="chart">
+                    <div class="chart-grid"></div>
+                    <div class="overlay-band" style="left:38%;right:8%;"></div>
+                    <svg viewBox="0 0 200 130" preserveAspectRatio="none" style="position:absolute;inset:0;">
+                      <!-- Baseline (teal) -->
+                      <path d="M0,90 C20,88 40,92 60,85 C80,78 100,82 120,80 C140,78 160,75 200,72" fill="none" stroke="oklch(0.78 0.13 195)" stroke-width="1.5" opacity="0.6" stroke-dasharray="3,3"/>
+                      <!-- Actual (accent) -->
+                      <path d="M0,95 C18,90 38,88 58,82 C78,76 95,72 110,55 C130,42 150,30 175,20 C188,15 195,12 200,10"
+                            fill="none" stroke="oklch(0.93 0.2 135)" stroke-width="2"/>
+                      <!-- Marker dot -->
+                      <circle cx="170" cy="22" r="3.5" fill="oklch(0.93 0.2 135)"/>
+                      <circle cx="170" cy="22" r="8" fill="oklch(0.93 0.2 135)" opacity="0.2"/>
+                    </svg>
+                  </div>
+                  <div class="chart-legend">
+                    <span>IGF-1 actual</span>
+                    <span class="b">Baseline</span>
+                  </div>
+                </div>
+
+                <div class="app-card" style="margin-top:10px;">
+                  <div class="label-mono" style="color:var(--text-3)">PROTOCOL OVERLAY</div>
+                  <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;">
+                      <span style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--accent)"></span>BPC-157 · 250mcg</span>
+                      <span style="font-family:var(--mono);color:var(--text-3);font-size:10px;">DAY 1—30</span>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;">
+                      <span style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--teal)"></span>Ipamorelin · 200mcg</span>
+                      <span style="font-family:var(--mono);color:var(--text-3);font-size:10px;">DAY 14—60</span>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;">
+                      <span style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--warn)"></span>Lab draw</span>
+                      <span style="font-family:var(--mono);color:var(--text-3);font-size:10px;">DAY 30, 60, 90</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="app-card" style="margin-top:10px;background:var(--accent-dim);border-color:var(--accent-line);">
+                  <div style="display:flex;gap:10px;align-items:flex-start;">
+                    <div style="font-family:var(--mono);font-size:9.5px;color:var(--accent);background:var(--bg);border:1px solid var(--accent-line);border-radius:4px;padding:2px 6px;letter-spacing:0.08em;">INSIGHT</div>
+                    <div style="font-size:12px;color:var(--text);line-height:1.4;">Your IGF-1 climbed 30% faster on this cycle than cycle 1. Sleep avg held at 7h 12m.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tabbar">
+                <div class="tab"><span style="font-size:14px;">+</span><span>UPLOAD</span></div>
+                <div class="tab active"><span style="font-size:14px;color:var(--accent)">≣</span><span>MARKERS</span></div>
+                <div class="tab"><span style="font-size:14px;">⇄</span><span>COMPARE</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== COACH E ====================== -->
+<section class="section" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);" id="coach" data-screen-label="07 Coach E">
+  <div class="wrap">
+    <div class="coach-grid">
+      <!-- Phone: Coach E chat -->
+      <div class="feature-phone">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-notch"></div>
+            <div class="app">
+              <div class="phone-statusbar">
+                <span>9:41</span>
+                <div class="icons">
+                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7h2v6H1zM5 5h2v8H5zM9 3h2v10H9zM13 1h2v12h-2z"/></svg>
+                  <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5"/><rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor"/></svg>
+                </div>
+              </div>
+
+              <div class="app-header" style="padding-bottom:14px;border-bottom:1px solid var(--line);margin:0 0 4px;padding-left:18px;padding-right:18px;">
+                <div style="display:flex;align-items:center;gap:10px;">
+                  <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:600;font-family:var(--sans);font-size:16px;">E</div>
+                  <div>
+                    <div style="font-size:14px;font-weight:500;">Coach E</div>
+                    <div class="label-mono" style="color:var(--accent);margin-top:2px;display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;background:var(--accent);border-radius:50%;"></span>ONLINE · KNOWS YOUR STACK</div>
+                  </div>
+                </div>
+                <div style="color:var(--text-3);font-size:18px;">⋯</div>
+              </div>
+
+              <div class="scroll">
+                <div class="chat-msg user">
+                  <div class="bubble">Is it safe to stack BPC-157 with my current cut?</div>
+                </div>
+                <div class="chat-msg">
+                  <div class="bubble">
+                    Yes — with your protein at <span class="cite">182g</span> and BPC dose of <span class="cite">250mcg</span>, recovery markers look strong. Watch your CRP, which trended up <span class="cite">8%</span> last cycle.
+                  </div>
+                </div>
+
+                <div class="chat-msg user">
+                  <div class="bubble">Why did my bench stall this week?</div>
+                </div>
+                <div class="chat-msg">
+                  <div class="bubble">
+                    Three signals: sleep avg dropped to <span class="cite">5h 50m</span>, you missed <span class="cite">2 BPC doses</span> on Mon/Tue, and pressing volume was <span class="cite">+18%</span> vs last week. I'd deload bench Thursday.
+                  </div>
+                </div>
+
+                <div class="app-card" style="margin-top:8px;padding:10px 12px;">
+                  <div class="label-mono" style="color:var(--text-3);margin-bottom:8px;">SUGGESTED FOLLOW-UPS</div>
+                  <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="font-size:12px;padding:6px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;">Plan my deload week</div>
+                    <div style="font-size:12px;padding:6px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;">What's depleting my sleep?</div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="padding:10px 14px 18px;border-top:1px solid var(--line);">
+                <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:10px 14px;">
+                  <span style="color:var(--text-3);font-size:12px;flex:1;">Ask Coach E…</span>
+                  <div style="width:24px;height:24px;background:var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent-ink);font-size:11px;">↑</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="eyebrow accent">Coach E · AI</span>
+        <h2 class="h-section" style="margin:18px 0 24px;">Peptide, training, and recovery questions — answered <span class="italic">instantly,</span> in context.</h2>
+        <p class="lede">Coach E reads your protocol stack, training history, sleep, and bloodwork before it answers. It's not a generic chatbot — it's a coach that already knows what you ran last cycle.</p>
+
+        <div class="coach-cards" style="margin-top:36px;">
+          <div class="coach-card">
+            <div class="q">"Is it safe to stack BPC-157 with my current cut?"</div>
+            <div class="a">Yes — contextual answer referencing your <span class="cite">protein 182g</span>, <span class="cite">250mcg BPC</span>, and last <span class="cite">CRP +8%</span>.</div>
+          </div>
+          <div class="coach-card">
+            <div class="q">"Why did my bench stall this week?"</div>
+            <div class="a">Sleep dropped to <span class="cite">5h 50m</span>, you missed <span class="cite">2 doses</span>, and pressing volume was <span class="cite">+18%</span>. Deload Thursday.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== PRICING (removed — replaced by launch-day code messaging in CTAs) ====================== -->
+<!--
+<section class="section" id="pricing" data-screen-label="10 Pricing">
+  <div class="wrap">
+    <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;">
+      <span class="eyebrow accent">Founding member pricing</span>
+      <h2 class="h-section" style="max-width:18ch;">Locked in for <span class="italic">life,</span> while the waitlist is open.</h2>
+      <p class="lede" style="text-align:center;">Reserve your spot today and we'll honor founding rates the day Epti goes live. 7-day free trial when you're invited in.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="plan">Monthly</div>
+        <div class="price">
+          <span class="amt">$14.99</span>
+          <span class="per">/ month</span>
+        </div>
+        <ul>
+          <li>Adaptive engine + unlimited protocols</li>
+          <li>Coach E AI assistant</li>
+          <li>Social circles & protocol sharing</li>
+          <li>Bloodwork overlays</li>
+          <li>Apple Health & wearable sync</li>
+        </ul>
+        <form class="waitlist-form" data-waitlist novalidate style="margin-top:auto;">
+          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+          <button type="submit">Reserve <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+
+      <div class="price-card featured">
+        <div class="price-badge">Recommended</div>
+        <div class="plan">Yearly</div>
+        <div class="price">
+          <span class="amt">$89.99</span>
+          <span class="per">/ year</span>
+        </div>
+        <div class="save">Save 50% vs monthly · ~$7.50/mo</div>
+        <ul>
+          <li>Adaptive engine + unlimited protocols</li>
+          <li>Coach E AI assistant</li>
+          <li>Social circles & protocol sharing</li>
+          <li>Bloodwork overlays</li>
+          <li>Apple Health & wearable sync</li>
+          <li>Priority Coach E response</li>
+        </ul>
+        <form class="waitlist-form" data-waitlist novalidate style="margin-top:auto;">
+          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+          <button type="submit">Reserve <span aria-hidden="true">→</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- ====================== SOCIAL PROOF ====================== -->
+<style>
+/* ---- Community: V-fan phone toggle (scoped) ---- */
+#community { padding-bottom: 0; }
+#community .community-showcase {
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+@media (max-width: 980px) {
+  #community .community-showcase {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+  }
+}
+
+#community [data-state-show] { display: none; }
+#community[data-state="friends"] [data-state-show="friends"] { display: block; }
+#community[data-state="feed"]    [data-state-show="feed"]    { display: block; }
+/* Quotes need flex layout intact when active */
+#community .community-quote[data-state-show] { display: none; }
+#community[data-state="friends"] .community-quote[data-state-show="friends"],
+#community[data-state="feed"]    .community-quote[data-state-show="feed"] {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: cQuoteIn 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes cQuoteIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Toggle chips */
+#community .community-toggle {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+#community .ctab {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 18px 11px 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text-2);
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease, transform 120ms ease;
+}
+#community .ctab:hover { background: var(--surface-2); border-color: var(--line-strong); color: var(--text); }
+#community .ctab .ctab-num {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  font-weight: 600;
+}
+#community .ctab .ctab-label {
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+#community .ctab.active {
+  background: color-mix(in oklch, var(--accent) 8%, var(--surface));
+  border-color: color-mix(in oklch, var(--accent) 55%, var(--line));
+  color: var(--text);
+}
+#community .ctab.active .ctab-num { color: var(--accent-strong); }
+
+/* The V-fan */
+#community .community-fan {
+  position: relative;
+  width: 100%;
+  height: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1600px;
+}
+#community .cphone {
+  position: absolute;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 600ms ease,
+    opacity 600ms ease;
+  transform-origin: 50% 60%;
+  outline: none;
+}
+#community .cphone:focus-visible .phone-real {
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.04),
+    0 30px 80px -20px rgba(0,0,0,0.6),
+    0 0 0 12px rgba(255,255,255,0.015),
+    0 0 0 4px var(--accent);
+}
+#community .cphone .phone-real {
+  pointer-events: none; /* clicks go to the button */
+}
+#community .cphone-tag {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 6px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 400ms ease 200ms;
+  pointer-events: none;
+}
+
+/* State A — Friends in front */
+#community[data-state="friends"] .cphone-friends {
+  transform: translateX(-30px) rotate(-3deg) scale(1);
+  filter: none;
+  opacity: 1;
+  z-index: 5;
+}
+#community[data-state="friends"] .cphone-friends .cphone-tag { opacity: 1; }
+#community[data-state="friends"] .cphone-feed {
+  transform: translateX(140px) rotate(10deg) scale(0.86);
+  filter: saturate(0.45) brightness(0.95);
+  opacity: 0.58;
+  z-index: 1;
+}
+#community[data-state="friends"] .cphone-feed:hover {
+  filter: saturate(0.85) brightness(1);
+  opacity: 0.85;
+  transform: translateX(140px) rotate(10deg) scale(0.9);
+}
+
+/* State B — Feed in front */
+#community[data-state="feed"] .cphone-feed {
+  transform: translateX(30px) rotate(3deg) scale(1);
+  filter: none;
+  opacity: 1;
+  z-index: 5;
+}
+#community[data-state="feed"] .cphone-feed .cphone-tag { opacity: 1; }
+#community[data-state="feed"] .cphone-friends {
+  transform: translateX(-140px) rotate(-10deg) scale(0.86);
+  filter: saturate(0.45) brightness(0.95);
+  opacity: 0.58;
+  z-index: 1;
+}
+#community[data-state="feed"] .cphone-friends:hover {
+  filter: saturate(0.85) brightness(1);
+  opacity: 0.85;
+  transform: translateX(-140px) rotate(-10deg) scale(0.9);
+}
+
+@media (max-width: 980px) {
+  #community .community-fan { height: 660px; }
+  #community[data-state="friends"] .cphone-friends,
+  #community[data-state="feed"] .cphone-feed { transform: scale(0.86); }
+  #community[data-state="friends"] .cphone-feed {
+    transform: translateX(110px) rotate(10deg) scale(0.74);
+  }
+  #community[data-state="feed"] .cphone-friends {
+    transform: translateX(-110px) rotate(-10deg) scale(0.74);
+  }
+}
+@media (max-width: 520px) {
+  #community .community-fan { height: 560px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #community .cphone, #community .cphone-tag, #community .community-quote { transition: none; animation: none; }
+}
+</style>
+
+<section class="section" id="community" data-state="friends" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);" data-screen-label="10 Community">
+  <div class="wrap">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:780px;">
+      <span class="eyebrow accent">Community</span>
+      <!-- State-driven headline -->
+      <h2 class="h-section" data-state-show="friends">Closed circles. <span class="italic">Real signal.</span></h2>
+      <h2 class="h-section" data-state-show="feed">Real days. <span class="italic">Real notes.</span></h2>
+
+      <p class="lede" style="max-width:60ch;" data-state-show="friends">Join private groups built around how you actually train — recomp, hybrid, sleep &amp; recovery. Follow friends whose protocols match yours. Eight people in your circle, not eight hundred. Just the ones who get it.</p>
+      <p class="lede" style="max-width:60ch;" data-state-show="feed">Posts from athletes you follow — the days that went sideways and the ones that finally clicked. Filter by All, Following, or Tags. No engagement loops, no influencer slop.</p>
+
+      <!-- Toggle chips -->
+      <div class="community-toggle" role="tablist" aria-label="Community views">
+        <button class="ctab" type="button" data-cview="friends" role="tab">
+          <span class="ctab-num">01</span>
+          <span class="ctab-label">Friends &amp; Groups</span>
+        </button>
+        <button class="ctab" type="button" data-cview="feed" role="tab">
+          <span class="ctab-num">02</span>
+          <span class="ctab-label">Following Feed</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="community-showcase">
+      <div class="community-fan" id="communityFan">
+        <button class="cphone cphone-friends" type="button" data-cview="friends" aria-label="Show Friends &amp; Groups">
+          <div class="phone-real lg">
+            <div class="phone-real-screen">
+              <div class="pr-statusbar">
+                <span class="pr-time">9:41</span>
+                <span class="pr-island" aria-hidden="true"></span>
+                <span class="pr-icons" aria-hidden="true">
+                  <svg class="ico-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="5" y="6" width="3" height="6" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+                  <svg class="ico-wifi" viewBox="0 0 16 12"><path d="M8 0a13.4 13.4 0 0 1 8 3l-2 2a10.5 10.5 0 0 0-12 0L0 3a13.4 13.4 0 0 1 8-3Zm0 5a8.4 8.4 0 0 1 5 1.8L11 8.8a5.4 5.4 0 0 0-6 0L3 6.8A8.4 8.4 0 0 1 8 5Zm0 4.7c.9 0 1.7.3 2.3.9L8 12 5.7 9.7a3.4 3.4 0 0 1 2.3-.9Z"/></svg>
+                  <svg class="ico-battery" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5"/><rect x="2" y="2" width="18" height="8" rx="1.2" fill="currentColor"/><rect x="22.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+                </span>
+              </div>
+              <img src="epti-community.png" alt="Epti Friends tab showing private groups Recomp Lab, Hybrid Squad, Sleep &amp; Recovery Stack and friends Finn, Riley, Avery, Marcus" loading="lazy" />
+            </div>
+          </div>
+          <span class="cphone-tag">Friends &amp; Groups</span>
+        </button>
+
+        <button class="cphone cphone-feed" type="button" data-cview="feed" aria-label="Show Following Feed">
+          <div class="phone-real lg">
+            <div class="phone-real-screen">
+              <div class="pr-statusbar">
+                <span class="pr-time">9:41</span>
+                <span class="pr-island" aria-hidden="true"></span>
+                <span class="pr-icons" aria-hidden="true">
+                  <svg class="ico-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="5" y="6" width="3" height="6" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+                  <svg class="ico-wifi" viewBox="0 0 16 12"><path d="M8 0a13.4 13.4 0 0 1 8 3l-2 2a10.5 10.5 0 0 0-12 0L0 3a13.4 13.4 0 0 1 8-3Zm0 5a8.4 8.4 0 0 1 5 1.8L11 8.8a5.4 5.4 0 0 0-6 0L3 6.8A8.4 8.4 0 0 1 8 5Zm0 4.7c.9 0 1.7.3 2.3.9L8 12 5.7 9.7a3.4 3.4 0 0 1 2.3-.9Z"/></svg>
+                  <svg class="ico-battery" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5"/><rect x="2" y="2" width="18" height="8" rx="1.2" fill="currentColor"/><rect x="22.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+                </span>
+              </div>
+              <img src="assets/screen-community.png" alt="Epti Feed tab showing posts from Ava Chen, Ethan Walker, Marcus Diallo, and Oliver Brown" loading="lazy" />
+            </div>
+          </div>
+          <span class="cphone-tag">Following Feed</span>
+        </button>
+      </div>
+
+      <div class="community-quotes">
+        <!-- Friends quotes -->
+        <div class="community-quote" data-state-show="friends">
+          <div class="qhead">
+            <div class="avatar"><img src="https://i.pravatar.cc/120?img=12" alt="" loading="lazy" /></div>
+            <div class="who"><strong>Devon R.</strong><span>Hybrid · lean mass cycle</span></div>
+          </div>
+          <div class="qtext">"I joined Recomp Lab and within a week three people had already swapped notes on the exact dosing schedule I was second-guessing. That's not a feed — that's a group chat with my labs in it."</div>
+          <span class="qtag">— In 2 groups</span>
+        </div>
+        <div class="community-quote" data-state-show="friends">
+          <div class="qhead">
+            <div class="avatar"><img src="https://i.pravatar.cc/120?img=47" alt="" loading="lazy" /></div>
+            <div class="who"><strong>Sasha M.</strong><span>Powerlifter · recomp</span></div>
+          </div>
+          <div class="qtext">"My coach and I share a private group. He sees my doses, lifts, and labs in real time — no screenshots, no spreadsheets. It's changed how we program."</div>
+          <span class="qtag">— Coaches with athletes</span>
+        </div>
+        <div class="community-quote" data-state-show="friends">
+          <div class="qhead">
+            <div class="avatar"><img src="https://i.pravatar.cc/120?img=33" alt="" loading="lazy" /></div>
+            <div class="who"><strong>Riley T.</strong><span>Recomp · @rileyt</span></div>
+          </div>
+          <div class="qtext">"My friends list is eight people, not eight hundred. I can see what they ate, how they slept, what they're cycling — and they can see mine. That's the whole point."</div>
+          <span class="qtag">— 8 friends</span>
+        </div>
+
+        <!-- Feed quotes -->
+        <div class="community-quote" data-state-show="feed">
+          <div class="qhead">
+            <div class="avatar"><img src="https://i.pravatar.cc/120?img=20" alt="" loading="lazy" /></div>
+            <div class="who"><strong>Ava C.</strong><span>@avalifts · powerbuilding</span></div>
+          </div>
+          <div class="qtext">"Posted 'squats moved like trash today but i hit them anyway.' Got four comments from people who'd been in the same place that week. That's the point — not pumps, not PRs. Just the showing-up."</div>
+          <span class="qtag">— 200+ posts</span>
+        </div>
+        <div class="community-quote" data-state-show="feed">
+          <div class="qhead">
+            <div class="avatar"><img src="https://i.pravatar.cc/120?img=33" alt="" loading="lazy" /></div>
+            <div class="who"><strong>Marcus D.</strong><span>Hybrid runner · zone-2 block</span></div>
+          </div>
+          <div class="qtext">"Following four hybrid athletes on similar protocols changed how I think about pacing. The feed's not a leaderboard — it's people thinking out loud about their actual training week."</div>
+          <span class="qtag">— Following 12</span>
+        </div>
+        <div class="community-quote" data-state-show="feed">
+          <div class="qhead">
+            <div class="avatar"><img src="https://i.pravatar.cc/120?img=51" alt="" loading="lazy" /></div>
+            <div class="who"><strong>Ethan W.</strong><span>@ethannew · strength</span></div>
+          </div>
+          <div class="qtext">"Filter by Following and the noise disappears. No strangers chasing engagement. Just the eight people I actually want to hear from, with the honest version of their week."</div>
+          <span class="qtag">— Filtered by Following</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Community: V-fan phone toggle (Friends ↔ Feed)
+(function() {
+  const section = document.getElementById('community');
+  if (!section) return;
+  const tabs = section.querySelectorAll('.ctab');
+  const phones = section.querySelectorAll('.cphone');
+
+  function setState(view) {
+    section.dataset.state = view;
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.cview === view));
+  }
+
+  // Wire chips
+  tabs.forEach(t => t.addEventListener('click', () => setState(t.dataset.cview)));
+
+  // Wire phones (clicking a phone activates its view)
+  phones.forEach(p => p.addEventListener('click', (e) => {
+    // Don't re-trigger if already active
+    if (section.dataset.state === p.dataset.cview) return;
+    setState(p.dataset.cview);
+  }));
+
+  // Default: friends (already set on the element); sync chip
+  setState(section.dataset.state || 'friends');
+})();
+</script>
+
+<!-- ====================== FINAL CTA ====================== -->
+<section class="final-cta" data-screen-label="11 Final CTA">
+  <div class="wrap-narrow">
+    <span class="eyebrow accent" style="justify-content:center;">Get early access</span>
+    <h2 class="h-section">Ready to train like your protocol <span class="italic">depends on it?</span></h2>
+    <p class="lede">Every waitlist member gets an email with an <strong style="color:var(--text-1);font-weight:500;">exclusive launch-day code</strong> — your reward for being early. We're inviting users in batches as we build out.</p>
+    <form class="waitlist-form" data-waitlist novalidate style="margin:0 auto;">
+      <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+      <button type="submit">Claim my launch-day code <span aria-hidden="true">→</span></button>
+    </form>
+    <div class="reward-note">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M2.5 5.5h11v8h-11z" stroke-linejoin="round"/><path d="M2.5 5.5L8 9l5.5-3.5" stroke-linejoin="round"/></svg>
+      <span>One code per email · sent the day Epti goes live · founding-member rate, locked for life</span>
+    </div>
+    <div class="coming-soon" style="margin-top:22px;justify-content:center;">
+      <span class="badge">
+        <svg viewBox="0 0 24 28" fill="currentColor"><path d="M17.05 14.4c.04 3.7 3.24 4.93 3.28 4.95-.03.09-.51 1.76-1.69 3.48-1.03 1.49-2.1 2.97-3.78 3-1.66.03-2.19-.99-4.09-.99-1.9 0-2.49.96-4.05 1.02-1.62.06-2.86-1.62-3.9-3.1C.71 19.74-.91 14.16 1.27 10.4c1.08-1.86 3.02-3.04 5.12-3.07 1.59-.03 3.1 1.07 4.07 1.07.97 0 2.81-1.32 4.74-1.13.81.03 3.08.33 4.54 2.46-.12.07-2.71 1.59-2.69 4.66M14 5.6c.86-1.04 1.44-2.49 1.28-3.93-1.24.05-2.74.83-3.63 1.87-.8.93-1.5 2.4-1.31 3.83 1.38.1 2.79-.7 3.66-1.76"/></svg>
+        iOS
+      </span>
+      <span class="badge">
+        <svg viewBox="0 0 24 26" fill="currentColor"><path d="M.91 1.18C.34 1.78 0 2.71 0 3.92v18.16c0 1.21.34 2.14.92 2.72l.07.07L11.18 14.5v-.99L1 1.11l-.09.07Zm14.55 16.93-3.4-3.43v-.39l3.4-3.43.08.05 4.04 2.34c1.15.66 1.15 1.74 0 2.41l-4.04 2.36-.08.05Zm-.92.89L11.07 14.5.92 24.78c.38.41 1.02.46 1.74.06l11.88-6.84-.01-.01Zm0-9.21L2.66 2.95C1.94 2.55 1.3 2.6.92 3.01L11.07 13.5l3.47-3.71Z"/></svg>
+        Android
+      </span>
+      <span>Coming soon to iOS &amp; Android</span>
+    </div>
+    <div class="sync-row" style="margin-top:14px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:0.14em;color:var(--text-3);text-transform:uppercase;">
+      <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" style="width:12px;height:12px;"><path d="M2 9l2 2 4-5M9 9l2 2 2-2"/></svg>
+      <span>Syncs with Apple Health · Whoop · Oura · Garmin</span>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a class="brand" href="#" aria-label="epti" style="margin-bottom:18px;display:inline-flex;">
+          <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
+        </a>
+        <p style="max-width:34ch;line-height:1.55;">The only fitness platform built for the peptide community.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#">Adaptive engine</a></li>
+          <li><a href="#">Protocols</a></li>
+          <li><a href="#">Coach E</a></li>
+          <li><a href="#">Insights</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#">Help center</a></li>
+          <li><a href="#">Community</a></li>
+          <li><a href="#">Privacy</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Medical disclaimer</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Epti, Inc.</span>
+      <span>Not medical advice · For research and personal tracking</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ====================== TWEAKS PANEL ====================== -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<div id="tweaks-root"></div>
+<script type="text/babel" src="tweaks.jsx"></script>
+
+<script>
+  // ─────────────────────────────────────────────────────────────────────
+  // Waitlist backend wiring
+  // Set WAITLIST_ENDPOINT to a URL that accepts JSON POST {email, platform, source}.
+  // Works out of the box with Formspree, Getform, Web3Forms, Basin, or a
+  // serverless function you write yourself. Leave empty to stay in mock mode
+  // (localStorage only — no email is sent anywhere).
+  // ─────────────────────────────────────────────────────────────────────
+  const WAITLIST_ENDPOINT = "";   // e.g. "https://formspree.io/f/abcd1234"
+
+  const ICONS = {
+    ios: '<svg viewBox="0 0 24 28" fill="currentColor"><path d="M17.05 14.4c.04 3.7 3.24 4.93 3.28 4.95-.03.09-.51 1.76-1.69 3.48-1.03 1.49-2.1 2.97-3.78 3-1.66.03-2.19-.99-4.09-.99-1.9 0-2.49.96-4.05 1.02-1.62.06-2.86-1.62-3.9-3.1C.71 19.74-.91 14.16 1.27 10.4c1.08-1.86 3.02-3.04 5.12-3.07 1.59-.03 3.1 1.07 4.07 1.07.97 0 2.81-1.32 4.74-1.13.81.03 3.08.33 4.54 2.46-.12.07-2.71 1.59-2.69 4.66M14 5.6c.86-1.04 1.44-2.49 1.28-3.93-1.24.05-2.74.83-3.63 1.87-.8.93-1.5 2.4-1.31 3.83 1.38.1 2.79-.7 3.66-1.76"/></svg>',
+    android: '<svg viewBox="0 0 24 26" fill="currentColor"><path d="M.91 1.18C.34 1.78 0 2.71 0 3.92v18.16c0 1.21.34 2.14.92 2.72l.07.07L11.18 14.5v-.99L1 1.11l-.09.07Zm14.55 16.93-3.4-3.43v-.39l3.4-3.43.08.05 4.04 2.34c1.15.66 1.15 1.74 0 2.41l-4.04 2.36-.08.05Zm-.92.89L11.07 14.5.92 24.78c.38.41 1.02.46 1.74.06l11.88-6.84-.01-.01Zm0-9.21L2.66 2.95C1.94 2.55 1.3 2.6.92 3.01L11.07 13.5l3.47-3.71Z"/></svg>',
+  };
+
+  const PLATFORM_LABEL = { ios: "iOS", android: "Android", both: "" };
+
+  function renderSuccess(form, email, platform) {
+    form.classList.remove("picking");
+    form.classList.add("success");
+    const tag = platform && platform !== "both" ? PLATFORM_LABEL[platform] + " " : "";
+    form.innerHTML = `<span class="wl-state">You're on the ${tag}waitlist — we'll email <strong style="margin-left:4px;font-weight:500;">${email}</strong> when it's your turn.</span>`;
+  }
+
+  function renderPicker(form, email) {
+    form.classList.add("picking");
+    form.innerHTML = `
+      <span class="wl-state pick-label">Almost there — which phone?</span>
+      <span class="wl-state pick-options">
+        <button type="button" class="pick-btn" data-pick="ios">${ICONS.ios} iOS</button>
+        <button type="button" class="pick-btn" data-pick="android">${ICONS.android} Android</button>
+        <button type="button" class="pick-btn primary" data-pick="both">Both</button>
+      </span>
+    `;
+    form.querySelectorAll(".pick-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const platform = btn.dataset.pick;
+        // Disable all picker buttons while submitting
+        form.querySelectorAll(".pick-btn").forEach((b) => { b.disabled = true; b.style.opacity = "0.6"; });
+
+        const submitted = await submitToBackend({ email, platform });
+        if (!submitted.ok) {
+          // Re-enable, show inline error, keep picker state
+          form.querySelectorAll(".pick-btn").forEach((b) => { b.disabled = false; b.style.opacity = ""; });
+          const label = form.querySelector(".pick-label");
+          if (label) {
+            label.textContent = submitted.error || "Couldn't save — try again";
+            label.style.color = "var(--danger)";
+          }
+          return;
+        }
+
+        try {
+          localStorage.setItem("epti.waitlist.email", email);
+          localStorage.setItem("epti.waitlist.platform", platform);
+        } catch (_) {}
+        // Update every form in the page to the final success state in sync
+        document.querySelectorAll("form[data-waitlist]").forEach((f) => renderSuccess(f, email, platform));
+      });
+    });
+  }
+
+  async function submitToBackend({ email, platform }) {
+    // Mock mode — no endpoint configured. Pretend it worked.
+    if (!WAITLIST_ENDPOINT) return { ok: true, mock: true };
+    try {
+      const res = await fetch(WAITLIST_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          email,
+          platform,
+          source: "epti-landing",
+          referrer: document.referrer || null,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+      if (!res.ok) return { ok: false, error: `Submission failed (${res.status})` };
+      return { ok: true };
+    } catch (err) {
+      return { ok: false, error: "Network error — try again" };
+    }
+  }
+
+  function attach(form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const input = form.querySelector('input[name="email"]');
+      const email = (input || {}).value || "";
+      if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+        if (input) input.focus();
+        return;
+      }
+      // Step 1 → step 2: show picker on THIS form. Other forms stay neutral until pick.
+      try { localStorage.setItem("epti.waitlist.email.pending", email); } catch (_) {}
+      renderPicker(form, email);
+    });
+  }
+
+  document.querySelectorAll('form[data-waitlist]').forEach(attach);
+
+  // On load: restore joined state (post-pick) on every form.
+  try {
+    const savedEmail = localStorage.getItem("epti.waitlist.email");
+    const savedPlatform = localStorage.getItem("epti.waitlist.platform");
+    if (savedEmail && savedPlatform) {
+      document.querySelectorAll('form[data-waitlist]').forEach((f) => renderSuccess(f, savedEmail, savedPlatform));
+    }
+  } catch (_) {}
+</script>
+
+<!-- ====================== SCENARIOS CAROUSEL ====================== -->
+<script>
+(function() {
+  const track = document.querySelector('.scenarios');
+  if (!track) return;
+  const chips = Array.from(document.querySelectorAll('.scn-chip'));
+  const cards = Array.from(track.querySelectorAll('.scenario'));
+  const prevBtn = document.querySelector('.scn-arrow-btn.prev');
+  const nextBtn = document.querySelector('.scn-arrow-btn.next');
+  if (!cards.length) return;
+
+  let active = 0;
+  let isCarousel = track.classList.contains('is-carousel');
+
+  function scrollToCard(i) {
+    if (!isCarousel) return;
+    const card = cards[i];
+    if (!card) return;
+    const left = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
+    track.scrollTo({ left: Math.max(0, left), behavior: 'smooth' });
+  }
+
+  function setActive(i, opts) {
+    opts = opts || {};
+    active = Math.max(0, Math.min(cards.length - 1, i));
+    chips.forEach((c, idx) => c.classList.toggle('active', idx === active));
+    cards.forEach((c, idx) => c.classList.toggle('is-current', idx === active));
+    if (prevBtn) prevBtn.disabled = active === 0;
+    if (nextBtn) nextBtn.disabled = active === cards.length - 1;
+    if (opts.scroll !== false) scrollToCard(active);
+  }
+
+  chips.forEach((chip, i) => {
+    chip.addEventListener('click', () => setActive(i));
+  });
+  if (prevBtn) prevBtn.addEventListener('click', () => setActive(active - 1));
+  if (nextBtn) nextBtn.addEventListener('click', () => setActive(active + 1));
+
+  // Sync active chip with scroll position
+  let observer = null;
+  function attachObserver() {
+    if (observer) observer.disconnect();
+    if (!isCarousel) return;
+    observer = new IntersectionObserver((entries) => {
+      // Pick the most-intersecting card
+      let best = null;
+      entries.forEach(e => {
+        if (e.isIntersecting && (!best || e.intersectionRatio > best.intersectionRatio)) best = e;
+      });
+      if (best) {
+        const i = cards.indexOf(best.target);
+        if (i >= 0 && i !== active) setActive(i, { scroll: false });
+      }
+    }, { root: track, threshold: [0.55, 0.7, 0.9] });
+    cards.forEach(c => observer.observe(c));
+  }
+  attachObserver();
+
+  // Keyboard support when section is in view
+  window.addEventListener('keydown', (e) => {
+    const rect = track.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight * 0.6 && rect.bottom > window.innerHeight * 0.4;
+    if (!inView) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); setActive(active + 1); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); setActive(active - 1); }
+  });
+
+  // Re-check layout when classes change (Tweaks panel toggles is-carousel/is-grid)
+  const mo = new MutationObserver(() => {
+    const nowCarousel = track.classList.contains('is-carousel');
+    if (nowCarousel !== isCarousel) {
+      isCarousel = nowCarousel;
+      attachObserver();
+      if (isCarousel) scrollToCard(active);
+    }
+  });
+  mo.observe(track, { attributes: true, attributeFilter: ['class'] });
+
+  setActive(0, { scroll: false });
+})();
+</script>
+
+</body>
+</html>
