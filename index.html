@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="styles.css" /><style id="mobile-overrides">/* === MOBILE OVERRIDES === */ html,body{overflow-x:hidden;max-width:100%;} *{-webkit-tap-highlight-color:transparent;} img,svg,video,canvas{max-width:100%;height:auto;} @media (max-width:720px){ .wrap{padding-left:20px;padding-right:20px;} .nav{padding:14px 0;} .nav-inner{gap:12px;flex-wrap:wrap;} .nav-right{margin-left:auto;} .nav-right .btn{padding:10px 14px;font-size:13px;} .hero-grid{grid-template-columns:1fr!important;gap:36px!important;} .hero-copy{text-align:left;} .hero-copy h1,.h-hero{font-size:clamp(40px,11vw,64px)!important;line-height:1.04!important;letter-spacing:-0.02em;} .kicker{font-size:12px;} .sub,.hero-sub{font-size:16px;line-height:1.5;} .pill,.social-pill{flex-wrap:wrap;font-size:13px;padding:10px 14px;gap:8px;} .pill-avatars span{width:22px;height:22px;} .waitlist-form,form[data-waitlist]{display:flex!important;flex-direction:column!important;gap:10px!important;width:100%;} .waitlist-form input,.waitlist-form select,.waitlist-form button,form[data-waitlist] input,form[data-waitlist] select,form[data-waitlist] button{width:100%!important;min-height:48px!important;font-size:16px!important;box-sizing:border-box!important;} .wl-state,.thanked{overflow-wrap:anywhere;word-break:break-word;} section{padding-top:64px!important;padding-bottom:64px!important;} .btn{min-height:44px;display:inline-flex;align-items:center;justify-content:center;} .epti-app-phone,.phone-mockup,.hero-visual{max-width:100%;margin-left:auto;margin-right:auto;} .hero-visual img{max-width:280px;} body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right);} html{scroll-padding-top:80px;} h2,.h-section{font-size:clamp(28px,7vw,42px)!important;line-height:1.1;} .grid,.cards{grid-template-columns:1fr!important;} } @media (max-width:520px){ .wrap{padding-left:16px;padding-right:16px;} .hero-copy h1,.h-hero{font-size:clamp(36px,12vw,52px)!important;} .pill,.social-pill{font-size:12.5px;} .epti-app-phone,.hero-visual img{transform:scale(.88);transform-origin:top center;} } @media (hover:none) and (pointer:coarse){ .btn:hover,.card:hover,a:hover{transform:none!important;} }</style>
 </head>
 <body>
 
@@ -4605,7 +4605,7 @@
 
   // On load: restore joined state (post-pick) on every form.
   try {
-    const savedEmail = localStorage.getItem("epti.waitlist.email");
+    const __eptiIsTestEmail = (e) => !e || /(^ticker_test_|^test_|^test\+|\+test@|@example\.com$|@test\.com$|@mailinator\.|@throwaway\.|@yopmail\.)/i.test(e); try { const __e = localStorage.getItem("epti.waitlist.email"); const __p = localStorage.getItem("epti.waitlist.email.pending"); if (__eptiIsTestEmail(__e) || __eptiIsTestEmail(__p)) { localStorage.removeItem("epti.waitlist.email"); localStorage.removeItem("epti.waitlist.platform"); localStorage.removeItem("epti.waitlist.email.pending"); } } catch (_) {} const savedEmail = localStorage.getItem("epti.waitlist.email");
     const savedPlatform = localStorage.getItem("epti.waitlist.platform");
     if (savedEmail && savedPlatform) {
       document.querySelectorAll('form[data-waitlist]').forEach((f) => renderState(f, savedEmail, savedPlatform));
