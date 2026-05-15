@@ -12,7 +12,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 
 const HERO_VARIANTS = {
   original: {
-    kicker: 'The only fitness app for the <span class="italic">peptide community.</span>',
+    kicker: 'The only fitness app <span class="italic">built</span> for the <span class="italic">peptide community.</span>',
     lines: [
       'Train smarter.',
       'Cycle <span class="italic">cleaner.</span>',

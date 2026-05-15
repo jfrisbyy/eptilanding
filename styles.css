@@ -125,7 +125,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   width: fit-content;
   max-width: 100%;
 }
-.hero-kicker .italic {
+.hero-kicker .italic,
+.hero-kicker em {
   font-family: var(--serif);
   font-style: italic;
   font-weight: 400;
@@ -300,6 +301,125 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
   font-weight: 700;
   margin-right: 10px;
 }
+
+/* Final state after feedback — same pill shape as .success */
+.waitlist-form.thanked {
+  background: var(--accent-dim);
+  border-color: var(--accent-line);
+  justify-content: center;
+  padding: 14px 22px;
+  color: var(--text);
+  font-size: 15px;
+  letter-spacing: -0.01em;
+}
+.waitlist-form.thanked::before {
+  content: "✓";
+  display: inline-grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 13px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+/* Joined state — confirmed waitlist + feedback box */
+.waitlist-form.joined {
+  flex-direction: column;
+  align-items: stretch;
+  border-radius: 18px;
+  padding: 18px 18px 14px;
+  background: var(--accent-dim);
+  border-color: var(--accent-line);
+  gap: 12px;
+}
+.waitlist-form.joined .wl-joined-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.waitlist-form.joined .wl-check {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--accent-ink);
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.waitlist-form.joined .wl-joined-title {
+  font-size: 15.5px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  line-height: 1.3;
+}
+.waitlist-form.joined .wl-joined-sub {
+  font-size: 13px;
+  color: var(--text-2);
+  margin-top: 4px;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+}
+.waitlist-form.joined .wl-feedback {
+  width: 100%;
+  resize: vertical;
+  min-height: 80px;
+  max-height: 220px;
+  border: 1px solid var(--accent-line);
+  background: var(--surface);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--text);
+  letter-spacing: -0.005em;
+  line-height: 1.45;
+  box-sizing: border-box;
+}
+.waitlist-form.joined .wl-feedback::placeholder { color: var(--text-3); }
+.waitlist-form.joined .wl-feedback:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.waitlist-form.joined .wl-joined-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.waitlist-form.joined .wl-send {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--text); color: var(--bg);
+  border: 0;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background 160ms ease;
+}
+.waitlist-form.joined .wl-send:hover { background: #2a2d35; }
+.waitlist-form.joined .wl-send:disabled { opacity: 0.6; cursor: default; }
+.waitlist-form.joined .wl-skip {
+  background: transparent;
+  border: 0;
+  color: var(--text-3);
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  padding: 6px 10px;
+}
+.waitlist-form.joined .wl-skip:hover { color: var(--text); }
 
 /* Platform-pick state — between email submit and final success */
 .waitlist-form.picking {
@@ -1035,7 +1155,7 @@ ul.subcaps .num {
 }
 .footer-top {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 48px;
   margin-bottom: 56px;
 }
@@ -1532,7 +1652,7 @@ ul.subcaps .num {
   .social-grid { grid-template-columns: 1fr; }
   .tstrip-grid { grid-template-columns: 1fr; gap: 28px; }
   .nav-links { display: none; }
-  .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .footer-top { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; gap: 14px; align-items: flex-start; }
 }
 
