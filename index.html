@@ -36,7 +36,7 @@
         <div class="pill-avatars">
           <span><img src="https://i.pravatar.cc/120?img=12" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=47" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=33" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=60" alt="" loading="lazy" /></span>
         </div>
-        <span>Join the <strong>4,124</strong> on the waitlist</span>
+        <span>Join the <strong id="waitlist-count">4,124</strong> on the waitlist</span>
         <span class="star">●</span>
         <strong>Coming soon</strong>
       </div>
@@ -4421,7 +4421,10 @@
   // serverless function you write yourself. Leave empty to stay in mock mode
   // (localStorage only — no email is sent anywhere).
   // ─────────────────────────────────────────────────────────────────────
-  const WAITLIST_ENDPOINT = "";   // e.g. "https://formspree.io/f/abcd1234"
+  const WAITLIST_ENDPOINT = "https://fyvhtfbyothjozfwjcod.supabase.co/functions/v1/epti-waitlist-signup";
+  const FEEDBACK_ENDPOINT = "https://fyvhtfbyothjozfwjcod.supabase.co/functions/v1/epti-waitlist-feedback";
+  const COUNT_ENDPOINT = "https://fyvhtfbyothjozfwjcod.supabase.co/functions/v1/epti-waitlist-count";
+  const WAITLIST_BASELINE = 4124;   // e.g. "https://formspree.io/f/abcd1234"
 
   const ICONS = {
     ios: '<svg viewBox="0 0 24 28" fill="currentColor"><path d="M17.05 14.4c.04 3.7 3.24 4.93 3.28 4.95-.03.09-.51 1.76-1.69 3.48-1.03 1.49-2.1 2.97-3.78 3-1.66.03-2.19-.99-4.09-.99-1.9 0-2.49.96-4.05 1.02-1.62.06-2.86-1.62-3.9-3.1C.71 19.74-.91 14.16 1.27 10.4c1.08-1.86 3.02-3.04 5.12-3.07 1.59-.03 3.1 1.07 4.07 1.07.97 0 2.81-1.32 4.74-1.13.81.03 3.08.33 4.54 2.46-.12.07-2.71 1.59-2.69 4.66M14 5.6c.86-1.04 1.44-2.49 1.28-3.93-1.24.05-2.74.83-3.63 1.87-.8.93-1.5 2.4-1.31 3.83 1.38.1 2.79-.7 3.66-1.76"/></svg>',
@@ -4461,14 +4464,14 @@
 
     const finish = (feedback) => {
       try { localStorage.setItem("epti.waitlist.feedback", feedback || "skipped"); } catch (_) {}
-      if (feedback && WAITLIST_ENDPOINT) {
-        fetch(WAITLIST_ENDPOINT, {
+      if (feedback && FEEDBACK_ENDPOINT) {
+        fetch(FEEDBACK_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email, platform, feedback,
-            source: "epti-landing-feedback",
-            timestamp: new Date().toISOString(),
+            email,
+            freeform: feedback,
+            source: "post-signup",
           }),
         }).catch(() => {});
       }
@@ -4525,6 +4528,7 @@
           return;
         }
 
+        try { window.__bumpWaitlistTicker && window.__bumpWaitlistTicker(submitted.position); } catch (_) {}
         try {
           localStorage.setItem("epti.waitlist.email", email);
           localStorage.setItem("epti.waitlist.platform", platform);
@@ -4550,8 +4554,9 @@
           timestamp: new Date().toISOString(),
         }),
       });
-      if (!res.ok) return { ok: false, error: `Submission failed (${res.status})` };
-      return { ok: true };
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) return { ok: false, error: (json && json.error) || `Submission failed (${res.status})` };
+      return { ok: true, position: json.position, referralCode: json.referralCode };
     } catch (err) {
       return { ok: false, error: "Network error — try again" };
     }
@@ -4573,6 +4578,30 @@
   }
 
   document.querySelectorAll('form[data-waitlist]').forEach(attach);
+
+  // ─── Waitlist ticker ──────────────────────────────────────────────────
+  // display = WAITLIST_BASELINE + real signups (refreshed every 30s)
+  const tickerEl = document.getElementById("waitlist-count");
+  let lastRealCount = 0;
+  function setTicker(real) {
+    lastRealCount = Math.max(lastRealCount, real | 0);
+    if (tickerEl) tickerEl.textContent = (WAITLIST_BASELINE + lastRealCount).toLocaleString();
+  }
+  async function refreshTicker() {
+    if (!COUNT_ENDPOINT) return;
+    try {
+      const r = await fetch(COUNT_ENDPOINT, { cache: "no-store" });
+      if (!r.ok) return;
+      const j = await r.json();
+      if (typeof j.count === "number") setTicker(j.count);
+    } catch (_) {}
+  }
+  window.__bumpWaitlistTicker = function (position) {
+    if (typeof position === "number" && position > 0) setTicker(position);
+    else setTicker(lastRealCount + 1);
+  };
+  refreshTicker();
+  setInterval(refreshTicker, 30000);
 
   // On load: restore joined state (post-pick) on every form.
   try {
