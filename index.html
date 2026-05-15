@@ -17,14 +17,9 @@
     <a class="brand" href="#" aria-label="epti">
       <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
     </a>
-    <div class="nav-links">
-      <a href="#features">Features</a>
-      <a href="#how">How it works</a>
-      <a href="#coach">Coach E</a>
-      <a href="#community">Community</a>
-    </div>
+    <div class="nav-links"></div>
     <div class="nav-right">
-      <a class="btn primary" href="#download">Join waitlist</a>
+      <a class="btn primary" href="#join">Join waitlist</a>
     </div>
   </div>
 </nav>
@@ -35,13 +30,13 @@
     <div class="hero-copy">
       <div class="hero-kicker">
         <span class="kicker-dot" aria-hidden="true"></span>
-        <span>The only fitness app for the <span class="italic">peptide community.</span></span>
+        <span>The only fitness app <em>built</em> for the <em>peptide community</em>.</span>
       </div>
       <div class="pill">
         <div class="pill-avatars">
           <span><img src="https://i.pravatar.cc/120?img=12" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=47" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=33" alt="" loading="lazy" /></span><span><img src="https://i.pravatar.cc/120?img=60" alt="" loading="lazy" /></span>
         </div>
-        <span>Join <strong>4,000+</strong> on the waitlist</span>
+        <span>Join the <strong>4,124</strong> on the waitlist</span>
         <span class="star">●</span>
         <strong>Coming soon</strong>
       </div>
@@ -52,10 +47,7 @@
         <span class="line">Progress faster.</span>
       </h1>
 
-      <p class="lede">
-        Adaptive workouts, peptide protocol tracking, dose calculations,
-        bloodwork insights, and a private community — all in one app.
-      </p>
+      <p class="lede">The first training app built around your peptide protocol — workouts, dosing, and bloodwork that actually talk to each other.</p>
 
       <form class="waitlist-form" id="waitlist-hero" data-waitlist novalidate>
         <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
@@ -76,7 +68,7 @@
           <svg viewBox="0 0 24 26" fill="currentColor"><path d="M.91 1.18C.34 1.78 0 2.71 0 3.92v18.16c0 1.21.34 2.14.92 2.72l.07.07L11.18 14.5v-.99L1 1.11l-.09.07Zm14.55 16.93-3.4-3.43v-.39l3.4-3.43.08.05 4.04 2.34c1.15.66 1.15 1.74 0 2.41l-4.04 2.36-.08.05Zm-.92.89L11.07 14.5.92 24.78c.38.41 1.02.46 1.74.06l11.88-6.84-.01-.01Zm0-9.21L2.66 2.95C1.94 2.55 1.3 2.6.92 3.01L11.07 13.5l3.47-3.71Z"/></svg>
           Android
         </span>
-        <span>Coming soon to iOS &amp; Android</span>
+        <span>COMING THIS SUMMER TO IOS &amp; ANDROID</span>
       </div>
     </div>
 
@@ -342,6 +334,111 @@
   </div>
 </header>
 
+<!-- ====================== JUMP NAV (table of contents) ====================== -->
+<style>
+.jumpnav {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
+  position: relative;
+  z-index: 5;
+}
+.jumpnav-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+.jumpnav-inner::-webkit-scrollbar { display: none; }
+.jumpnav-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.jumpnav-label::after {
+  content: "";
+  width: 22px;
+  height: 1px;
+  background: var(--text-3);
+  opacity: 0.5;
+}
+.jumpnav-list {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: nowrap;
+}
+.jumpnav-list a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: var(--text-2);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  scroll-snap-align: start;
+  transition: color 160ms ease, background 160ms ease;
+}
+.jumpnav-list a .num {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  color: var(--text-3);
+  font-weight: 600;
+}
+.jumpnav-list a:hover {
+  color: var(--text);
+  background: var(--surface-2);
+}
+.jumpnav-list a:hover .num { color: var(--accent-strong); }
+.jumpnav-list a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Make in-page anchors land below sticky-feeling nav */
+.jumpnav { scroll-margin-top: 0; }
+[id]:target { scroll-margin-top: 24px; }
+
+@media (max-width: 720px) {
+  .jumpnav-inner { padding: 12px 0; gap: 10px; }
+  .jumpnav-label { display: none; }
+  .jumpnav-list a { padding: 6px 10px; font-size: 12.5px; }
+}
+</style>
+<nav class="jumpnav" aria-label="Section navigation" data-screen-label="01a Jump nav">
+  <div class="wrap jumpnav-inner">
+    <span class="jumpnav-label">Jump to</span>
+    <ul class="jumpnav-list">
+      <li><a href="#how"><span class="num">01</span>How it works</a></li>
+      <li><a href="#modes"><span class="num">02</span>Sport modes</a></li>
+      <li><a href="#lift"><span class="num">03</span>Lift</a></li>
+      <li><a href="#stack"><span class="num">04</span>Your stack</a></li>
+      <li><a href="#engine"><span class="num">05</span>The engine</a></li>
+      <li><a href="#community"><span class="num">06</span>Community</a></li>
+      <li><a href="#join"><span class="num">07</span>Join waitlist</a></li>
+    </ul>
+  </div>
+</nav>
+
 <!-- ====================== THESIS BANNER — OTHER APPS LOG. EPTI CONNECTS. ====================== -->
 <style>
 /* ---- Thesis banner (scoped) ---- */
@@ -579,7 +676,7 @@
 }
 </style>
 
-<section class="thesis-banner" data-screen-label="Thesis — other apps log, Epti connects">
+<section class="thesis-banner" data-screen-label="02 Thesis">
   <div class="wrap">
     <div class="thesis-eyebrow">
       <span class="d"></span>
@@ -623,6 +720,88 @@
     </div>
   </div>
 </section>
+
+<!-- ====================== HOW IT WORKS ====================== -->
+<section class="section" id="how" data-screen-label="03 How it works">
+  <div class="wrap">
+    <div style="display:flex;flex-direction:column;gap:18px;max-width:780px;">
+      <span class="eyebrow accent">How it works</span>
+      <h2 class="h-section">From your first vial to your <span class="italic">best lift</span> in minutes.</h2>
+    </div>
+
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="num">01 / ONBOARD</div>
+        <h3>Onboard your stack.</h3>
+        <p>Tell Epti your goals, current protocols, and training history. Add vials with our guided flow — concentration, units, reconstitution math handled for you.</p>
+        <div class="step-visual">
+          <div class="dose-stats">
+            <div class="dose-stat"><div class="l">Vial</div><div class="v">5mg</div></div>
+            <div class="dose-stat"><div class="l">BAC</div><div class="v">2mL</div></div>
+            <div class="dose-stat"><div class="l">Per unit</div><div class="v">50mcg</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step">
+        <div class="num">02 / TRAIN</div>
+        <h3>Train with an engine that learns you.</h3>
+        <p>Log workouts, doses, sleep, and bloodwork. Our adaptive engine adjusts volume, intensity, and nutrition targets based on how you actually respond.</p>
+        <div class="step-visual">
+          <div class="ring-wrap">
+            <div class="ring" style="--p:72"><div class="val">72%</div></div>
+            <div>
+              <div class="label-mono" style="color:var(--text-3)">RECOVERY</div>
+              <div style="font-size:14px;color:var(--text);font-weight:500;margin-top:4px;">Adjust top set −5%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="how-step">
+        <div class="num">03 / SHARE</div>
+        <h3>Share, compare, compete.</h3>
+        <p>Follow friends, borrow their protocols, join private circles, and watch your biomarkers and PRs trend in real time.</p>
+        <div class="step-visual">
+          <div style="display:flex;align-items:center;gap:14px;">
+            <div class="pill-avatars" style="display:flex;">
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:0;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=68" alt="" loading="lazy" /></span>
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=49" alt="" loading="lazy" /></span>
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=33" alt="" loading="lazy" /></span>
+              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=12" alt="" loading="lazy" /></span>
+            </div>
+            <div>
+              <div style="font-size:14px;color:var(--text);font-weight:500;">Inner circle · 8 athletes</div>
+              <div class="label-mono" style="color:var(--text-3);margin-top:4px;">3 SHARED PROTOCOLS</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== MARQUEE ====================== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Adaptive engine</span>
+    <span>Vial math</span>
+    <span>Dose timing</span>
+    <span>Bloodwork overlays</span>
+    <span>Cycle compare</span>
+    <span>Coach E</span>
+    <span>Private circles</span>
+    <span>HRV-aware programming</span>
+    <span>Adaptive engine</span>
+    <span>Vial math</span>
+    <span>Dose timing</span>
+    <span>Bloodwork overlays</span>
+    <span>Cycle compare</span>
+    <span>Coach E</span>
+    <span>Private circles</span>
+    <span>HRV-aware programming</span>
+  </div>
+</div>
 
 <!-- ====================== SPORT MODES — ROTATING HEADLINE ====================== -->
 <style>
@@ -909,6 +1088,243 @@
   letter-spacing: -0.02em;
 }
 
+/* Real-tracker breakdown — each mode is a full app */
+.modes-vs {
+  margin-top: 56px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.modes-vs-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+  line-height: 1.5;
+  display: inline-flex; align-items: center; gap: 12px;
+}
+.modes-vs-label::after {
+  content: ""; flex: 1; height: 1px; background: var(--line);
+  min-width: 80px;
+}
+
+/* ===== Lift mode — mirrors #ask-pep layout (phone LEFT, content RIGHT) ===== */
+.lift-flagship {
+  margin-top: 56px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.lift-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 80px;
+  align-items: center;
+}
+
+/* Phone — bare, no card chrome, no glow, no rotation. Matches .pep-phone. */
+.lift-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.lift-phone .phone-real { width: 440px; }
+.lift-phone .phone-real-screen { background: var(--bg); }
+.lift-phone .phone-real iframe {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  display: block;
+}
+
+/* Module grid — uses the same card chrome as #ask-pep's .pep-example. */
+.lift-modules {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 36px;
+}
+.lift-module {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+.lift-module .q {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--sans);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--text);
+  line-height: 1.35;
+}
+.lift-module .q .qicon {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent-strong);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.lift-module .a {
+  margin-top: 10px;
+  margin-left: 34px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+}
+
+@media (max-width: 960px) {
+  .lift-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+@media (max-width: 640px) {
+  .lift-modules { grid-template-columns: 1fr; }
+}
+
+/* Sport module carousel */
+.modes-modules {
+  margin-top: 28px;
+  position: relative;
+}
+.modes-modules-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 28px) / 3);
+  gap: 14px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  scroll-padding-inline: 0;
+}
+.modes-modules-rail::-webkit-scrollbar { display: none; }
+.modes-modules-rail > .mod-card { scroll-snap-align: start; min-width: 0; }
+
+.modes-modules-foot {
+  margin-top: 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.modes-modules-dots {
+  display: flex; gap: 8px;
+}
+.modes-modules-dots button {
+  appearance: none; border: 0; padding: 0;
+  width: 22px; height: 5px; border-radius: 3px;
+  background: var(--line-strong);
+  opacity: 0.4;
+  cursor: pointer;
+  transition: opacity 200ms ease, background 200ms ease, width 280ms ease;
+}
+.modes-modules-dots button[data-active="true"] {
+  opacity: 1;
+  background: var(--accent);
+  width: 44px;
+}
+.modes-modules-arrows { display: flex; gap: 8px; }
+.modes-modules-arrows button {
+  appearance: none;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  display: grid; place-items: center;
+  transition: background 200ms ease, border-color 200ms ease, transform 120ms ease;
+}
+.modes-modules-arrows button:hover {
+  background: var(--surface-2);
+  border-color: var(--text-3);
+}
+.modes-modules-arrows button:active { transform: scale(0.94); }
+.modes-modules-arrows button:disabled { opacity: 0.35; cursor: not-allowed; }
+.modes-modules-arrows button svg { width: 16px; height: 16px; }
+
+.mod-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+  padding: 22px 22px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  transition: border-color 200ms ease, transform 200ms ease;
+}
+.mod-card:hover {
+  border-color: color-mix(in oklch, var(--c, var(--accent)) 50%, var(--line));
+  transform: translateY(-1px);
+}
+.mod-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+}
+.mod-card-name {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: var(--sans);
+  font-size: 17px; font-weight: 500; letter-spacing: -0.015em;
+  color: var(--text);
+}
+.mod-card-name .d {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--c, var(--accent));
+  box-shadow: 0 0 0 4px color-mix(in oklch, var(--c, var(--accent)) 18%, transparent);
+}
+.mod-card-tag {
+  font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--c, var(--accent-strong)); font-weight: 600;
+}
+.mod-card-lede {
+  font-size: 13.5px; line-height: 1.5; color: var(--text-2);
+  letter-spacing: -0.005em;
+}
+.mod-card-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 6px;
+  padding-top: 4px;
+  border-top: 1px dashed var(--line);
+}
+.mod-card-list li {
+  display: flex; gap: 10px; align-items: baseline;
+  font-size: 12.5px; color: var(--text-2);
+  letter-spacing: -0.003em;
+  line-height: 1.45;
+}
+.mod-card-list li::before {
+  content: ""; flex-shrink: 0;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--c, var(--accent));
+  opacity: 0.6;
+  transform: translateY(6px);
+}
+.mod-card-rival {
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 10.5px; letter-spacing: 0.06em;
+  color: var(--text-3);
+}
+.mod-card-rival b { color: var(--text-2); font-weight: 600; }
+
+@media (max-width: 980px) {
+  .modes-modules-rail { grid-auto-columns: calc((100% - 14px) / 2); }
+}
+@media (max-width: 620px) {
+  .modes-modules-rail { grid-auto-columns: 86%; }
+}
+
 /* Why-Epti claim block — the killer value prop */
 .modes-claim {
   margin-top: 64px;
@@ -1014,6 +1430,341 @@
   color: var(--text-3);
   margin-bottom: 0;
 }
+/* ===== Endurance section — toggleable Run/Cycle panel ===== */
+.endurance {
+  margin-top: 72px;
+  padding: 0;
+}
+.endurance-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+.endurance-head-text { display: flex; flex-direction: column; gap: 10px; max-width: 28ch; }
+.endurance-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(28px, 3.4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  color: var(--text);
+  margin: 0;
+}
+.endurance-title .italic {
+  font-style: italic;
+  color: var(--accent-strong);
+}
+
+/* Sport toggle */
+.endurance-toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  align-self: flex-end;
+}
+.endurance-toggle button {
+  appearance: none; border: 0; background: transparent;
+  padding: 9px 16px 9px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--text-3);
+  transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease;
+}
+.endurance-toggle button svg { width: 15px; height: 15px; }
+.endurance-toggle button:hover { color: var(--text); }
+.endurance-toggle button[data-active="true"] {
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 0 0 1px var(--line);
+}
+.endurance-toggle button[data-sport="run"][data-active="true"] { color: oklch(0.50 0.14 200); }
+.endurance-toggle button[data-sport="cycle"][data-active="true"] { color: oklch(0.55 0.18 45); }
+
+/* Stage holds both panels, only the active one is visible */
+.endurance-stage { position: relative; }
+.endurance-panel {
+  display: none;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+.endurance-panel.is-active {
+  display: grid;
+  animation: endIn 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.endurance-panel[data-sport="cycle"] {
+  grid-template-columns: minmax(0, 1fr) 300px;
+}
+.endurance-panel[data-sport="cycle"] .esport-phone { order: 2; }
+.endurance-panel[data-sport="cycle"] .esport-copy { order: 1; }
+@keyframes endIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.esport-phone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.esport-phone::before {
+  content: "";
+  position: absolute;
+  inset: -8% -10%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--c, var(--accent)) 16%, transparent), transparent 70%);
+  filter: blur(32px);
+  z-index: 0;
+  pointer-events: none;
+}
+.endurance-panel[data-sport="run"] { --c: oklch(0.62 0.18 200); }
+.endurance-panel[data-sport="cycle"] { --c: oklch(0.62 0.18 45); }
+.esport-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 280px;
+  background: #efeee8;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 20px 40px -16px rgba(20, 22, 28, 0.20),
+    0 6px 16px -8px rgba(20, 22, 28, 0.10);
+}
+.esport-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.esport-copy { display: flex; flex-direction: column; gap: 12px; max-width: 56ch; }
+.esport-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  align-self: flex-start;
+  padding: 5px 12px 5px 10px;
+  border: 1px solid color-mix(in oklch, var(--c) 35%, var(--line));
+  background: color-mix(in oklch, var(--c) 9%, transparent);
+  color: var(--c, var(--accent-strong));
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.esport-tag svg { width: 13px; height: 13px; }
+.esport-h {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(22px, 2.1vw, 30px);
+  line-height: 1.15;
+  letter-spacing: -0.018em;
+  color: var(--text);
+  margin: 2px 0 0;
+}
+.esport-h .italic {
+  font-style: italic;
+  color: var(--c, var(--accent-strong));
+}
+.esport-lede {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+  margin: 0;
+  max-width: 52ch;
+}
+.esport-list { margin-top: 4px; }
+.esport-list li {
+  padding: 10px 0;
+}
+.esport-list li span:last-child strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+  .endurance-panel,
+  .endurance-panel[data-sport="cycle"] {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .endurance-panel[data-sport="cycle"] .esport-phone { order: 0; }
+  .endurance-panel[data-sport="cycle"] .esport-copy { order: 0; }
+  .esport-frame { max-width: 260px; }
+  .endurance-head { flex-direction: column; align-items: flex-start; }
+  .endurance-toggle { align-self: flex-start; }
+}
+
+/* ===== Sport expandable section — flush with page ===== */
+.sport-expand {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  background: transparent;
+}
+.sport-expand[open] { background: transparent; }
+.sport-expand-summary {
+  list-style: none;
+  cursor: pointer;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 18px 24px;
+  padding: 28px 0 26px;
+  user-select: none;
+}
+.sport-expand-summary::-webkit-details-marker { display: none; }
+.sport-expand-summary::marker { display: none; }
+.sport-expand-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.sport-expand-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(22px, 2.4vw, 32px);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 0;
+}
+.sport-expand-title .italic {
+  font-style: italic;
+  color: var(--accent-strong);
+}
+.sport-expand-meta {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.sport-expand-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-2);
+  transition: color 200ms ease;
+}
+.sport-expand-summary:hover .sport-expand-cta { color: var(--accent-strong); }
+.sport-expand-cta .chev {
+  width: 14px; height: 14px;
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sport-expand[open] .sport-expand-cta .chev { transform: rotate(180deg); }
+.sport-expand-cta .close-label { display: none; }
+.sport-expand[open] .sport-expand-cta .open-label { display: none; }
+.sport-expand[open] .sport-expand-cta .close-label { display: inline; }
+.sport-expand-body {
+  padding: 8px 0 16px;
+  animation: sportExpandIn 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes sportExpandIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: none; }
+}
+.sport-expand .endurance { margin-top: 0; }
+
+/* ===== Also built for — folded into endurance body ===== */
+.also-fold {
+  margin-top: 56px;
+  padding-top: 30px;
+  border-top: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.also-fold-eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 600;
+}
+.also-chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.also-chips li {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 16px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  transition: border-color 200ms ease;
+}
+.also-chips li::before {
+  content: "";
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 10px;
+}
+.also-chips li:hover { border-color: var(--text-3); }
+.also-fold-note {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-3);
+  letter-spacing: -0.005em;
+  max-width: 64ch;
+  margin: 0;
+}
+
+@media (max-width: 720px) {
+  .sport-expand-summary {
+    grid-template-columns: 1fr auto;
+    gap: 8px 16px;
+    padding: 22px 0;
+  }
+  .sport-expand-eyebrow { grid-column: 1 / -1; }
+  .sport-expand-title { grid-column: 1; grid-row: 2; }
+  .sport-expand-cta { grid-column: 2; grid-row: 2; align-self: end; }
+  .sport-expand-meta { grid-column: 1 / -1; grid-row: 3; }
+}
+
+/* Numbered list bold lead phrase — applies to subcaps used in protocol, run, cycle */
+.subcaps li span:last-child strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
 .modes-foot .serif-italic {
   font-family: var(--serif);
   font-style: italic;
@@ -1031,6 +1782,15 @@
   .modes-meta-label::after { display: none; }
   .modes-chips { margin-top: 44px; }
   .modes-intro { margin: 20px 0 6px; }
+  .modes-vs {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    margin-top: 40px;
+    padding-top: 24px;
+  }
+  .modes-vs-list { grid-template-columns: 1fr; }
+  .modes-vs-list li:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); padding-bottom: 18px; }
+  .modes-vs-list li:last-child { border-bottom: 0; padding-bottom: 0; }
   .modes-claim {
     grid-template-columns: 1fr;
     padding: 26px 24px 28px;
@@ -1049,7 +1809,7 @@
 }
 </style>
 
-<section class="modes" data-screen-label="Sport modes">
+<section class="modes" id="modes" data-screen-label="10 Sport modes">
   <div class="wrap">
     <div class="modes-head">
       <span class="eyebrow accent">Dedicated sport modes</span>
@@ -1076,96 +1836,207 @@
           <span class="rotator-word"            style="--c: oklch(0.55 0.16 35)"  data-meta="7">gridironers.</span>
           <span class="rotator-word"            style="--c: oklch(0.65 0.16 100)" data-meta="8">tennis players.</span>
           <span class="rotator-word"            style="--c: oklch(0.55 0.15 270)" data-meta="9">spikers.</span>
+          <span class="rotator-word"            style="--c: oklch(0.58 0.13 25)"  data-meta="10">gym rats.</span>
+          <span class="rotator-word"            style="--c: oklch(0.55 0.17 5)"   data-meta="11">bodybuilders.</span>
+          <span class="rotator-word"            style="--c: oklch(0.62 0.14 200)" data-meta="12">athletes.</span>
         </span>
       </span>
     </h2>
 
-    <div class="modes-meta">
-      <span class="modes-meta-label">Auto-tunes for</span>
-      <div class="modes-meta-track">
-        <div class="modes-meta-set is-active" style="--c: oklch(0.60 0.16 165)">
-          <span class="modes-meta-chip"><span class="d"></span>Vertical jump</span>
-          <span class="modes-meta-chip"><span class="d"></span>Court-time recovery</span>
-          <span class="modes-meta-chip"><span class="d"></span>In-season cut</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.55 0.16 295)">
-          <span class="modes-meta-chip"><span class="d"></span>VO₂ trend</span>
-          <span class="modes-meta-chip"><span class="d"></span>Weekly mileage</span>
-          <span class="modes-meta-chip"><span class="d"></span>Cadence drift</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.62 0.15 70)">
-          <span class="modes-meta-chip"><span class="d"></span>FTP curve</span>
-          <span class="modes-meta-chip"><span class="d"></span>TSS load</span>
-          <span class="modes-meta-chip"><span class="d"></span>Ride fuelling</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.55 0.18 15)">
-          <span class="modes-meta-chip"><span class="d"></span>Weight-cut window</span>
-          <span class="modes-meta-chip"><span class="d"></span>Sparring volume</span>
-          <span class="modes-meta-chip"><span class="d"></span>Discipline-aware</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.58 0.14 230)">
-          <span class="modes-meta-chip"><span class="d"></span>Stroke economy</span>
-          <span class="modes-meta-chip"><span class="d"></span>Yards / week</span>
-          <span class="modes-meta-chip"><span class="d"></span>Shoulder load</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.58 0.15 145)">
-          <span class="modes-meta-chip"><span class="d"></span>Sprint load</span>
-          <span class="modes-meta-chip"><span class="d"></span>Match-day taper</span>
-          <span class="modes-meta-chip"><span class="d"></span>Turf recovery</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.62 0.16 130)">
-          <span class="modes-meta-chip"><span class="d"></span>Court mileage</span>
-          <span class="modes-meta-chip"><span class="d"></span>Quick-turn recovery</span>
-          <span class="modes-meta-chip"><span class="d"></span>Joint mobility</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.55 0.16 35)">
-          <span class="modes-meta-chip"><span class="d"></span>Snap-count load</span>
-          <span class="modes-meta-chip"><span class="d"></span>Hit recovery</span>
-          <span class="modes-meta-chip"><span class="d"></span>Off-season size</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.65 0.16 100)">
-          <span class="modes-meta-chip"><span class="d"></span>Footwork load</span>
-          <span class="modes-meta-chip"><span class="d"></span>Serving volume</span>
-          <span class="modes-meta-chip"><span class="d"></span>Court taper</span>
-        </div>
-        <div class="modes-meta-set" style="--c: oklch(0.55 0.15 270)">
-          <span class="modes-meta-chip"><span class="d"></span>Block jump</span>
-          <span class="modes-meta-chip"><span class="d"></span>Approach speed</span>
-          <span class="modes-meta-chip"><span class="d"></span>Shoulder volume</span>
-        </div>
-      </div>
-    </div>
+    <div class="modes-vs">
+      <span class="modes-vs-label">Each mode is a full tracker on its own</span>
 
-    <div class="modes-chips" role="tablist" aria-label="Sport modes">
-      <button class="modes-chip is-active" type="button" data-i="0" style="--c: oklch(0.60 0.16 165)"><span class="d"></span>Hoopers</button>
-      <button class="modes-chip" type="button" data-i="1" style="--c: oklch(0.55 0.16 295)"><span class="d"></span>Runners</button>
-      <button class="modes-chip" type="button" data-i="2" style="--c: oklch(0.62 0.15 70)"><span class="d"></span>Cyclists</button>
-      <button class="modes-chip" type="button" data-i="3" style="--c: oklch(0.55 0.18 15)"><span class="d"></span>Fighters</button>
-      <button class="modes-chip" type="button" data-i="4" style="--c: oklch(0.58 0.14 230)"><span class="d"></span>Swimmers</button>
-      <button class="modes-chip" type="button" data-i="5" style="--c: oklch(0.58 0.15 145)"><span class="d"></span>Footballers</button>
-      <button class="modes-chip" type="button" data-i="6" style="--c: oklch(0.62 0.16 130)"><span class="d"></span>Picklers</button>
-      <button class="modes-chip" type="button" data-i="7" style="--c: oklch(0.55 0.16 35)"><span class="d"></span>Gridironers</button>
-      <button class="modes-chip" type="button" data-i="8" style="--c: oklch(0.65 0.16 100)"><span class="d"></span>Tennis players</button>
-      <button class="modes-chip" type="button" data-i="9" style="--c: oklch(0.55 0.15 270)"><span class="d"></span>Spikers</button>
-    </div>
+      <!-- Lift mode — mirrors #ask-pep: phone LEFT, content RIGHT -->
+      <article class="lift-flagship" id="lift" data-screen-label="10a Lift mode">
+        <div class="lift-grid">
 
-    <div class="modes-claim">
-      <span class="modes-claim-eyebrow">Why Epti</span>
-      <p class="modes-claim-body">
-        The only app that knows your <span class="serif-italic">training schedule</span><span class="amp">and</span>your <span class="serif-italic">peptide protocol</span>.
-      </p>
-      <p class="modes-claim-sub">
-        Same dashboard · same engine · same week. No more flipping between <span class="x">strava</span>, <span class="x">notes.app</span>, and <span class="x">a spreadsheet</span> to figure out whether your tempo run lands on a BPC dose day.
-      </p>
-    </div>
+          <!-- LEFT column: bare iPhone preview (Lift / Train tab) -->
+          <div class="lift-phone">
+            <div class="phone-real lg">
+              <div class="phone-real-screen">
+                <div class="pr-statusbar">
+                  <span class="pr-time">9:41</span>
+                  <span class="pr-island" aria-hidden="true"></span>
+                  <span class="pr-icons" aria-hidden="true">
+                    <svg class="ico-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="5" y="6" width="3" height="6" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+                    <svg class="ico-wifi" viewBox="0 0 16 12"><path d="M8 0a13.4 13.4 0 0 1 8 3l-2 2a10.5 10.5 0 0 0-12 0L0 3a13.4 13.4 0 0 1 8-3Zm0 5a8.4 8.4 0 0 1 5 1.8L11 8.8a5.4 5.4 0 0 0-6 0L3 6.8A8.4 8.4 0 0 1 8 5Zm0 4.7c.9 0 1.7.3 2.3.9L8 12 5.7 9.7a3.4 3.4 0 0 1 2.3-.9Z"/></svg>
+                    <svg class="ico-battery" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5"/><rect x="2" y="2" width="18" height="8" rx="1.2" fill="currentColor"/><rect x="22.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+                  </span>
+                </div>
+                <iframe src="Epti%20Train.html?embed=1" title="Epti — Train tab preview" loading="lazy"></iframe>
+              </div>
+            </div>
+          </div>
 
-    <p class="modes-foot">
-      Each mode rewires programming, recovery, metrics, and Coach E. <span class="serif-italic">Pick one. Or stack two.</span>
-    </p>
-  </div>
-</section>
+          <!-- RIGHT column: eyebrow / headline / lede / 2-col module grid -->
+          <div>
+            <span class="eyebrow accent">Lift mode</span>
+            <h2 class="h-section" style="margin:18px 0 24px;">Strength training, <span class="italic">finally</span> done right.</h2>
+            <p class="lede">Volume, frequency, and intensity that adjust to your protocol phase — generate the mesocycle, run the session, log every set with RPE, and let the program shift with the stack you're actually running.</p>
 
-<script>
+            <div class="lift-modules">
+              <div class="lift-module">
+                <div class="q">
+                  <span class="qicon">01</span>
+                  Programs a coach would actually write
+                </div>
+                <div class="a">Tell Epti your goal, experience, weekly availability, and equipment — get a complete mesocycle structured the way a coach would write it, not the way a workout generator would spit it out.</div>
+              </div>
+              <div class="lift-module">
+                <div class="q">
+                  <span class="qicon">02</span>
+                  Borrow any program and Epti reshapes it for you
+                </div>
+                <div class="a">Copy a friend's, creator's, or coach's block with one tap — their structure, your weights, your protocol adjustments applied automatically.</div>
+              </div>
+              <div class="lift-module">
+                <div class="q">
+                  <span class="qicon">03</span>
+                  Set-by-set logging that respects your dose schedule
+                </div>
+                <div class="a">Weight, reps, and RPE with auto-rest, last-session reference, and plate math — plus dose-day load adjustments so heavy days don't land on the wrong injection.</div>
+              </div>
+              <div class="lift-module">
+                <div class="q">
+                  <span class="qicon">04</span>
+                  Advanced prescriptions, natively
+                </div>
+                <div class="a">Supersets, circuits, AMRAP, drop sets, and tempo work handled directly in the runner — not bolted on with notes in the comment field.</div>
+              </div>
+              <div class="lift-module">
+                <div class="q">
+                  <span class="qicon">05</span>
+                  Stagnation flags before you plateau
+                </div>
+                <div class="a">Volume, frequency, and intensity tracked per muscle group — Epti flags when a group has stopped responding so you adjust before you waste another mesocycle.</div>
+              </div>
+              <div class="lift-module">
+                <div class="q">
+                  <span class="qicon">06</span>
+                  Train with a partner without texting weights back and forth
+                </div>
+                <div class="a">Buddy workouts share sets in real time across both phones, with Epti scaling the load to each person's protocol phase so the same workout fits two different stacks.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- Endurance — collapsible Run/Cycle panel -->
+      <details class="sport-expand" id="endurance-expand">
+        <summary class="sport-expand-summary">
+          <span class="sport-expand-eyebrow">Endurance</span>
+          <h3 class="sport-expand-title">Built for endurance, <span class="italic">too.</span></h3>
+          <span class="sport-expand-meta">Running · Cycling · 6 more sports</span>
+          <span class="sport-expand-cta">
+            <span class="open-label">Read more</span>
+            <span class="close-label">Read less</span>
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+        </summary>
+
+        <div class="sport-expand-body">
+          <article class="endurance" id="endurance" data-screen-label="10b Endurance">
+            <header class="endurance-head">
+              <div class="endurance-toggle" role="tablist" aria-label="Endurance sport">
+                <button type="button" role="tab" data-sport="run" data-active="true" aria-controls="endurance-panel-run">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4.5" r="2"/><path d="M5 21l4-7 4 2 3-5 4 4"/><path d="M9 10l3-2 3 3"/></svg>
+                  Running
+                </button>
+                <button type="button" role="tab" data-sport="cycle" data-active="false" aria-controls="endurance-panel-cycle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M8 17l4-9 3 5 3.5-1"/><path d="M11 8h4"/></svg>
+                  Cycling
+                </button>
+              </div>
+            </header>
+
+            <div class="endurance-stage">
+
+              <!-- RUNNING: phone LEFT, copy RIGHT -->
+              <section class="endurance-panel is-active" id="endurance-panel-run" data-sport="run" role="tabpanel">
+                <div class="esport-phone">
+                  <div class="esport-frame">
+                    <img src="epti-run-mode.png" alt="Epti Running mode: Finding rhythm — 41 mi this week, 9 runs, 8:15 avg pace, today's Lace Up Easy Run prescription" loading="lazy" />
+                  </div>
+                </div>
+                <div class="esport-copy">
+                  <span class="esport-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13" cy="4.5" r="2"/><path d="M5 21l4-7 4 2 3-5 4 4"/><path d="M9 10l3-2 3 3"/></svg>
+                    Running
+                  </span>
+                  <h4 class="esport-h">Running, structured the way coaches <span class="italic">actually program it.</span></h4>
+                  <p class="esport-lede">From easy and recovery to fartlek and race day — every session tagged, paced, and overlaid on weekly mileage.</p>
+                  <ul class="subcaps esport-list">
+                    <li><span class="num">01</span><span><strong>Race predictions from real paced efforts.</strong> 5K, 10K, half, and marathon estimates based on your recent intervals and tempo work — not weekly mileage averages.</span></li>
+                    <li><span class="num">02</span><span><strong>Training load that tracks acute, chronic, and freshness.</strong> See when you're undertrained, overtrained, or peaking — and let Epti pick tomorrow's run from where you actually are.</span></li>
+                    <li><span class="num">03</span><span><strong>Shoe rack with retirement alerts.</strong> Per-shoe mileage tracking that flags retirement before the foam goes dead and injury risk climbs.</span></li>
+                    <li><span class="num">04</span><span><strong>Interval builder for structured workouts.</strong> Warmup, repeats, cooldown — paced to your current fitness, not arbitrary targets.</span></li>
+                    <li><span class="num">05</span><span><strong>Tomorrow's run, picked for you.</strong> Recovery, hard day, long run, or rest — chosen from your load, recent history, and where you are in your protocol phase.</span></li>
+                  </ul>
+                </div>
+              </section>
+
+              <!-- CYCLING: copy LEFT, phone RIGHT -->
+              <section class="endurance-panel" id="endurance-panel-cycle" data-sport="cycle" role="tabpanel">
+                <div class="esport-phone">
+                  <div class="esport-frame">
+                    <img src="epti-cycle-mode.png" alt="Epti Cycling mode: On a roll — 149 mi this week, 7 rides, 17.2 avg mph, 7700 ft climb, today's Roll Out casual ride prescription, bike garage with Tarmac SL7 and Diverge service alerts" loading="lazy" />
+                  </div>
+                </div>
+                <div class="esport-copy">
+                  <span class="esport-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="17" r="3.5"/><circle cx="18.5" cy="17" r="3.5"/><path d="M8 17l4-9 3 5 3.5-1"/><path d="M11 8h4"/></svg>
+                    Cycling
+                  </span>
+                  <h4 class="esport-h">Cycling, with a garage that knows your bikes <span class="italic">better than you do.</span></h4>
+                  <p class="esport-lede">Casual to gravel to interval — every ride logged against the right frame, the right zone, and the right protocol phase.</p>
+                  <ul class="subcaps esport-list">
+                    <li><span class="num">01</span><span><strong>Bike garage tracks every component.</strong> Chain stretch, tire mileage, brake pads, and service intervals — per frame — so you know what's due before something breaks mid-ride.</span></li>
+                    <li><span class="num">02</span><span><strong>Climbing summary with rate and biggest efforts.</strong> Total elevation, biggest climbs of the week, and ascent rate trending against your fitness curve.</span></li>
+                    <li><span class="num">03</span><span><strong>Power and heart-rate zone intervals.</strong> Builder for structured trainer sessions and outdoor efforts — set the zones, ride the workout.</span></li>
+                    <li><span class="num">04</span><span><strong>Speed and ride-mix trends.</strong> See your easy-to-hard ratio week over week, not just total mileage — so the program stays balanced.</span></li>
+                    <li><span class="num">05</span><span><strong>Indoor mode for trainer rides.</strong> Trainer and Zwift sessions logged without GPS — no broken routes, no fake distance.</span></li>
+                  </ul>
+                </div>
+              </section>
+
+            </div>
+          </article>
+
+          <!-- Also built for — chip list folded into the same expander -->
+          <div class="also-fold">
+            <span class="also-fold-eyebrow">Also built for</span>
+            <ul class="also-chips">
+              <li>Swim</li>
+              <li>Basketball</li>
+              <li>Racquet</li>
+              <li>Combat</li>
+              <li>Soccer</li>
+              <li>Volleyball</li>
+            </ul>
+            <p class="also-fold-note">Each sport gets its own logging engine and dedicated mode — same data model, same Pep AI, sport-specific structure.</p>
+          </div>
+        </div>
+      </details>
+
+      <script>
+      (function() {
+        const stage = document.getElementById('endurance');
+        if (!stage) return;
+        const tabs = Array.from(stage.querySelectorAll('.endurance-toggle button'));
+        const panels = Array.from(stage.querySelectorAll('.endurance-panel'));
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            const sport = tab.dataset.sport;
+            tabs.forEach(t => t.setAttribute('data-active', t === tab ? 'true' : 'false'));
+            panels.forEach(p => p.classList.toggle('is-active', p.dataset.sport === sport));
+          });
+        });
+      })();
+      </script>
+
+      <script>
 (function() {
   const root = document.querySelector('.modes-rotator-root');
   if (!root) return;
@@ -1265,199 +2136,516 @@
 })();
 </script>
 
-<!-- ====================== HOW IT WORKS ====================== -->
-<section class="section" id="how" data-screen-label="03 How it works">
+
+<style>
+/* ===== Tabbed block (Stack + Engine) ===== */
+.tabbed-block { position: relative; }
+.tabbed-block.bg-1 {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.tb-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; margin-bottom: 44px; flex-wrap: wrap;
+}
+.tb-eyebrow {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  display: inline-flex; align-items: center; gap: 12px;
+  font-weight: 600;
+}
+.tb-eyebrow::after {
+  content: ""; width: 32px; height: 1px; background: var(--accent-strong); opacity: 0.7;
+}
+.tb-tabs {
+  display: inline-flex;
+  gap: 6px;
+  padding: 6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+.tb-tab {
+  appearance: none; border: 0; background: transparent;
+  padding: 13px 20px;
+  border-radius: 11px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: var(--text-3);
+  white-space: nowrap;
+  transition: background 220ms ease, color 220ms ease, box-shadow 220ms ease;
+  text-align: left;
+  min-height: 44px;
+}
+.tb-tab > * { position: relative; z-index: 2; pointer-events: none; }
+.tb-tab .num {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--text-3);
+  opacity: 0.75;
+  transition: color 220ms ease, opacity 220ms ease;
+}
+.tb-tab:hover { color: var(--text); background: color-mix(in oklch, var(--bg) 60%, transparent); }
+.tb-tab[data-active="true"] {
+  background: var(--bg);
+  color: var(--text);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06), 0 0 0 1px var(--line);
+}
+.tb-tab[data-active="true"]:hover { background: var(--bg); }
+.tb-tab[data-active="true"] .num {
+  color: var(--accent-strong);
+  opacity: 1;
+}
+
+/* Auto-advance progress bar (bottom edge of active tab) */
+.tb-tab .tb-progress {
+  position: absolute;
+  left: 8px; right: 8px; bottom: 5px;
+  height: 2px;
+  border-radius: 2px;
+  background: color-mix(in oklch, var(--line-strong) 60%, transparent);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 200ms ease;
+  z-index: 1;
+}
+.tb-tab[data-active="true"] .tb-progress { opacity: 1; }
+.tb-tab .tb-progress .fill {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #15c896, #0aa37a);
+  border-radius: 2px;
+  transition: width 120ms linear;
+}
+.tabpanel { display: none; }
+.tabpanel.is-active {
+  display: block;
+  animation: tbFade 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes tbFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (max-width: 720px) {
+  .tb-head { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .tb-tabs { overflow-x: auto; max-width: 100%; }
+}
+
+/* Protocol section — bare, framed screenshot (matches the Ask Pep frame style) */
+.protocol-phone {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.protocol-phone .protocol-frame {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 440px;
+  background: #e9e8e3;
+  border-radius: 38px;
+  overflow: hidden;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 30px 60px -20px rgba(20, 22, 28, 0.22),
+    0 8px 22px -10px rgba(20, 22, 28, 0.12);
+}
+.protocol-phone .protocol-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.protocol-phone::before {
+  content: "";
+  position: absolute;
+  inset: -20% -10% -20% -10%;
+  background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 18%, transparent), transparent 70%);
+  filter: blur(40px);
+  z-index: 0;
+  pointer-events: none;
+}
+</style>
+
+<style>
+/* ---- Ask Pep section (scoped) ---- */
+.pep-section { background: var(--bg-1); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* Standalone cropped screenshot — no phone bezel */
+.pep-frame {
+  width: 100%;
+  max-width: 460px;
+  background: #e9e8e3;
+  border-radius: 38px;
+  overflow: hidden;
+  padding-bottom: 18px;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 30px 60px -20px rgba(20, 22, 28, 0.22),
+    0 8px 22px -10px rgba(20, 22, 28, 0.12);
+  position: relative;
+}
+.pep-screen {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  color: #1a1c20;
+  font-family: var(--sans);
+}
+
+/* Header row: Close pill + Search title */
+.pep-head {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 18px 16px 8px;
+}
+.pep-close {
+  display: inline-flex; align-items: center;
+  background: #fbfaf6;
+  border-radius: 999px;
+  padding: 9px 18px;
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #1a1c20;
+  box-shadow: 0 0.5px 0 rgba(0,0,0,0.04);
+}
+.pep-head .title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #1a1c20;
+}
+
+/* Search field */
+.pep-search {
+  margin: 10px 16px 0;
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(120, 120, 128, 0.16);
+  border-radius: 12px;
+  padding: 9px 12px;
+}
+.pep-search .q-icon { color: #8a8d96; flex-shrink: 0; }
+.pep-search .q-text {
+  flex: 1;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  color: #1a1c20;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.pep-search .caret {
+  display: inline-block;
+  width: 1.5px; height: 16px;
+  background: var(--accent);
+  vertical-align: -3px;
+  margin-left: 1px;
+  animation: pep-caret 1s steps(2) infinite;
+}
+@keyframes pep-caret { 50% { opacity: 0; } }
+.pep-search .x {
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: rgba(120,120,128,0.45);
+  color: #fff;
+  display: grid; place-items: center;
+  font-size: 11px; flex-shrink: 0;
+}
+.pep-search .mic { color: var(--accent-strong); flex-shrink: 0; }
+
+/* Filter pills */
+.pep-filters {
+  display: flex; gap: 8px;
+  padding: 12px 16px 4px;
+  overflow: hidden;
+  flex-wrap: nowrap;
+}
+.pep-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fbfaf6;
+  border: 1px solid rgba(14,16,22,0.05);
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #1a1c20;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.pep-chip svg { width: 13px; height: 13px; flex-shrink: 0; }
+.pep-chip.active { background: #0e1016; color: #fbfaf6; border-color: transparent; }
+.pep-chip.fade { opacity: 0.5; transform: translateX(0); }
+
+/* Answer card */
+.pep-card-wrap {
+  margin: 14px 16px 0;
+  position: relative;
+  border-radius: 22px;
+  padding: 1.5px;
+  background: linear-gradient(135deg,
+    color-mix(in oklch, var(--accent) 70%, transparent) 0%,
+    color-mix(in oklch, var(--accent) 25%, transparent) 35%,
+    rgba(255,255,255,0.6) 60%,
+    color-mix(in oklch, var(--accent) 35%, transparent) 100%);
+}
+.pep-card {
+  background: #fbfaf6;
+  border-radius: 20px;
+  padding: 16px 18px 14px;
+  position: relative;
+}
+.pep-card-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.pep-card-head .lbl {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1a1c20;
+  font-weight: 500;
+}
+.pep-card-head .lbl::before {
+  content: "";
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.pep-card-head .open { color: #1a1c20; opacity: 0.6; }
+.pep-answer {
+  font-family: var(--serif);
+  font-size: 18.5px;
+  line-height: 1.4;
+  letter-spacing: -0.005em;
+  color: #1a1c20;
+  margin: 0;
+}
+.pep-answer .hl {
+  background: var(--accent-dim);
+  padding: 0 2px;
+  border-radius: 3px;
+}
+.pep-card-foot {
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 8px;
+  color: var(--accent-strong);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.pep-card-foot svg { width: 16px; height: 16px; }
+
+/* Keep exploring section */
+.pep-explore-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 18px 22px 10px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1a1c20;
+}
+.pep-explore-head .spark { color: var(--accent-strong); font-size: 14px; }
+
+.pep-result {
+  margin: 0 16px;
+  background: #fbfaf6;
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.pep-result .ico {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  background: var(--accent-dim);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  color: var(--accent-strong);
+}
+.pep-result .ico svg { width: 18px; height: 18px; }
+.pep-result .name {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #1a1c20;
+}
+.pep-result .name .tag {
+  background: var(--accent-dim);
+  color: var(--accent-strong);
+  border: 1px solid var(--accent-line);
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  padding: 2px 7px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.pep-result .sub {
+  font-size: 12.5px;
+  color: var(--text-3);
+  letter-spacing: -0.005em;
+  margin-top: 2px;
+}
+.pep-result .arrow { margin-left: auto; color: var(--text-3); opacity: 0.7; }
+.pep-result .arrow svg { width: 14px; height: 14px; }
+
+.pep-suggest {
+  display: flex; gap: 8px;
+  padding: 12px 16px 4px;
+  flex-wrap: wrap;
+}
+.pep-suggest .s {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid var(--accent-line);
+  color: #1a1c20;
+  font-size: 13.5px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+.pep-suggest .s svg { width: 12px; height: 12px; color: var(--accent-strong); }
+
+/* Right column — example cards rebranded for search-style queries */
+.pep-cards { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+.pep-example {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+.pep-example .q {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  line-height: 1.35;
+}
+.pep-example .q .qicon {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent-strong);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.pep-example .q .qicon svg { width: 11px; height: 11px; }
+.pep-example .a {
+  margin-top: 10px;
+  margin-left: 34px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+}
+.pep-example .a .cite {
+  font-family: var(--mono);
+  font-size: 12.5px;
+  background: var(--accent-dim);
+  color: var(--accent-strong);
+  padding: 1px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.pep-trust {
+  margin-top: 28px;
+  display: flex; flex-wrap: wrap; gap: 18px 26px;
+}
+.pep-trust .t {
+  display: flex; align-items: flex-start; gap: 10px;
+  max-width: 240px;
+}
+.pep-trust .t .num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--accent-strong);
+  margin-top: 3px;
+}
+.pep-trust .t .body {
+  font-size: 14px;
+  color: var(--text-2);
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+}
+.pep-trust .t .body strong { color: var(--text); font-weight: 500; }
+
+.pep-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 80px;
+  align-items: center;
+}
+@media (max-width: 960px) {
+  .pep-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+</style>
+
+<!-- ====================== STACK — Protocols · Compound library · Ask Pep ====================== -->
+<section class="section tabbed-block" id="stack" data-screen-label="04 Stack">
   <div class="wrap">
-    <div style="display:flex;flex-direction:column;gap:18px;max-width:780px;">
-      <span class="eyebrow accent">How it works</span>
-      <h2 class="h-section">From your first vial to your <span class="italic">best lift</span> in minutes.</h2>
+    <div class="tb-head">
+      <span class="tb-eyebrow">Your stack</span>
+      <div class="tb-tabs" role="tablist" aria-label="Stack views">
+        <button type="button" class="tb-tab" role="tab" data-active="true" data-target="protocols-panel" aria-controls="protocols-panel"><span class="num">01</span>Protocols<span class="tb-progress"><span class="fill"></span></span></button>
+        <button type="button" class="tb-tab" role="tab" data-active="false" data-target="library-panel" aria-controls="library-panel"><span class="num">02</span>Compound library<span class="tb-progress"><span class="fill"></span></span></button>
+        <button type="button" class="tb-tab" role="tab" data-active="false" data-target="pep-panel" aria-controls="pep-panel"><span class="num">03</span>Ask Pep · AI<span class="tb-progress"><span class="fill"></span></span></button>
+      </div>
     </div>
 
-    <div class="how-grid">
-      <div class="how-step">
-        <div class="num">01 / ONBOARD</div>
-        <h3>Onboard your stack.</h3>
-        <p>Tell Epti your goals, current protocols, and training history. Add vials with our guided flow — concentration, units, reconstitution math handled for you.</p>
-        <div class="step-visual">
-          <div class="dose-stats">
-            <div class="dose-stat"><div class="l">Vial</div><div class="v">5mg</div></div>
-            <div class="dose-stat"><div class="l">BAC</div><div class="v">2mL</div></div>
-            <div class="dose-stat"><div class="l">Per unit</div><div class="v">50mcg</div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="how-step">
-        <div class="num">02 / TRAIN</div>
-        <h3>Train with an engine that learns you.</h3>
-        <p>Log workouts, doses, sleep, and bloodwork. Our adaptive engine adjusts volume, intensity, and nutrition targets based on how you actually respond.</p>
-        <div class="step-visual">
-          <div class="ring-wrap">
-            <div class="ring" style="--p:72"><div class="val">72%</div></div>
-            <div>
-              <div class="label-mono" style="color:var(--text-3)">RECOVERY</div>
-              <div style="font-size:14px;color:var(--text);font-weight:500;margin-top:4px;">Adjust top set −5%</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="how-step">
-        <div class="num">03 / SHARE</div>
-        <h3>Share, compare, compete.</h3>
-        <p>Follow friends, borrow their protocols, join private circles, and watch your biomarkers and PRs trend in real time.</p>
-        <div class="step-visual">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <div class="pill-avatars" style="display:flex;">
-              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:0;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=68" alt="" loading="lazy" /></span>
-              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=49" alt="" loading="lazy" /></span>
-              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=33" alt="" loading="lazy" /></span>
-              <span style="width:30px;height:30px;border-radius:50%;border:2px solid var(--surface);margin-left:-10px;overflow:hidden;"><img src="https://i.pravatar.cc/80?img=12" alt="" loading="lazy" /></span>
-            </div>
-            <div>
-              <div style="font-size:14px;color:var(--text);font-weight:500;">Inner circle · 8 athletes</div>
-              <div class="label-mono" style="color:var(--text-3);margin-top:4px;">3 SHARED PROTOCOLS</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ====================== MARQUEE ====================== -->
-<div class="marquee">
-  <div class="marquee-track">
-    <span>Adaptive engine</span>
-    <span>Vial math</span>
-    <span>Dose timing</span>
-    <span>Bloodwork overlays</span>
-    <span>Cycle compare</span>
-    <span>Coach E</span>
-    <span>Private circles</span>
-    <span>HRV-aware programming</span>
-    <span>Adaptive engine</span>
-    <span>Vial math</span>
-    <span>Dose timing</span>
-    <span>Bloodwork overlays</span>
-    <span>Cycle compare</span>
-    <span>Coach E</span>
-    <span>Private circles</span>
-    <span>HRV-aware programming</span>
-  </div>
-</div>
-
-<!-- ====================== FEATURE 1 — ADAPTIVE ENGINE ====================== -->
-<section class="section" id="features" data-screen-label="04 Adaptive engine">
-  <div class="wrap">
-    <div class="feature-row">
+    <div class="tabpanel is-active" id="protocols-panel" data-tab-id="protocols" data-screen-label="04a Protocols" role="tabpanel">
+      <div class="feature-row reverse">
       <div class="feature-copy">
-        <span class="eyebrow cat-activity">Adaptive engine</span>
-        <h2 class="h-section">A program that <span class="italic">rewrites itself</span> around you.</h2>
-        <p class="lede">Epti's adaptive engine continuously analyzes your training logs, recovery, peptide phase, and bloodwork to reshape your program week-over-week — not just rep schemes, but volume, macro targets, and recovery prescriptions.</p>
+        <span class="eyebrow cat-recovery">Protocols</span>
+        <h2 class="h-section">Every vial. Every dose. Every cycle. <span class="italic">Tracked.</span></h2>
+        <p class="lede">Add a vial in 30 seconds. Epti handles the reconstitution math, calculates units to draw per dose, tracks remaining volume, warns before you run out, and logs every injection with site rotation and reminders.</p>
 
         <ul class="subcaps">
-          <li><span class="num">01</span><span>Auto-deload detection from HRV, sleep, and RPE trends</span></li>
-          <li><span class="num">02</span><span>Macro targets that shift with your cycle phase (bulk / cut / cruise)</span></li>
-          <li><span class="num">03</span><span>11-zone recovery model — knows when BPC-157 or TB-500 is in your stack and weights tendon &amp; ligament loading accordingly</span></li>
-          <li><span class="num">04</span><span>PR tracking with your protocol overlaid — every 1RM plotted against peptide cycles, sleep, and bodyweight</span></li>
-          <li><span class="num">05</span><span>AI-generated programs: powerlifting, hybrid, basketball, cycling — plus templates for PPL, Upper/Lower, 5/3/1, GZCL</span></li>
-          <li><span class="num">06</span><span>Drift detection: flags when your protocol isn't producing expected results</span></li>
+          <li><span class="num">01</span><span><strong>Reconstitution and dose math, done for you.</strong> Enter the vial, the BAC water, and the target dose; Epti tells you exactly how many units to draw and shows it on a labeled syringe so there's no mental math at 6am.</span></li>
+          <li><span class="num">02</span><span><strong>Reminders that know your protocol phase.</strong> Pre-dose, due, late, and skipped states with surface alerts that respect timing windows — not just calendar pings that fire whether you're loading, cruising, or cycling off.</span></li>
+          <li><span class="num">03</span><span><strong>Site rotation that prevents scar tissue and lipohypertrophy.</strong> An interactive body map tracks every injection by site, depth, and angle, then routes the next dose to the spot that's had the longest recovery.</span></li>
+          <li><span class="num">04</span><span><strong>Side effects linked to the dose that caused them.</strong> Log symptoms by severity and Epti correlates them with compound, dose, timing, and stack — so you can see whether the headache is the Tirzepatide or just your week.</span></li>
+          <li><span class="num">05</span><span><strong>A protocol history that actually compounds.</strong> Active, paused, and archived cycles in one view, with cost-per-cycle, total volume injected, and outcome notes — so cycle four learns from cycles one through three.</span></li>
         </ul>
       </div>
 
-      <!-- Phone: Active Workout -->
-      <div class="feature-phone">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <div class="app">
-              <div class="phone-statusbar">
-                <span>9:41</span>
-                <div class="icons">
-                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7h2v6H1zM5 5h2v8H5zM9 3h2v10H9zM13 1h2v12h-2z"/></svg>
-                  <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5"/><rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor"/></svg>
-                </div>
-              </div>
-              <div class="app-header">
-                <div>
-                  <div class="greeting">SET 3 OF 5</div>
-                  <div class="name">Back Squat</div>
-                </div>
-                <div class="ring" style="--p:62;width:42px;height:42px;"><div class="val" style="font-size:10px">62</div></div>
-              </div>
-
-              <div class="scroll">
-                <!-- Adaptive suggestion -->
-                <div class="adaptive-card">
-                  <div class="l">⚡ Adaptive suggestion</div>
-                  <div class="t">Drop top set by 5% — recovery is 12% below baseline.</div>
-                </div>
-
-                <!-- Set list -->
-                <div style="margin-top:14px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
-                  <span class="label-mono">Working sets</span>
-                  <span class="label-mono" style="color:var(--accent)">EDIT</span>
-                </div>
-                <div class="workout-set-list">
-                  <div class="set-row">
-                    <span class="num">01</span>
-                    <span class="weight">315 lb</span>
-                    <span class="reps">5 reps</span>
-                    <span class="rpe">RPE 7</span>
-                  </div>
-                  <div class="set-row">
-                    <span class="num">02</span>
-                    <span class="weight">335 lb</span>
-                    <span class="reps">5 reps</span>
-                    <span class="rpe">RPE 7.5</span>
-                  </div>
-                  <div class="set-row active">
-                    <span class="num">03</span>
-                    <span class="weight">355 lb</span>
-                    <span class="reps">3 reps</span>
-                    <span class="rpe">RPE 8</span>
-                  </div>
-                  <div class="set-row">
-                    <span class="num">04</span>
-                    <span class="weight">365 lb</span>
-                    <span class="reps">3 reps</span>
-                    <span class="rpe">—</span>
-                  </div>
-                  <div class="set-row">
-                    <span class="num">05</span>
-                    <span class="weight">375 lb</span>
-                    <span class="reps">2 reps</span>
-                    <span class="rpe">—</span>
-                  </div>
-                </div>
-
-                <div class="app-card" style="margin-top:12px;padding:14px;display:flex;align-items:center;gap:12px;">
-                  <div class="ring" style="--p:78"><div class="val">78</div></div>
-                  <div style="flex:1">
-                    <div class="label-mono" style="color:var(--text-3)">SESSION PROGRESS</div>
-                    <div style="font-size:13.5px;font-weight:500;margin-top:3px;letter-spacing:-0.01em;">On pace · 18 min left</div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="tabbar">
-                <div class="tab"><span style="font-size:14px;">⏸</span><span>PAUSE</span></div>
-                <div class="tab active"><span style="font-size:14px;color:var(--accent)">✓</span><span>LOG SET</span></div>
-                <div class="tab"><span style="font-size:14px;">⏭</span><span>NEXT</span></div>
-              </div>
-            </div>
-          </div>
+      <!-- Protocol detail (real screenshot — bare, framed, cropped above the WEIGHT LOSS header) -->
+      <div class="feature-phone protocol-phone">
+        <div class="protocol-frame">
+          <img src="epti-protocol-detail-v2.png" alt="Protocol detail: Reta Cycle 2 — Recomp Finish, Retatrutide vial 1.36 mg current level, 90-day medication chart" loading="lazy" />
         </div>
       </div>
     </div>
-  </div>
-</section>
+    </div>
 
-<!-- ====================== COMPOUND LIBRARY ====================== -->
-<section class="section" data-screen-label="05 Library">
-  <div class="wrap">
-    <div class="library-showcase">
+    <div class="tabpanel" id="library-panel" data-tab-id="library" data-screen-label="04b Compound library" role="tabpanel">
+      <div class="library-showcase">
       <div class="feature-copy">
         <span class="eyebrow accent">Compound library</span>
         <h2 class="h-section">Every peptide, <span class="italic">researched</span> before it's logged.</h2>
@@ -1494,9 +2682,9 @@
         </div>
 
         <ul class="subcaps" style="margin-top:36px;">
-          <li><span class="num">01</span><span>Editorial guides on reconstitution, injection technique, storage &amp; reading COAs</span></li>
-          <li><span class="num">02</span><span>69 compounds across weight loss, muscle growth, healing &amp; recovery</span></li>
-          <li><span class="num">03</span><span>Vendor index with community-verified COAs</span></li>
+          <li><span class="num">01</span><span><strong>Full monograph per compound.</strong> Mechanism, half-life, common protocols, side-effect profile, and links to the actual studies behind each claim — not just dosing tables copy-pasted from a forum.</span></li>
+          <li><span class="num">02</span><span><strong>Stack checker for interactions and overlap.</strong> Plan a stack and Epti flags compounds that compete for the same receptors, share side-effect profiles, or push the same biomarkers — before you run the cycle, not after.</span></li>
+          <li><span class="num">03</span><span><strong>Built for the compounds you actually use.</strong> 70+ compounds across weight loss, recomposition, recovery, and longevity — updated as the research and the community evolve.</span></li>
         </ul>
       </div>
 
@@ -1517,53 +2705,636 @@
         </div>
       </div>
     </div>
+    </div>
+
+    <div class="tabpanel" id="pep-panel" data-tab-id="pep" data-screen-label="04c Ask Pep" role="tabpanel">
+      <div class="pep-grid">
+
+      <!-- Cropped screenshot: Ask Pep search modal -->
+      <div class="pep-phone">
+        <div class="pep-frame">
+            <div class="pep-screen">
+
+              <div class="pep-head">
+                <span class="pep-close">Close</span>
+                <span class="title">Search</span>
+              </div>
+
+              <div class="pep-search">
+                <svg class="q-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <circle cx="7" cy="7" r="5"/><path d="M10.5 10.5L14 14"/>
+                </svg>
+                <div class="q-text">what foods should i avoid on reta<span class="caret"></span></div>
+                <div class="x">×</div>
+                <svg class="mic" width="14" height="18" viewBox="0 0 14 18" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="4" y="1" width="6" height="10" rx="3"/><path d="M1.5 8.5a5.5 5.5 0 0 0 11 0M7 14v3"/>
+                </svg>
+              </div>
+
+              <div class="pep-filters">
+                <span class="pep-chip active">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="5"/><path d="M10.5 10.5L14 14"/></svg>
+                  All
+                </span>
+                <span class="pep-chip">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 2h7l3 3v9H3z"/><path d="M5 6h6M5 9h6M5 12h4"/></svg>
+                  Guides
+                </span>
+                <span class="pep-chip">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h2M12 8h2M5 4h2v8H5zM9 4h2v8H9z"/></svg>
+                  Exercises
+                </span>
+                <span class="pep-chip fade">
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 2v6c0 1 .5 2 1.5 2v4M5 2v3a1.5 1.5 0 0 0 3 0V2M11 2c-1 1-1.5 2.5-1.5 4s.5 2 1.5 2v6"/></svg>
+                  Foods
+                </span>
+              </div>
+
+              <div class="pep-card-wrap">
+                <div class="pep-card">
+                  <div class="pep-card-head">
+                    <span class="lbl">Ask Pep</span>
+                    <span class="open">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10L10 4M5.5 4H10v4.5"/></svg>
+                    </span>
+                  </div>
+                  <p class="pep-answer">on retatrutide, skip fried and greasy foods like fries, pizza, or donuts since they slow digestion even more and amp up nausea. also dodge sugary stuff, refined carbs such as white bread or rice, processed junk, and alcohol to keep side effects low and support your <span class="hl">weight loss to 175lb</span>. with your <span class="hl">low intake today at 580 cal and 60g protein</span>, lean proteins like chicken or fish pair better to hit that <span class="hl">150g target</span> without gut issues.</p>
+                  <div class="pep-card-foot">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 3h12v8H7l-3 3v-3H2z" stroke-linejoin="round"/></svg>
+                    Continue in chat
+                  </div>
+                </div>
+              </div>
+
+              <div class="pep-explore-head">
+                <span class="spark">✦</span>
+                <span>Keep exploring</span>
+              </div>
+
+              <div class="pep-result">
+                <div class="ico">
+                  <svg viewBox="0 0 18 18" fill="currentColor"><circle cx="6" cy="6" r="3.2"/><circle cx="12" cy="12" r="3.2"/><rect x="4.5" y="10.5" width="3" height="3" rx="0.5"/></svg>
+                </div>
+                <div style="flex:1;min-width:0;">
+                  <div class="name">Retatrutide <span class="tag">Compound</span></div>
+                  <div class="sub">Triple GLP-1/GIP/Glucagon Agonist</div>
+                </div>
+                <span class="arrow">
+                  <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10L10 4M5.5 4H10v4.5"/></svg>
+                </span>
+              </div>
+
+              <div class="pep-suggest">
+                <span class="s">
+                  <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg>
+                  Lean Protein Ideas
+                </span>
+                <span class="s">
+                  <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="6" cy="6" r="4"/><path d="M9 9l3 3"/></svg>
+                  Low Cal Recipes
+                </span>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div>
+        <span class="eyebrow accent">Ask Pep · AI</span>
+        <h2 class="h-section" style="margin:18px 0 24px;">Search anything. Get an answer that knows <span class="italic">your</span> protocol.</h2>
+        <p class="lede">Pep is the search-first AI woven into every screen of Epti — compounds, foods, exercises, side effects. Every answer reads your active stack, today's macros, sleep, and bloodwork before it speaks. No generic chatbot energy.</p>
+
+        <div class="pep-cards">
+          <div class="pep-example">
+            <div class="q">
+              <span class="qicon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="5" r="3.5"/><path d="M7.5 7.5L11 11"/></svg></span>
+              "what foods should i avoid on reta…"
+            </div>
+            <div class="a">Pep cross-references your <span class="cite">retatrutide</span> protocol and today's <span class="cite">580 kcal / 60g protein</span> intake — then warns about fried foods and recommends lean protein to hit your <span class="cite">150g target</span>.</div>
+          </div>
+          <div class="pep-example">
+            <div class="q">
+              <span class="qicon"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="5" cy="5" r="3.5"/><path d="M7.5 7.5L11 11"/></svg></span>
+              "show me lifts that fit my current recovery"
+            </div>
+            <div class="a">Reads your <span class="cite">HRV 48</span>, last night's <span class="cite">5h 42m sleep</span>, and today's planned volume — then surfaces matching workouts from the library and friends' logs.</div>
+          </div>
+        </div>
+
+        <div class="pep-trust">
+          <div class="t">
+            <span class="num">01</span>
+            <div class="body"><strong>Search-first.</strong> Tap the bar from anywhere. No menus, no scrolling — just type what you need.</div>
+          </div>
+          <div class="t">
+            <span class="num">02</span>
+            <div class="body"><strong>Cited from your data.</strong> Every claim points to a compound, a meal, a lift, or a lab in your own log.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
   </div>
 </section>
 
-<!-- ====================== FEATURE 2 — PROTOCOLS ====================== -->
+
 <style>
-/* Protocol section phone tweak — match the Community / Apple Health treatment */
-.protocol-phone {
+/* ---- Composition + Biomarkers swap (scoped) ---- */
+.bx-frame {
+  width: 100%;
+  max-width: 460px;
+  margin-inline: auto;
+  background: #efeee8;
+  border-radius: 38px;
+  padding: 26px 22px 24px;
   position: relative;
-  display: flex;
-  justify-content: center;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.7) inset,
+    0 30px 60px -20px rgba(20, 22, 28, 0.22),
+    0 8px 22px -10px rgba(20, 22, 28, 0.12);
+  font-family: var(--sans);
+  color: var(--text);
+  overflow: hidden;
 }
-.protocol-phone .phone-real {
-  transform: rotate(-2deg);
-  position: relative;
-  z-index: 1;
-}
-.protocol-phone::before {
+.bx-frame::before {
   content: "";
   position: absolute;
-  inset: -20% -10% -20% -10%;
-  background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 18%, transparent), transparent 70%);
-  filter: blur(40px);
-  z-index: 0;
+  inset: 0 0 auto 0;
+  height: 220px;
+  background: radial-gradient(120% 100% at 50% 0%, rgba(21,200,150,0.10), transparent 60%);
+  pointer-events: none;
 }
-@media (max-width: 920px) {
-  .protocol-phone .phone-real { transform: none; }
+.bx-frame > * { position: relative; }
+
+.bx-scan {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  display: grid; place-items: center;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 4px rgba(0,0,0,0.04);
+  color: var(--accent-strong);
+}
+.bx-scan svg { width: 22px; height: 22px; }
+
+.bx-eyebrow {
+  margin-top: 22px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.22em;
+  color: var(--accent-strong);
+  display: flex; align-items: center; gap: 14px;
+}
+.bx-eyebrow .sep { color: var(--text-3); opacity: 0.5; }
+
+.bx-headline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 64px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin: 8px 0 14px;
+  color: var(--text);
+}
+.bx-subline {
+  display: flex; align-items: center; gap: 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.bx-subline::before {
+  content: ""; width: 18px; height: 2px;
+  background: var(--accent); border-radius: 2px;
+}
+
+.bx-stats {
+  margin-top: 22px;
+  background: #fff;
+  border-radius: 22px;
+  padding: 18px 20px;
+  display: grid; grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 4px rgba(0,0,0,0.03);
+}
+.bx-stat { text-align: center; position: relative; }
+.bx-stat + .bx-stat::before {
+  content: ""; position: absolute; left: 0; top: 8%; bottom: 8%;
+  width: 1px; background: var(--line);
+}
+.bx-stat .l {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+.bx-stat .v {
+  margin-top: 8px;
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  display: inline-flex; align-items: baseline; gap: 3px;
+}
+.bx-stat .v .u {
+  font-size: 12px; color: var(--text-3); font-weight: 400; letter-spacing: 0;
+}
+.bx-stat.goal .v { color: var(--accent-strong); }
+
+/* Tab toggle */
+.bx-tabs {
+  margin-top: 18px;
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 5px;
+  position: relative;
+  gap: 0;
+}
+.bx-tabs button {
+  appearance: none; -webkit-appearance: none;
+  border: 0; background: transparent;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--text-3);
+  padding: 13px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: color 200ms ease;
+  position: relative; z-index: 1;
+}
+.bx-tabs button svg { width: 16px; height: 16px; }
+.bx-tabs button[data-active="true"] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  box-shadow: 0 6px 14px -6px rgba(21, 200, 150, 0.55);
+}
+
+/* Flip panels */
+.bx-stage {
+  perspective: 1600px;
+  margin-top: 18px;
+  position: relative;
+  min-height: 720px;
+}
+.bx-flip {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 700ms cubic-bezier(.22,.61,.36,1);
+  min-height: 720px;
+}
+.bx-frame[data-tab="biomarkers"] .bx-flip { transform: rotateY(180deg); }
+.bx-face {
+  position: absolute; inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.bx-face.back { transform: rotateY(180deg); }
+
+/* ---- Composition face ---- */
+.bx-progress {
+  background: #fff;
+  border-radius: 22px;
+  padding: 22px;
+  display: grid; grid-template-columns: 140px 1fr; gap: 16px;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 4px rgba(0,0,0,0.03);
+}
+.bx-ring {
+  position: relative; width: 132px; height: 132px;
+  display: grid; place-items: center;
+}
+.bx-ring svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+.bx-ring .track { fill: none; stroke: var(--surface-3); stroke-width: 10; }
+.bx-ring .bar { fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round; }
+.bx-ring .num {
+  font-family: var(--sans); font-weight: 600; font-size: 38px;
+  color: var(--accent-strong); letter-spacing: -0.03em; line-height: 1;
+}
+.bx-ring .lbl {
+  font-family: var(--mono); font-size: 9.5px;
+  letter-spacing: 0.2em; color: var(--text-3); margin-top: 6px;
+}
+.bx-progress .right .label-mono {
+  font-family: var(--mono); font-size: 10.5px;
+  letter-spacing: 0.2em; color: var(--text-3); text-transform: uppercase;
+}
+.bx-progress .right .togo {
+  font-family: var(--sans); font-weight: 600; font-size: 28px;
+  letter-spacing: -0.025em; margin-top: 6px; color: var(--text);
+}
+.bx-progress .right .pace {
+  margin-top: 10px;
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255, 80, 80, 0.10);
+  color: #d94e4e;
+  padding: 6px 12px; border-radius: 999px;
+  font-size: 12.5px; font-weight: 500;
+}
+
+.bx-meta {
+  margin-top: 14px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+.bx-meta-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px;
+  display: flex; align-items: center; gap: 12px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 4px rgba(0,0,0,0.03);
+}
+.bx-mini-ring {
+  width: 42px; height: 42px; position: relative;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.bx-mini-ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.bx-mini-ring .t { fill: none; stroke: var(--surface-3); stroke-width: 4.5; }
+.bx-mini-ring .b { fill: none; stroke: #29c46e; stroke-width: 4.5; stroke-linecap: round; }
+.bx-mini-ring span {
+  font-family: var(--mono); font-weight: 600; font-size: 11px;
+  color: var(--text);
+}
+.bx-meta-card .icn {
+  width: 42px; height: 42px; border-radius: 50%;
+  background: rgba(21,200,150,0.10);
+  display: grid; place-items: center; color: var(--accent-strong);
+  flex-shrink: 0;
+}
+.bx-meta-card .icn svg { width: 18px; height: 18px; }
+.bx-meta-card .k { font-size: 16px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.1; }
+.bx-meta-card .v { font-size: 12.5px; color: #29c46e; margin-top: 3px; }
+.bx-meta-card .v.mute { color: var(--text-3); }
+
+.bx-goal-date {
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 8px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-line);
+  padding: 10px 14px;
+  border-radius: 999px;
+  width: fit-content;
+  font-size: 13.5px; font-weight: 500; color: var(--text);
+  margin-inline: auto;
+}
+.bx-goal-date svg { color: var(--accent-strong); }
+.bx-avgwk {
+  margin-top: 12px;
+  display: flex; align-items: center; gap: 8px;
+  color: var(--text-3);
+  font-size: 13px;
+  justify-content: center;
+}
+
+/* ---- Biomarkers face ---- */
+.bx-log {
+  background: rgba(21,200,150,0.10);
+  border: 1px dashed var(--accent-line);
+  border-radius: 18px;
+  padding: 14px 16px;
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 500;
+  color: var(--text);
+}
+.bx-log .plus {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--accent); color: var(--accent-ink);
+  display: grid; place-items: center;
+  font-weight: 700;
+}
+.bx-log .label { flex: 1; font-size: 15.5px; letter-spacing: -0.01em; }
+.bx-log .arrow { color: var(--accent-strong); }
+
+.bx-filters {
+  margin-top: 14px;
+  display: flex; gap: 8px; overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+  mask-image: linear-gradient(to right, #000 90%, transparent);
+}
+.bx-filters::-webkit-scrollbar { display: none; }
+.bx-filters .chip {
+  flex-shrink: 0;
+  padding: 8px 14px; border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: rgba(255,255,255,0.6);
+  color: var(--text-2);
+  border: 1px solid var(--line);
+}
+.bx-filters .chip.active {
+  background: var(--accent-strong);
+  color: #fff;
+  border-color: transparent;
+}
+
+.bx-status {
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.bx-status .pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(245, 158, 11, 0.14);
+  color: #b86b1a;
+  padding: 7px 13px; border-radius: 999px;
+  font-size: 13px; font-weight: 500;
+}
+.bx-status .pill .d { width: 8px; height: 8px; border-radius: 50%; background: #f59e0b; }
+.bx-dots { display: flex; gap: 5px; align-items: center; }
+.bx-dots .dot { width: 6px; height: 6px; border-radius: 50%; background: #29c46e; }
+.bx-dots .dot.amber { background: #f59e0b; }
+.bx-dots .dot.blue { background: #5b8def; }
+
+.bx-grid {
+  margin-top: 14px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.bm-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px 14px 12px;
+  position: relative;
+  overflow: hidden;
+  min-height: 168px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 4px rgba(0,0,0,0.03);
+}
+.bm-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: var(--c, var(--accent));
+}
+.bm-card .top { display: flex; align-items: flex-start; justify-content: space-between; }
+.bm-card .name { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.bm-card .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--c, var(--accent)); margin-top: 3px; box-shadow: 0 0 0 4px color-mix(in oklch, var(--c, var(--accent)) 18%, transparent); }
+.bm-card .val {
+  margin-top: 14px;
+  font-size: 34px; font-weight: 600; letter-spacing: -0.03em;
+  color: var(--c, var(--accent-strong)); line-height: 1;
+  display: inline-flex; align-items: baseline; gap: 3px;
+}
+.bm-card .val .u { font-size: 11px; color: var(--text-3); font-weight: 400; letter-spacing: 0; }
+.bm-card .spark {
+  margin-top: 14px; height: 28px;
+  background: color-mix(in oklch, var(--c, var(--accent)) 7%, transparent);
+  border-radius: 6px; position: relative;
+}
+.bm-card .spark svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.bm-card .foot {
+  margin-top: 10px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 10.5px; font-family: var(--mono); letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.bm-card .foot .cat { color: var(--c, var(--accent-strong)); font-weight: 600; }
+.bm-card .foot .delta { color: var(--text-3); }
+
+/* Trend chart */
+.bx-chart-card {
+  margin-top: 14px;
+  background: #fff;
+  border-radius: 22px;
+  padding: 16px 18px 14px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 1px 4px rgba(0,0,0,0.03);
+}
+.bx-chart-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 6px;
+}
+.bx-chart-head .ttl {
+  font-size: 13px; font-weight: 600; letter-spacing: -0.01em;
+  display: flex; align-items: center; gap: 8px;
+}
+.bx-chart-head .ttl .d {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-dim);
+}
+.bx-chart-head .rng {
+  display: flex; gap: 4px;
+  background: var(--surface-2);
+  border-radius: 999px;
+  padding: 3px;
+}
+.bx-chart-head .rng span {
+  font-family: var(--mono);
+  font-size: 9.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  padding: 4px 9px; border-radius: 999px;
+  color: var(--text-3); font-weight: 600;
+}
+.bx-chart-head .rng .on {
+  background: #fff; color: var(--text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+.bx-chart {
+  position: relative;
+  height: 110px;
+  margin: 6px -4px 0;
+}
+.bx-chart .grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(to bottom, rgba(14,16,22,0.05) 1px, transparent 1px);
+  background-size: 100% 33%;
+  pointer-events: none;
+}
+.bx-chart svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.bx-chart .goal-line {
+  position: absolute; left: 0; right: 0; bottom: 18%;
+  height: 1px; background: repeating-linear-gradient(to right, var(--accent-strong) 0 4px, transparent 4px 8px);
+  opacity: 0.55;
+}
+.bx-chart .goal-tag {
+  position: absolute; right: 4px; bottom: calc(18% + 4px);
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.14em; color: var(--accent-strong);
+  font-weight: 600;
+}
+.bx-chart-foot {
+  display: flex; justify-content: space-between;
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 9.5px; letter-spacing: 0.14em;
+  color: var(--text-3); text-transform: uppercase;
+}
+
+/* Insight callout */
+.bx-insight {
+  margin-top: 12px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-line);
+  border-radius: 18px;
+  padding: 12px 14px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.bx-insight .tag {
+  font-family: var(--mono);
+  font-size: 9px; letter-spacing: 0.16em;
+  color: var(--accent-strong); background: #fff;
+  border: 1px solid var(--accent-line);
+  padding: 3px 7px; border-radius: 5px;
+  text-transform: uppercase; font-weight: 600;
+  flex-shrink: 0;
+}
+.bx-insight .body {
+  font-size: 13px; line-height: 1.4; color: var(--text);
+  letter-spacing: -0.005em;
+}
+.bx-insight .body strong { font-weight: 600; }
+
+/* Bottom row: goal date + avg */
+.bx-foot-row {
+  margin-top: 12px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; flex-wrap: wrap;
+}
+
+@media (max-width: 520px) {
+  .bx-frame { padding: 22px 16px 20px; border-radius: 30px; }
+  .bx-headline { font-size: 52px; }
+  .bx-progress { grid-template-columns: 1fr; text-align: center; }
+  .bx-progress .right { text-align: center; }
+  .bx-goal-date { margin-inline: 0; }
+  .bx-foot-row { flex-direction: column; align-items: flex-start; }
 }
 </style>
 
-<section class="section" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);" data-screen-label="05 Protocols">
+<!-- ====================== ENGINE — Adaptive · Nutrition · Body & bloodwork ====================== -->
+<section class="section tabbed-block" id="engine" data-screen-label="05 Engine">
   <div class="wrap">
-    <div class="feature-row reverse">
+    <div class="tb-head">
+      <span class="tb-eyebrow">The engine</span>
+      <div class="tb-tabs" role="tablist" aria-label="Engine views">
+        <button type="button" class="tb-tab" role="tab" data-active="true" data-target="adaptive-panel" aria-controls="adaptive-panel"><span class="num">01</span>Adaptive engine<span class="tb-progress"><span class="fill"></span></span></button>
+        <button type="button" class="tb-tab" role="tab" data-active="false" data-target="nutrition-panel" aria-controls="nutrition-panel"><span class="num">02</span>Nutrition<span class="tb-progress"><span class="fill"></span></span></button>
+        <button type="button" class="tb-tab" role="tab" data-active="false" data-target="body-panel" aria-controls="body-panel"><span class="num">03</span>Body &amp; bloodwork<span class="tb-progress"><span class="fill"></span></span></button>
+      </div>
+    </div>
+
+    <div class="tabpanel is-active" id="adaptive-panel" data-tab-id="adaptive" data-screen-label="05a Adaptive engine" role="tabpanel">
+      <div class="feature-row">
       <div class="feature-copy">
-        <span class="eyebrow cat-recovery">Protocols</span>
-        <h2 class="h-section">Every vial. Every dose. Every cycle. <span class="italic">Tracked.</span></h2>
-        <p class="lede">Add a vial in 30 seconds. Epti handles the reconstitution math, calculates units to draw per dose, tracks remaining volume, warns before you run out, and logs every injection with site rotation and reminders.</p>
+        <span class="eyebrow cat-activity">Adaptive engine</span>
+        <h2 class="h-section">A program that <span class="italic">rewrites itself</span> around you.</h2>
+        <p class="lede">Every morning, Epti reads last night's recovery, your active stack, and what's on the board — then writes a Daily Brief in plain English explaining exactly what's changing today and why. Tap to accept the adjustments, or skip what doesn't fit.</p>
 
         <ul class="subcaps">
-          <li><span class="num">01</span><span>Visual syringe diagram showing exactly how many units to draw</span></li>
-          <li><span class="num">02</span><span>Smart reminders with "DUE IN 15 MIN" status indicators</span></li>
-          <li><span class="num">03</span><span>Auto site rotation map (subq + IM)</span></li>
-          <li><span class="num">04</span><span>Cost-per-dose and cost-per-cycle tracking</span></li>
-          <li><span class="num">05</span><span>Cycle library: active, past, and archived protocols in one editorial timeline</span></li>
+          <li><span class="num">01</span><span><strong>Adjustments you can accept, skip, or modify.</strong> Volume, calories, water, and bedtime suggestions arrive as recommendations, not prescriptions — one tap to apply, one tap to ignore, never imposed without your sign-off.</span></li>
+          <li><span class="num">02</span><span><strong>Macros and training load that match your phase.</strong> Whether you're in a fat-loss block, recomp, gaining phase, or maintenance, Epti adjusts protein floor, calorie target, and training volume to match what you're actually trying to do this cycle.</span></li>
+          <li><span class="num">03</span><span><strong>Strength tracked against your protocol.</strong> Every PR plotted against the cycle that produced it, alongside sleep, bodyweight, and HRV — so you can see exactly which protocols built strength and which just made the scale move.</span></li>
+          <li><span class="num">04</span><span><strong>Drift detection before you waste a cycle.</strong> If your weight, strength, or biomarkers stop responding the way your protocol predicts, Epti flags the divergence early — so you can adjust mid-cycle instead of finding out at week 12 that nothing worked.</span></li>
         </ul>
       </div>
 
-      <!-- Phone: Protocol detail (real screenshot) -->
+      <!-- Phone: Daily Brief (real screenshot) -->
       <div class="feature-phone protocol-phone">
         <div class="phone-real lg">
           <div class="phone-real-screen">
@@ -1576,274 +3347,418 @@
                 <svg class="ico-battery" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5"/><rect x="2" y="2" width="18" height="8" rx="1.2" fill="currentColor"/><rect x="22.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>
               </span>
             </div>
-            <img src="epti-protocol-detail.png" alt="Protocol detail: Recomp Finish + Skin Support — Retatrutide bottle showing 1.36 mg current level, 90-day medication chart, stats" loading="lazy" />
+            <img src="epti-adaptive-brief.png" alt="Daily Brief: Recovery's tapping the brakes — Leg Day at half today. AI narrative explaining HRV, sleep, and stack context, plus a Today's Adjustments task list with Apply All / Skip All actions" loading="lazy" />
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+    </div>
 
-<!-- ====================== FEATURE 3 — INSIGHTS ====================== -->
-<section class="section" data-screen-label="06 Insights">
-  <div class="wrap">
-    <div class="feature-row">
+    <div class="tabpanel" id="nutrition-panel" data-tab-id="nutrition" data-screen-label="05b Nutrition" role="tabpanel">
+      <div class="feature-row reverse">
       <div class="feature-copy">
-        <span class="eyebrow cat-heart">Insights</span>
-        <h2 class="h-section">Watch your biomarkers <span class="italic">respond</span> to your protocol.</h2>
-        <p class="lede">Upload labs or sync Apple Health. Epti overlays bloodwork against your protocol timeline so you can finally see what's working — testosterone, IGF-1, lipids, inflammatory markers, glucose, and more.</p>
+        <span class="eyebrow cat-activity">Nutrition</span>
+        <h2 class="h-section">Snap it. Scan it. Speak it. <span class="italic">Logged.</span></h2>
+        <p class="lede">Four ways to capture a meal, none of them painful. Photograph the plate, scan a barcode, describe what you ate in plain English, or tap a saved favorite. Epti reads the calories and macros, then nets them against today's training burn for a clean running delta.</p>
 
         <ul class="subcaps">
-          <li><span class="num">01</span><span>Auto-parse common lab PDFs</span></li>
-          <li><span class="num">02</span><span>Side-by-side comparison across cycles</span></li>
-          <li><span class="num">03</span><span>Apple Health & wearable sync (HRV, sleep, RHR, weight)</span></li>
-          <li><span class="num">04</span><span>Biomarker anomaly alerts</span></li>
-          <li><span class="num">05</span><span>Beautiful trend charts with protocol overlays</span></li>
+          <li><span class="num">01</span><span><strong>Logging that doesn't get in the way of eating.</strong> Snap a photo, scan a barcode, type what you ate, or speak it — Epti picks the method that works for the meal and gets out of the way.</span></li>
+          <li><span class="num">02</span><span><strong>Restaurant and packaged food, solved.</strong> Barcode and restaurant QR scanning for chain meals and packaged food, with macros that actually match the label.</span></li>
+          <li><span class="num">03</span><span><strong>Built for what we actually eat.</strong> Small meals, partial portions, and "I only had half of it" — text and voice logging work better than photo recognition when the meal is two eggs and half a piece of toast.</span></li>
+          <li><span class="num">04</span><span><strong>One-tap repeats for the meals you eat every day.</strong> Save your three breakfasts, four lunches, and rotation of dinners — log a full day in under 30 seconds once your patterns are in.</span></li>
+          <li><span class="num">05</span><span><strong>Calorie targets that respect your peptide phase.</strong> Fuel in minus training out, with protein floors and calorie targets adjusted for your phase — so you don't accidentally under-eat through a loading week and lose the muscle you're trying to keep.</span></li>
         </ul>
       </div>
 
-      <!-- Phone: Bloodwork -->
+      <!-- Phone: Daily Intake (real screenshot) -->
+      <div class="feature-phone protocol-phone">
+        <div class="phone-real lg">
+          <div class="phone-real-screen">
+            <div class="pr-statusbar">
+              <span class="pr-time">9:41</span>
+              <span class="pr-island" aria-hidden="true"></span>
+              <span class="pr-icons" aria-hidden="true">
+                <svg class="ico-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx="0.5"/><rect x="5" y="6" width="3" height="6" rx="0.5"/><rect x="10" y="3" width="3" height="9" rx="0.5"/><rect x="15" y="0" width="3" height="12" rx="0.5"/></svg>
+                <svg class="ico-wifi" viewBox="0 0 16 12"><path d="M8 0a13.4 13.4 0 0 1 8 3l-2 2a10.5 10.5 0 0 0-12 0L0 3a13.4 13.4 0 0 1 8-3Zm0 5a8.4 8.4 0 0 1 5 1.8L11 8.8a5.4 5.4 0 0 0-6 0L3 6.8A8.4 8.4 0 0 1 8 5Zm0 4.7c.9 0 1.7.3 2.3.9L8 12 5.7 9.7a3.4 3.4 0 0 1 2.3-.9Z"/></svg>
+                <svg class="ico-battery" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="0.8"><rect x="0.5" y="0.5" width="21" height="11" rx="2.5"/><rect x="2" y="2" width="18" height="8" rx="1.2" fill="currentColor"/><rect x="22.5" y="3.5" width="1.5" height="5" rx="0.5" fill="currentColor" stroke="none"/></svg>
+              </span>
+            </div>
+            <img src="epti-nutrition.png" alt="Epti Daily Intake screen: 580 of 2,200 kcal ring, protein/carbs/fat macro bars, and Today's Read AI insight" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="tabpanel" id="body-panel" data-tab-id="body" data-screen-label="05c Body & bloodwork" role="tabpanel">
+      <div class="feature-row">
+      <div class="feature-copy">
+        <span class="eyebrow cat-heart">Body &amp; bloodwork</span>
+        <h2 class="h-section">The scale <span class="italic">and</span> the bloodwork — finally in one place.</h2>
+        <p class="lede">Track body composition and biomarkers side-by-side. Watch weight, BMI, and body-fat trend against testosterone, IGF-1, A1C, lipids, and inflammation — every metric overlaid on the protocol that drove it.</p>
+
+        <ul class="subcaps">
+          <li><span class="num">01</span><span><strong>Daily weigh-ins, weekly truth.</strong> Daily weigh-ins with weekly trend smoothing — see whether you're actually on pace, not just whether yesterday was up or down.</span></li>
+          <li><span class="num">02</span><span><strong>Wearable data, automatically.</strong> HRV, sleep, RHR, and activity sync from Apple Health, Whoop, Oura, and Garmin — the inputs your adaptive engine actually needs, without you logging them.</span></li>
+          <li><span class="num">03</span><span><strong>Lab results that compound over time.</strong> Upload a lab PDF or paste values manually — Epti normalizes biomarker names across Quest, LabCorp, and private labs so a panel from 2024 lines up with one from this morning.</span></li>
+          <li><span class="num">04</span><span><strong>Alerts in plain English, not lab jargon.</strong> Out-of-range and anomaly alerts written like a clinician would explain them — "your ALT is up 40% since starting Retatrutide; here's what that usually means, and when to talk to your doctor."</span></li>
+          <li><span class="num">05</span><span><strong>Cycle-over-cycle comparison.</strong> Compare any two cycles side-by-side and see exactly which biomarkers and metrics moved, by how much, and whether the protocol actually did what it was supposed to.</span></li>
+        </ul>
+      </div>
+
+      <!-- Composition + Biomarkers swap (no phone bezel) -->
       <div class="feature-phone">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <div class="app">
-              <div class="phone-statusbar">
-                <span>9:41</span>
-                <div class="icons">
-                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7h2v6H1zM5 5h2v8H5zM9 3h2v10H9zM13 1h2v12h-2z"/></svg>
-                  <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5"/><rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor"/></svg>
-                </div>
-              </div>
+        <div class="bx-frame" data-tab="composition" id="bxFrame">
+          <div class="bx-scan" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 8V5a2 2 0 0 1 2-2h3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/>
+              <path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M21 16v3a2 2 0 0 1-2 2h-3"/>
+              <circle cx="12" cy="12" r="3.2"/>
+            </svg>
+          </div>
 
-              <div class="app-header">
-                <div>
-                  <div class="greeting">BIOMARKERS · 90 DAYS</div>
-                  <div class="name">IGF-1</div>
-                </div>
-                <div>
-                  <div style="font-size:18px;font-weight:500;letter-spacing:-0.02em;color:var(--accent);text-align:right;">+30%</div>
-                  <div class="label-mono" style="color:var(--text-3);text-align:right;margin-top:2px;">VS CYCLE 1</div>
-                </div>
-              </div>
+          <div class="bx-eyebrow"><span>COMPOSITION</span><span class="sep">—</span><span>VOL. 01</span></div>
+          <h3 class="bx-headline">Maintain.</h3>
+          <div class="bx-subline">Maintenance calories</div>
 
-              <div class="scroll">
-                <div class="app-card chart-card">
-                  <div class="app-row" style="margin-bottom:6px;">
-                    <span style="font-family:var(--mono);font-size:10.5px;color:var(--text);">218 <span style="color:var(--text-3);">ng/mL</span></span>
-                    <span class="tag accent">CYCLE 2 · ACTIVE</span>
-                  </div>
-                  <div class="chart">
-                    <div class="chart-grid"></div>
-                    <div class="overlay-band" style="left:38%;right:8%;"></div>
-                    <svg viewBox="0 0 200 130" preserveAspectRatio="none" style="position:absolute;inset:0;">
-                      <!-- Baseline (teal) -->
-                      <path d="M0,90 C20,88 40,92 60,85 C80,78 100,82 120,80 C140,78 160,75 200,72" fill="none" stroke="oklch(0.78 0.13 195)" stroke-width="1.5" opacity="0.6" stroke-dasharray="3,3"/>
-                      <!-- Actual (accent) -->
-                      <path d="M0,95 C18,90 38,88 58,82 C78,76 95,72 110,55 C130,42 150,30 175,20 C188,15 195,12 200,10"
-                            fill="none" stroke="oklch(0.93 0.2 135)" stroke-width="2"/>
-                      <!-- Marker dot -->
-                      <circle cx="170" cy="22" r="3.5" fill="oklch(0.93 0.2 135)"/>
-                      <circle cx="170" cy="22" r="8" fill="oklch(0.93 0.2 135)" opacity="0.2"/>
+          <div class="bx-stats">
+            <div class="bx-stat"><div class="l">Start</div><div class="v">132.6<span class="u">lbs</span></div></div>
+            <div class="bx-stat"><div class="l">Now</div><div class="v">131.1<span class="u">lbs</span></div></div>
+            <div class="bx-stat goal"><div class="l">Goal</div><div class="v">130.0<span class="u">lbs</span></div></div>
+          </div>
+
+          <div class="bx-tabs" role="tablist">
+            <button type="button" role="tab" data-active="true" data-target="composition" aria-label="Composition">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.4"/><path d="M9 21v-6h-2l1.5-5.5a3 3 0 0 1 5.9 0L16 15h-2v6"/></svg>
+              Composition
+            </button>
+            <button type="button" role="tab" data-active="false" data-target="biomarkers" aria-label="Biomarkers">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5c-3 4-6 7.4-6 11a6 6 0 0 0 12 0c0-3.6-3-7-6-11Z"/></svg>
+              Biomarkers
+            </button>
+          </div>
+
+          <div class="bx-stage">
+            <div class="bx-flip">
+              <!-- COMPOSITION FACE -->
+              <div class="bx-face front">
+                <div class="bx-progress">
+                  <div class="bx-ring" aria-hidden="true">
+                    <svg viewBox="0 0 100 100">
+                      <circle class="track" cx="50" cy="50" r="44"/>
+                      <circle class="bar" cx="50" cy="50" r="44" stroke-dasharray="276.46" stroke-dashoffset="118.88"/>
                     </svg>
-                  </div>
-                  <div class="chart-legend">
-                    <span>IGF-1 actual</span>
-                    <span class="b">Baseline</span>
-                  </div>
-                </div>
-
-                <div class="app-card" style="margin-top:10px;">
-                  <div class="label-mono" style="color:var(--text-3)">PROTOCOL OVERLAY</div>
-                  <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px;">
-                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;">
-                      <span style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--accent)"></span>BPC-157 · 250mcg</span>
-                      <span style="font-family:var(--mono);color:var(--text-3);font-size:10px;">DAY 1—30</span>
+                    <div style="text-align:center;">
+                      <div class="num">57</div>
+                      <div class="lbl">PERCENT</div>
                     </div>
-                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;">
-                      <span style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--teal)"></span>Ipamorelin · 200mcg</span>
-                      <span style="font-family:var(--mono);color:var(--text-3);font-size:10px;">DAY 14—60</span>
-                    </div>
-                    <div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;">
-                      <span style="display:flex;align-items:center;gap:8px;"><span style="width:7px;height:7px;border-radius:50%;background:var(--warn)"></span>Lab draw</span>
-                      <span style="font-family:var(--mono);color:var(--text-3);font-size:10px;">DAY 30, 60, 90</span>
+                  </div>
+                  <div class="right">
+                    <div class="label-mono">PROGRESS</div>
+                    <div class="togo">1.1 lbs to go</div>
+                    <div class="pace">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7L7 17M7 7v10M7 17h10"/></svg>
+                      0.7 lbs this week
                     </div>
                   </div>
                 </div>
 
-                <div class="app-card" style="margin-top:10px;background:var(--accent-dim);border-color:var(--accent-line);">
-                  <div style="display:flex;gap:10px;align-items:flex-start;">
-                    <div style="font-family:var(--mono);font-size:9.5px;color:var(--accent);background:var(--bg);border:1px solid var(--accent-line);border-radius:4px;padding:2px 6px;letter-spacing:0.08em;">INSIGHT</div>
-                    <div style="font-size:12px;color:var(--text);line-height:1.4;">Your IGF-1 climbed 30% faster on this cycle than cycle 1. Sleep avg held at 7h 12m.</div>
+                <div class="bx-meta">
+                  <div class="bx-meta-card">
+                    <div class="bx-mini-ring" aria-hidden="true">
+                      <svg viewBox="0 0 36 36">
+                        <circle class="t" cx="18" cy="18" r="15"/>
+                        <circle class="b" cx="18" cy="18" r="15" stroke-dasharray="94.25" stroke-dashoffset="22"/>
+                      </svg>
+                      <span>20.6</span>
+                    </div>
+                    <div>
+                      <div class="k">BMI</div>
+                      <div class="v">Normal</div>
+                    </div>
+                  </div>
+                  <div class="bx-meta-card">
+                    <div class="icn" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 7L7 17M7 7v10M7 17h10"/></svg>
+                    </div>
+                    <div>
+                      <div class="k">−0.7 lbs</div>
+                      <div class="v mute">This week</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="bx-chart-card">
+                  <div class="bx-chart-head">
+                    <div class="ttl"><span class="d"></span>Weight trend</div>
+                    <div class="rng" aria-hidden="true">
+                      <span>1W</span><span class="on">30D</span><span>90D</span><span>1Y</span>
+                    </div>
+                  </div>
+                  <div class="bx-chart">
+                    <div class="grid"></div>
+                    <svg viewBox="0 0 300 110" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="bxAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stop-color="#15c896" stop-opacity="0.28"/>
+                          <stop offset="100%" stop-color="#15c896" stop-opacity="0"/>
+                        </linearGradient>
+                      </defs>
+                      <!-- area -->
+                      <path d="M0,18 C20,16 35,28 55,24 C75,20 92,34 110,30 C128,26 145,42 165,38 C185,34 200,52 220,58 C240,64 260,72 300,78 L300,110 L0,110 Z" fill="url(#bxAreaGrad)"/>
+                      <!-- line -->
+                      <path d="M0,18 C20,16 35,28 55,24 C75,20 92,34 110,30 C128,26 145,42 165,38 C185,34 200,52 220,58 C240,64 260,72 300,78" fill="none" stroke="#15c896" stroke-width="2" stroke-linecap="round"/>
+                      <!-- daily dots -->
+                      <g fill="#fff" stroke="#15c896" stroke-width="1.5">
+                        <circle cx="0" cy="18" r="1.8"/><circle cx="55" cy="24" r="1.8"/><circle cx="110" cy="30" r="1.8"/><circle cx="165" cy="38" r="1.8"/><circle cx="220" cy="58" r="1.8"/>
+                      </g>
+                      <!-- latest dot -->
+                      <circle cx="300" cy="78" r="4" fill="#15c896"/>
+                      <circle cx="300" cy="78" r="9" fill="#15c896" opacity="0.18"/>
+                    </svg>
+                    <div class="goal-line" aria-hidden="true"></div>
+                    <div class="goal-tag">GOAL · 130.0</div>
+                  </div>
+                  <div class="bx-chart-foot">
+                    <span>APR 17</span><span>APR 24</span><span>MAY 1</span><span>MAY 8</span><span>TODAY</span>
+                  </div>
+                </div>
+
+                <div class="bx-insight">
+                  <span class="tag">Coach E</span>
+                  <div class="body">You're tracking <strong>0.1 lb/wk under</strong> maintenance. At this pace you'll hit 130.0 lbs in <strong>12 days</strong> — sleep avg held at 7h 04m this week.</div>
+                </div>
+
+                <div class="bx-foot-row">
+                  <div class="bx-goal-date">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/><circle cx="17" cy="16" r="1.3" fill="currentColor"/></svg>
+                    May 27, 2026
+                  </div>
+                  <div class="bx-avgwk" style="margin:0;">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v14a2 2 0 0 0 2 2h14"/><path d="M8 16l4-4 3 3 5-6"/></svg>
+                    Avg. weekly: −0.1 lbs
                   </div>
                 </div>
               </div>
 
-              <div class="tabbar">
-                <div class="tab"><span style="font-size:14px;">+</span><span>UPLOAD</span></div>
-                <div class="tab active"><span style="font-size:14px;color:var(--accent)">≣</span><span>MARKERS</span></div>
-                <div class="tab"><span style="font-size:14px;">⇄</span><span>COMPARE</span></div>
+              <!-- BIOMARKERS FACE -->
+              <div class="bx-face back">
+                <div class="bx-log">
+                  <span class="plus">+</span>
+                  <span class="label">Log a panel</span>
+                  <span class="arrow">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </span>
+                </div>
+
+                <div class="bx-filters">
+                  <span class="chip active">All</span>
+                  <span class="chip">Hormones</span>
+                  <span class="chip">Metabolic</span>
+                  <span class="chip">Lipids</span>
+                  <span class="chip">Thyroid</span>
+                  <span class="chip">Inflammation</span>
+                </div>
+
+                <div class="bx-status">
+                  <span class="pill"><span class="d"></span>1 out of range</span>
+                  <span class="bx-dots" aria-hidden="true">
+                    <span class="dot blue"></span><span class="dot"></span><span class="dot"></span><span class="dot amber"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                  </span>
+                </div>
+
+                <div class="bx-grid">
+                  <!-- Testosterone Free (low — blue) -->
+                  <div class="bm-card" style="--c:#5b8def;background:#f1f6ff;">
+                    <div class="top"><span class="name">Testosterone (Free)</span><span class="dot"></span></div>
+                    <div class="val">7.6<span class="u">pg/mL</span></div>
+                    <div class="spark">
+                      <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+                        <path d="M0,22 C20,21 35,20 55,17 C72,15 85,12 100,9" fill="none" stroke="#5b8def" stroke-width="1.6" stroke-linecap="round"/>
+                        <circle cx="100" cy="9" r="2" fill="#5b8def"/>
+                      </svg>
+                    </div>
+                    <div class="foot"><span class="cat">Hormones</span><span class="delta">↓ 0.6 vs last</span></div>
+                  </div>
+
+                  <!-- A1C (amber — out of range) -->
+                  <div class="bm-card" style="--c:#f59e0b;">
+                    <div class="top"><span class="name">A1C</span><span class="dot" style="background:#29c46e;box-shadow:0 0 0 4px rgba(41,196,110,0.18);"></span></div>
+                    <div class="val" style="color:#29c46e;">4.9<span class="u">%</span></div>
+                    <div class="spark">
+                      <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+                        <path d="M0,14 C25,14 50,15 75,14 C85,13.7 92,13.5 100,13" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-linecap="round"/>
+                        <circle cx="100" cy="13" r="2" fill="#29c46e"/>
+                      </svg>
+                    </div>
+                    <div class="foot"><span class="cat">Metabolic</span><span class="delta">↓ 0.1 vs last</span></div>
+                  </div>
+
+                  <!-- Fasting Glucose (green) -->
+                  <div class="bm-card" style="--c:#29c46e;">
+                    <div class="top"><span class="name">Fasting Glucose</span><span class="dot" style="background:#29c46e;box-shadow:0 0 0 5px rgba(41,196,110,0.22);"></span></div>
+                    <div class="val" style="color:#29c46e;">82<span class="u">mg/dL</span></div>
+                    <div class="spark">
+                      <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+                        <path d="M0,12 C20,13 40,14 60,15 C80,16 90,16 100,16.5" fill="none" stroke="#f59e0b" stroke-width="1.6" stroke-linecap="round"/>
+                        <circle cx="100" cy="16.5" r="2" fill="#29c46e"/>
+                      </svg>
+                    </div>
+                    <div class="foot"><span class="cat" style="color:#b86b1a;">Metabolic</span><span class="delta">↓ 2 vs last</span></div>
+                  </div>
+
+                  <!-- HDL (red) -->
+                  <div class="bm-card" style="--c:#e0524d;">
+                    <div class="top"><span class="name">HDL</span><span class="dot" style="background:#29c46e;box-shadow:0 0 0 4px rgba(41,196,110,0.18);"></span></div>
+                    <div class="val" style="color:#29c46e;">76<span class="u">mg/dL</span></div>
+                    <div class="spark">
+                      <svg viewBox="0 0 100 28" preserveAspectRatio="none">
+                        <path d="M0,17 C25,16 50,15 75,13 C85,12 92,11 100,10" fill="none" stroke="#e0524d" stroke-width="1.6" stroke-linecap="round"/>
+                        <circle cx="100" cy="10" r="2" fill="#29c46e"/>
+                      </svg>
+                    </div>
+                    <div class="foot"><span class="cat" style="color:#c84a44;">Lipids</span><span class="delta">↑ 4 vs last</span></div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      <script>
+        (function () {
+          var frame = document.getElementById('bxFrame');
+          if (!frame) return;
+          var buttons = frame.querySelectorAll('.bx-tabs button');
+          buttons.forEach(function (b) {
+            b.addEventListener('click', function () {
+              var target = b.getAttribute('data-target');
+              frame.setAttribute('data-tab', target);
+              buttons.forEach(function (x) { x.setAttribute('data-active', x === b ? 'true' : 'false'); });
+            });
+          });
+        })();
+      </script>
+    </div>
     </div>
   </div>
 </section>
 
-<!-- ====================== COACH E ====================== -->
-<section class="section" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);" id="coach" data-screen-label="07 Coach E">
-  <div class="wrap">
-    <div class="coach-grid">
-      <!-- Phone: Coach E chat -->
-      <div class="feature-phone">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-notch"></div>
-            <div class="app">
-              <div class="phone-statusbar">
-                <span>9:41</span>
-                <div class="icons">
-                  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1 7h2v6H1zM5 5h2v8H5zM9 3h2v10H9zM13 1h2v12h-2z"/></svg>
-                  <svg viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1"><rect x="0.5" y="0.5" width="19" height="11" rx="2.5"/><rect x="2" y="2" width="14" height="8" rx="1" fill="currentColor"/></svg>
-                </div>
-              </div>
+<!-- Tabbed-block controller (Stack + Engine) — click + auto-advance + progress -->
+<script>
+(function() {
+  const DURATION = 8000; // ms per tab
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-              <div class="app-header" style="padding-bottom:14px;border-bottom:1px solid var(--line);margin:0 0 4px;padding-left:18px;padding-right:18px;">
-                <div style="display:flex;align-items:center;gap:10px;">
-                  <div style="width:36px;height:36px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-weight:600;font-family:var(--sans);font-size:16px;">E</div>
-                  <div>
-                    <div style="font-size:14px;font-weight:500;">Coach E</div>
-                    <div class="label-mono" style="color:var(--accent);margin-top:2px;display:flex;align-items:center;gap:5px;"><span style="width:6px;height:6px;background:var(--accent);border-radius:50%;"></span>ONLINE · KNOWS YOUR STACK</div>
-                  </div>
-                </div>
-                <div style="color:var(--text-3);font-size:18px;">⋯</div>
-              </div>
+  document.querySelectorAll('.tabbed-block').forEach(block => {
+    const tabs = Array.from(block.querySelectorAll('.tb-tab'));
+    const panels = Array.from(block.querySelectorAll(':scope > .wrap > .tabpanel'));
+    if (!tabs.length) return;
 
-              <div class="scroll">
-                <div class="chat-msg user">
-                  <div class="bubble">Is it safe to stack BPC-157 with my current cut?</div>
-                </div>
-                <div class="chat-msg">
-                  <div class="bubble">
-                    Yes — with your protein at <span class="cite">182g</span> and BPC dose of <span class="cite">250mcg</span>, recovery markers look strong. Watch your CRP, which trended up <span class="cite">8%</span> last cycle.
-                  </div>
-                </div>
+    let activeIdx = tabs.findIndex(t => t.getAttribute('data-active') === 'true');
+    if (activeIdx < 0) activeIdx = 0;
 
-                <div class="chat-msg user">
-                  <div class="bubble">Why did my bench stall this week?</div>
-                </div>
-                <div class="chat-msg">
-                  <div class="bubble">
-                    Three signals: sleep avg dropped to <span class="cite">5h 50m</span>, you missed <span class="cite">2 BPC doses</span> on Mon/Tue, and pressing volume was <span class="cite">+18%</span> vs last week. I'd deload bench Thursday.
-                  </div>
-                </div>
+    let raf = null;
+    let startTs = 0;
+    let elapsed = 0;
+    let inView = false;
+    let paused = false;
+    let userInteracted = false; // stop auto-advance once user clicks
 
-                <div class="app-card" style="margin-top:8px;padding:10px 12px;">
-                  <div class="label-mono" style="color:var(--text-3);margin-bottom:8px;">SUGGESTED FOLLOW-UPS</div>
-                  <div style="display:flex;flex-direction:column;gap:6px;">
-                    <div style="font-size:12px;padding:6px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;">Plan my deload week</div>
-                    <div style="font-size:12px;padding:6px 10px;background:var(--surface);border:1px solid var(--line);border-radius:8px;">What's depleting my sleep?</div>
-                  </div>
-                </div>
-              </div>
+    function setActive(idx, opts) {
+      opts = opts || {};
+      activeIdx = idx;
+      tabs.forEach((t, i) => {
+        t.setAttribute('data-active', i === idx ? 'true' : 'false');
+        const fill = t.querySelector('.tb-progress .fill');
+        if (fill) fill.style.width = i === idx ? '0%' : '0%';
+      });
+      panels.forEach((p, i) => p.classList.toggle('is-active', i === idx));
+      elapsed = 0;
+      startTs = 0;
+      if (opts.fromUser) {
+        userInteracted = true;
+        stopRaf();
+        // Clear all fills
+        tabs.forEach(t => {
+          const f = t.querySelector('.tb-progress .fill');
+          if (f) f.style.width = '0%';
+        });
+      }
+    }
 
-              <div style="padding:10px 14px 18px;border-top:1px solid var(--line);">
-                <div style="display:flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:14px;padding:10px 14px;">
-                  <span style="color:var(--text-3);font-size:12px;flex:1;">Ask Coach E…</span>
-                  <div style="width:24px;height:24px;background:var(--accent);border-radius:50%;display:grid;place-items:center;color:var(--accent-ink);font-size:11px;">↑</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    function tick(ts) {
+      raf = null;
+      if (!inView || paused || userInteracted || reduced) return;
+      if (!startTs) startTs = ts;
+      const delta = ts - startTs;
+      const localElapsed = elapsed + delta;
+      const pct = Math.min(100, (localElapsed / DURATION) * 100);
+      const fill = tabs[activeIdx].querySelector('.tb-progress .fill');
+      if (fill) fill.style.width = pct + '%';
+      if (localElapsed >= DURATION) {
+        const next = (activeIdx + 1) % tabs.length;
+        setActive(next);
+        startTs = 0;
+        elapsed = 0;
+      }
+      raf = requestAnimationFrame(tick);
+    }
 
-      <div>
-        <span class="eyebrow accent">Coach E · AI</span>
-        <h2 class="h-section" style="margin:18px 0 24px;">Peptide, training, and recovery questions — answered <span class="italic">instantly,</span> in context.</h2>
-        <p class="lede">Coach E reads your protocol stack, training history, sleep, and bloodwork before it answers. It's not a generic chatbot — it's a coach that already knows what you ran last cycle.</p>
+    function startRaf() {
+      if (raf || userInteracted || reduced) return;
+      startTs = 0;
+      raf = requestAnimationFrame(tick);
+    }
+    function stopRaf() {
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      // freeze elapsed so resume picks up where we left off
+      if (startTs) {
+        const now = performance.now();
+        elapsed += (now - startTs);
+        startTs = 0;
+      }
+    }
 
-        <div class="coach-cards" style="margin-top:36px;">
-          <div class="coach-card">
-            <div class="q">"Is it safe to stack BPC-157 with my current cut?"</div>
-            <div class="a">Yes — contextual answer referencing your <span class="cite">protein 182g</span>, <span class="cite">250mcg BPC</span>, and last <span class="cite">CRP +8%</span>.</div>
-          </div>
-          <div class="coach-card">
-            <div class="q">"Why did my bench stall this week?"</div>
-            <div class="a">Sleep dropped to <span class="cite">5h 50m</span>, you missed <span class="cite">2 doses</span>, and pressing volume was <span class="cite">+18%</span>. Deload Thursday.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+    // Click on tab (entire button area)
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => setActive(i, { fromUser: true }));
+    });
 
-<!-- ====================== PRICING (removed — replaced by launch-day code messaging in CTAs) ====================== -->
-<!--
-<section class="section" id="pricing" data-screen-label="10 Pricing">
-  <div class="wrap">
-    <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;">
-      <span class="eyebrow accent">Founding member pricing</span>
-      <h2 class="h-section" style="max-width:18ch;">Locked in for <span class="italic">life,</span> while the waitlist is open.</h2>
-      <p class="lede" style="text-align:center;">Reserve your spot today and we'll honor founding rates the day Epti goes live. 7-day free trial when you're invited in.</p>
-    </div>
+    // Pause on hover anywhere inside the block
+    block.addEventListener('mouseenter', () => { paused = true; stopRaf(); });
+    block.addEventListener('mouseleave', () => { paused = false; if (inView && !userInteracted) startRaf(); });
 
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="plan">Monthly</div>
-        <div class="price">
-          <span class="amt">$14.99</span>
-          <span class="per">/ month</span>
-        </div>
-        <ul>
-          <li>Adaptive engine + unlimited protocols</li>
-          <li>Coach E AI assistant</li>
-          <li>Social circles & protocol sharing</li>
-          <li>Bloodwork overlays</li>
-          <li>Apple Health & wearable sync</li>
-        </ul>
-        <form class="waitlist-form" data-waitlist novalidate style="margin-top:auto;">
-          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
-          <button type="submit">Reserve <span aria-hidden="true">→</span></button>
-        </form>
-      </div>
+    // Run only while in view
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          inView = e.isIntersecting && e.intersectionRatio > 0.25;
+          if (inView && !paused && !userInteracted) startRaf();
+          else stopRaf();
+        });
+      }, { threshold: [0, 0.25, 0.6] });
+      io.observe(block);
+    } else {
+      inView = true;
+      startRaf();
+    }
+  });
+})();
+</script>
 
-      <div class="price-card featured">
-        <div class="price-badge">Recommended</div>
-        <div class="plan">Yearly</div>
-        <div class="price">
-          <span class="amt">$89.99</span>
-          <span class="per">/ year</span>
-        </div>
-        <div class="save">Save 50% vs monthly · ~$7.50/mo</div>
-        <ul>
-          <li>Adaptive engine + unlimited protocols</li>
-          <li>Coach E AI assistant</li>
-          <li>Social circles & protocol sharing</li>
-          <li>Bloodwork overlays</li>
-          <li>Apple Health & wearable sync</li>
-          <li>Priority Coach E response</li>
-        </ul>
-        <form class="waitlist-form" data-waitlist novalidate style="margin-top:auto;">
-          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
-          <button type="submit">Reserve <span aria-hidden="true">→</span></button>
-        </form>
-      </div>
-    </div>
-  </div>
-</section>
--->
+
+
 
 <!-- ====================== SOCIAL PROOF ====================== -->
 <style>
 /* ---- Community: V-fan phone toggle (scoped) ---- */
 #community { padding-bottom: 0; }
 #community .community-showcase {
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: center;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: 24px;
 }
 @media (max-width: 980px) {
   #community .community-showcase {
@@ -1913,7 +3828,7 @@
 #community .community-fan {
   position: relative;
   width: 100%;
-  height: 760px;
+  height: 860px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1967,14 +3882,14 @@
 
 /* State A — Friends in front */
 #community[data-state="friends"] .cphone-friends {
-  transform: translateX(-30px) rotate(-3deg) scale(1);
+  transform: translateX(-110px) rotate(-4deg) scale(1.1);
   filter: none;
   opacity: 1;
   z-index: 5;
 }
 #community[data-state="friends"] .cphone-friends .cphone-tag { opacity: 1; }
 #community[data-state="friends"] .cphone-feed {
-  transform: translateX(140px) rotate(10deg) scale(0.86);
+  transform: translateX(260px) rotate(11deg) scale(0.92);
   filter: saturate(0.45) brightness(0.95);
   opacity: 0.58;
   z-index: 1;
@@ -1982,19 +3897,19 @@
 #community[data-state="friends"] .cphone-feed:hover {
   filter: saturate(0.85) brightness(1);
   opacity: 0.85;
-  transform: translateX(140px) rotate(10deg) scale(0.9);
+  transform: translateX(260px) rotate(11deg) scale(0.96);
 }
 
 /* State B — Feed in front */
 #community[data-state="feed"] .cphone-feed {
-  transform: translateX(30px) rotate(3deg) scale(1);
+  transform: translateX(110px) rotate(4deg) scale(1.1);
   filter: none;
   opacity: 1;
   z-index: 5;
 }
 #community[data-state="feed"] .cphone-feed .cphone-tag { opacity: 1; }
 #community[data-state="feed"] .cphone-friends {
-  transform: translateX(-140px) rotate(-10deg) scale(0.86);
+  transform: translateX(-260px) rotate(-11deg) scale(0.92);
   filter: saturate(0.45) brightness(0.95);
   opacity: 0.58;
   z-index: 1;
@@ -2002,7 +3917,7 @@
 #community[data-state="feed"] .cphone-friends:hover {
   filter: saturate(0.85) brightness(1);
   opacity: 0.85;
-  transform: translateX(-140px) rotate(-10deg) scale(0.9);
+  transform: translateX(-260px) rotate(-11deg) scale(0.96);
 }
 
 @media (max-width: 980px) {
@@ -2023,18 +3938,173 @@
 @media (prefers-reduced-motion: reduce) {
   #community .cphone, #community .cphone-tag, #community .community-quote { transition: none; animation: none; }
 }
+
+/* ---- Waitlist Signal panel (replaces fake quotes) ---- */
+.ws-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 22px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.ws-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+.ws-eye {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+.ws-eye .ws-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.ws-count {
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--text);
+}
+.ws-count span {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  font-weight: 400;
+  margin-left: 4px;
+}
+.ws-block {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ws-blabel {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.ws-bars {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.ws-bars li {
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.ws-bars .ws-pct {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.ws-bars .ws-bar {
+  height: 6px;
+  background: var(--surface-2);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+.ws-bars .ws-bar i {
+  display: block;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px;
+}
+.ws-bars li:nth-child(2) .ws-bar i { background: color-mix(in oklch, var(--accent) 78%, var(--text)); }
+.ws-bars li:nth-child(3) .ws-bar i { background: color-mix(in oklch, var(--accent) 58%, var(--text)); }
+.ws-bars li:nth-child(4) .ws-bar i { background: color-mix(in oklch, var(--accent) 38%, var(--text-3)); }
+.ws-bars li:nth-child(5) .ws-bar i { background: var(--text-3); }
+.ws-bars .ws-lbl {
+  font-size: 13.5px;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+}
+.ws-asks {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+.ws-asks li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--line);
+}
+.ws-asks li:last-child { border-bottom: none; }
+.ws-ask {
+  font-family: var(--serif);
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  color: var(--text);
+  line-height: 1.3;
+}
+.ws-n {
+  font-family: var(--mono);
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.ws-foot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.ws-flag {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--text-2);
+  font-weight: 500;
+}
+.ws-sep {
+  color: var(--text-4);
+  margin: 0 10px;
+  font-size: 11px;
+}
 </style>
 
-<section class="section" id="community" data-state="friends" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);" data-screen-label="10 Community">
+<section class="section" id="community" data-state="friends" style="background:var(--bg-1);border-top:1px solid var(--line);border-bottom:1px solid var(--line);" data-screen-label="11 Community">
   <div class="wrap">
     <div style="display:flex;flex-direction:column;gap:18px;max-width:780px;">
       <span class="eyebrow accent">Community</span>
       <!-- State-driven headline -->
-      <h2 class="h-section" data-state-show="friends">Closed circles. <span class="italic">Real signal.</span></h2>
-      <h2 class="h-section" data-state-show="feed">Real days. <span class="italic">Real notes.</span></h2>
+      <h2 class="h-section" data-state-show="friends">See what your <span class="italic">people</span> are running.</h2>
+      <h2 class="h-section" data-state-show="feed">A feed worth <span class="italic">scrolling.</span></h2>
 
-      <p class="lede" style="max-width:60ch;" data-state-show="friends">Join private groups built around how you actually train — recomp, hybrid, sleep &amp; recovery. Follow friends whose protocols match yours. Eight people in your circle, not eight hundred. Just the ones who get it.</p>
-      <p class="lede" style="max-width:60ch;" data-state-show="feed">Posts from athletes you follow — the days that went sideways and the ones that finally clicked. Filter by All, Following, or Tags. No engagement loops, no influencer slop.</p>
+      <p class="lede" style="max-width:60ch;" data-state-show="friends">Add friends to see their active stacks, this week's PRs, and the dose they ran this morning — all in one place. Tap a protocol to borrow it. Compare your week side-by-side. And when you want a bigger room, drop into public groups built around how you train, or spin up a private circle with the people you trust.</p>
+      <p class="lede" style="max-width:60ch;" data-state-show="feed">A timeline of real days from people on real protocols — the lifts, the labs, the bad sleep, the breakthroughs. Tap any post to see the stack behind it. No leaderboards, no engagement bait.</p>
 
       <!-- Toggle chips -->
       <div class="community-toggle" role="tablist" aria-label="Community views">
@@ -2088,59 +4158,7 @@
         </button>
       </div>
 
-      <div class="community-quotes">
-        <!-- Friends quotes -->
-        <div class="community-quote" data-state-show="friends">
-          <div class="qhead">
-            <div class="avatar"><img src="https://i.pravatar.cc/120?img=12" alt="" loading="lazy" /></div>
-            <div class="who"><strong>Devon R.</strong><span>Hybrid · lean mass cycle</span></div>
-          </div>
-          <div class="qtext">"I joined Recomp Lab and within a week three people had already swapped notes on the exact dosing schedule I was second-guessing. That's not a feed — that's a group chat with my labs in it."</div>
-          <span class="qtag">— In 2 groups</span>
-        </div>
-        <div class="community-quote" data-state-show="friends">
-          <div class="qhead">
-            <div class="avatar"><img src="https://i.pravatar.cc/120?img=47" alt="" loading="lazy" /></div>
-            <div class="who"><strong>Sasha M.</strong><span>Powerlifter · recomp</span></div>
-          </div>
-          <div class="qtext">"My coach and I share a private group. He sees my doses, lifts, and labs in real time — no screenshots, no spreadsheets. It's changed how we program."</div>
-          <span class="qtag">— Coaches with athletes</span>
-        </div>
-        <div class="community-quote" data-state-show="friends">
-          <div class="qhead">
-            <div class="avatar"><img src="https://i.pravatar.cc/120?img=33" alt="" loading="lazy" /></div>
-            <div class="who"><strong>Riley T.</strong><span>Recomp · @rileyt</span></div>
-          </div>
-          <div class="qtext">"My friends list is eight people, not eight hundred. I can see what they ate, how they slept, what they're cycling — and they can see mine. That's the whole point."</div>
-          <span class="qtag">— 8 friends</span>
-        </div>
-
-        <!-- Feed quotes -->
-        <div class="community-quote" data-state-show="feed">
-          <div class="qhead">
-            <div class="avatar"><img src="https://i.pravatar.cc/120?img=20" alt="" loading="lazy" /></div>
-            <div class="who"><strong>Ava C.</strong><span>@avalifts · powerbuilding</span></div>
-          </div>
-          <div class="qtext">"Posted 'squats moved like trash today but i hit them anyway.' Got four comments from people who'd been in the same place that week. That's the point — not pumps, not PRs. Just the showing-up."</div>
-          <span class="qtag">— 200+ posts</span>
-        </div>
-        <div class="community-quote" data-state-show="feed">
-          <div class="qhead">
-            <div class="avatar"><img src="https://i.pravatar.cc/120?img=33" alt="" loading="lazy" /></div>
-            <div class="who"><strong>Marcus D.</strong><span>Hybrid runner · zone-2 block</span></div>
-          </div>
-          <div class="qtext">"Following four hybrid athletes on similar protocols changed how I think about pacing. The feed's not a leaderboard — it's people thinking out loud about their actual training week."</div>
-          <span class="qtag">— Following 12</span>
-        </div>
-        <div class="community-quote" data-state-show="feed">
-          <div class="qhead">
-            <div class="avatar"><img src="https://i.pravatar.cc/120?img=51" alt="" loading="lazy" /></div>
-            <div class="who"><strong>Ethan W.</strong><span>@ethannew · strength</span></div>
-          </div>
-          <div class="qtext">"Filter by Following and the noise disappears. No strangers chasing engagement. Just the eight people I actually want to hear from, with the honest version of their week."</div>
-          <span class="qtag">— Filtered by Following</span>
-        </div>
-      </div>
+      <div class="community-quotes" style="display:none;"></div>
     </div>
   </div>
 </section>
@@ -2174,7 +4192,7 @@
 </script>
 
 <!-- ====================== FINAL CTA ====================== -->
-<section class="final-cta" data-screen-label="11 Final CTA">
+<section class="final-cta" id="join" data-screen-label="12 Join waitlist">
   <div class="wrap-narrow">
     <span class="eyebrow accent" style="justify-content:center;">Get early access</span>
     <h2 class="h-section">Ready to train like your protocol <span class="italic">depends on it?</span></h2>
@@ -2205,48 +4223,184 @@
   </div>
 </section>
 
-<!-- ====================== FOOTER ====================== -->
-<footer class="footer">
+<!-- ====================== PRICING (removed — replaced by launch-day code messaging in CTAs) ====================== -->
+<!--
+<section class="section" id="pricing" data-screen-label="10 Pricing">
   <div class="wrap">
-    <div class="footer-top">
-      <div>
-        <a class="brand" href="#" aria-label="epti" style="margin-bottom:18px;display:inline-flex;">
-          <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
-        </a>
-        <p style="max-width:34ch;line-height:1.55;">The only fitness platform built for the peptide community.</p>
-      </div>
-      <div>
-        <h5>Product</h5>
+    <div style="text-align:center;display:flex;flex-direction:column;align-items:center;gap:18px;">
+      <span class="eyebrow accent">Founding member pricing</span>
+      <h2 class="h-section" style="max-width:18ch;">Locked in for <span class="italic">life,</span> while the waitlist is open.</h2>
+      <p class="lede" style="text-align:center;">Reserve your spot today and we'll honor founding rates the day Epti goes live. 7-day free trial when you're invited in.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="plan">Monthly</div>
+        <div class="price">
+          <span class="amt">$14.99</span>
+          <span class="per">/ month</span>
+        </div>
         <ul>
-          <li><a href="#">Adaptive engine</a></li>
-          <li><a href="#">Protocols</a></li>
-          <li><a href="#">Coach E</a></li>
-          <li><a href="#">Insights</a></li>
+          <li>Adaptive engine + unlimited protocols</li>
+          <li>Coach E AI assistant</li>
+          <li>Social circles & protocol sharing</li>
+          <li>Bloodwork overlays</li>
+          <li>Apple Health & wearable sync</li>
         </ul>
+        <form class="waitlist-form" data-waitlist novalidate style="margin-top:auto;">
+          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+          <button type="submit">Reserve <span aria-hidden="true">→</span></button>
+        </form>
       </div>
-      <div>
-        <h5>Company</h5>
+
+      <div class="price-card featured">
+        <div class="price-badge">Recommended</div>
+        <div class="plan">Yearly</div>
+        <div class="price">
+          <span class="amt">$89.99</span>
+          <span class="per">/ year</span>
+        </div>
+        <div class="save">Save 50% vs monthly · ~$7.50/mo</div>
         <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-          <li><a href="#">Contact</a></li>
+          <li>Adaptive engine + unlimited protocols</li>
+          <li>Coach E AI assistant</li>
+          <li>Social circles & protocol sharing</li>
+          <li>Bloodwork overlays</li>
+          <li>Apple Health & wearable sync</li>
+          <li>Priority Coach E response</li>
         </ul>
-      </div>
-      <div>
-        <h5>Resources</h5>
-        <ul>
-          <li><a href="#">Help center</a></li>
-          <li><a href="#">Community</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Terms</a></li>
-          <li><a href="#">Medical disclaimer</a></li>
-        </ul>
+        <form class="waitlist-form" data-waitlist novalidate style="margin-top:auto;">
+          <input type="email" name="email" placeholder="you@email.com" required autocomplete="email" />
+          <button type="submit">Reserve <span aria-hidden="true">→</span></button>
+        </form>
       </div>
     </div>
-    <div class="footer-bottom">
+  </div>
+</section>
+-->
+
+<!-- ====================== FOOTER + DISCLAIMER ====================== -->
+<style>
+.disclaimer {
+  background: var(--bg-1);
+  border-top: 1px solid var(--line);
+  padding: 56px 0 40px;
+}
+.disclaimer .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, auto) minmax(0, 1fr);
+  gap: 32px 80px;
+  align-items: start;
+}
+.disclaimer-brand .tagline em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent-strong);
+}
+.disclaimer-brand {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.disclaimer-brand .tagline {
+  max-width: none;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.disclaimer-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  white-space: nowrap;
+}
+.disclaimer-label .mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--text-2);
+  background: var(--surface);
+}
+.disclaimer-body {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-2);
+  letter-spacing: -0.005em;
+  max-width: 88ch;
+  margin: 0;
+}
+.disclaimer-body b {
+  color: var(--text);
+  font-weight: 600;
+}
+.disclaimer-body + .disclaimer-body { margin-top: 10px; }
+.disclaimer-foot {
+  grid-column: 1 / -1;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+@media (max-width: 920px) {
+  .disclaimer .wrap {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+  .disclaimer-brand .tagline { white-space: normal; }
+}
+@media (max-width: 720px) {
+  .disclaimer .wrap { grid-template-columns: 1fr; gap: 22px; }
+  .disclaimer { padding: 40px 0 32px; }
+  .disclaimer-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
+}
+</style>
+<footer class="disclaimer" data-screen-label="13 Footer" aria-label="Footer with medical and safety disclaimer">
+  <div class="wrap">
+    <div class="disclaimer-brand">
+      <a class="brand" href="#" aria-label="epti" style="display:inline-flex;">
+        <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
+      </a>
+      <p class="tagline">The only fitness app <em>built</em> for the <em>peptide community</em>.</p>
+      <span class="disclaimer-label"><span class="mark">i</span>Important · please read</span>
+    </div>
+    <div>
+      <p class="disclaimer-body">
+        <b>Epti is a personal fitness, training, and self-tracking tool. It is not a medical device and does not provide medical advice, diagnosis, or treatment.</b> Information, calculations, protocol templates, and AI-generated suggestions shown in the app are for general informational and personal-tracking purposes only and are not a substitute for professional medical advice from a qualified physician, pharmacist, or other licensed healthcare provider.
+      </p>
+      <p class="disclaimer-body">
+        Always consult a licensed healthcare professional before starting, changing, or stopping any training program, nutrition plan, supplement, medication, or peptide protocol — including any compound logged or referenced inside Epti. Never disregard professional medical advice or delay seeking it because of something you read in this app or on this site. If you think you may have a medical emergency, call your local emergency number immediately.
+      </p>
+      <p class="disclaimer-body">
+        Epti does not sell, source, prescribe, or recommend the purchase of any medication, peptide, or controlled substance. Users are solely responsible for the legality of any substance they choose to track and for compliance with the laws of their jurisdiction and the rules of any sport, league, or anti-doping body they participate in.
+      </p>
+    </div>
+    <div class="disclaimer-foot">
       <span>© 2026 Epti, Inc.</span>
-      <span>Not medical advice · For research and personal tracking</span>
+      <span>Not medical advice · Consult your physician before any protocol</span>
     </div>
   </div>
 </footer>
@@ -2267,7 +4421,7 @@
   // serverless function you write yourself. Leave empty to stay in mock mode
   // (localStorage only — no email is sent anywhere).
   // ─────────────────────────────────────────────────────────────────────
-  const WAITLIST_ENDPOINT = "https://fyvhtfbyothjozfwjcod.supabase.co/functions/v1/epti-waitlist-signup";   // e.g. "https://formspree.io/f/abcd1234"
+  const WAITLIST_ENDPOINT = "";   // e.g. "https://formspree.io/f/abcd1234"
 
   const ICONS = {
     ios: '<svg viewBox="0 0 24 28" fill="currentColor"><path d="M17.05 14.4c.04 3.7 3.24 4.93 3.28 4.95-.03.09-.51 1.76-1.69 3.48-1.03 1.49-2.1 2.97-3.78 3-1.66.03-2.19-.99-4.09-.99-1.9 0-2.49.96-4.05 1.02-1.62.06-2.86-1.62-3.9-3.1C.71 19.74-.91 14.16 1.27 10.4c1.08-1.86 3.02-3.04 5.12-3.07 1.59-.03 3.1 1.07 4.07 1.07.97 0 2.81-1.32 4.74-1.13.81.03 3.08.33 4.54 2.46-.12.07-2.71 1.59-2.69 4.66M14 5.6c.86-1.04 1.44-2.49 1.28-3.93-1.24.05-2.74.83-3.63 1.87-.8.93-1.5 2.4-1.31 3.83 1.38.1 2.79-.7 3.66-1.76"/></svg>',
@@ -2281,6 +4435,66 @@
     form.classList.add("success");
     const tag = platform && platform !== "both" ? PLATFORM_LABEL[platform] + " " : "";
     form.innerHTML = `<span class="wl-state">You're on the ${tag}waitlist — we'll email <strong style="margin-left:4px;font-weight:500;">${email}</strong> when it's your turn.</span>`;
+  }
+
+  function renderJoined(form, email, platform) {
+    form.classList.remove("picking", "success", "thanked");
+    form.classList.add("joined");
+    form.innerHTML = `
+      <div class="wl-joined-head">
+        <span class="wl-check" aria-hidden="true">✓</span>
+        <div>
+          <div class="wl-joined-title">You're in. Now help us build what you actually want.</div>
+          <div class="wl-joined-sub">We'll email <strong style="font-weight:500;">${email}</strong> with your launch-day code. While you wait — what's the one thing Epti should nail at launch?</div>
+        </div>
+      </div>
+      <textarea class="wl-feedback" rows="3" placeholder="A feature, a frustration, a wish — anything goes. Read by a human."></textarea>
+      <div class="wl-joined-foot">
+        <button type="button" class="wl-send">Send <span aria-hidden="true">→</span></button>
+        <button type="button" class="wl-skip">Skip for now</button>
+      </div>
+    `;
+
+    const textarea = form.querySelector(".wl-feedback");
+    const send = form.querySelector(".wl-send");
+    const skip = form.querySelector(".wl-skip");
+
+    const finish = (feedback) => {
+      try { localStorage.setItem("epti.waitlist.feedback", feedback || "skipped"); } catch (_) {}
+      if (feedback && WAITLIST_ENDPOINT) {
+        fetch(WAITLIST_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email, platform, feedback,
+            source: "epti-landing-feedback",
+            timestamp: new Date().toISOString(),
+          }),
+        }).catch(() => {});
+      }
+      document.querySelectorAll("form[data-waitlist]").forEach((f) => renderThanked(f, email));
+    };
+
+    send.addEventListener("click", () => {
+      const v = (textarea.value || "").trim();
+      if (!v) { textarea.focus(); return; }
+      send.disabled = true;
+      finish(v);
+    });
+    skip.addEventListener("click", () => finish(""));
+  }
+
+  function renderThanked(form, email) {
+    form.classList.remove("picking", "success", "joined");
+    form.classList.add("thanked");
+    form.innerHTML = `<span class="wl-state">Noted — thanks. We'll email <strong style="margin-left:4px;font-weight:500;">${email}</strong> when it's your turn.</span>`;
+  }
+
+  function renderState(form, email, platform) {
+    let feedback = null;
+    try { feedback = localStorage.getItem("epti.waitlist.feedback"); } catch (_) {}
+    if (feedback) renderThanked(form, email);
+    else renderJoined(form, email, platform);
   }
 
   function renderPicker(form, email) {
@@ -2316,7 +4530,7 @@
           localStorage.setItem("epti.waitlist.platform", platform);
         } catch (_) {}
         // Update every form in the page to the final success state in sync
-        document.querySelectorAll("form[data-waitlist]").forEach((f) => renderSuccess(f, email, platform));
+        document.querySelectorAll("form[data-waitlist]").forEach((f) => renderState(f, email, platform));
       });
     });
   }
@@ -2365,7 +4579,7 @@
     const savedEmail = localStorage.getItem("epti.waitlist.email");
     const savedPlatform = localStorage.getItem("epti.waitlist.platform");
     if (savedEmail && savedPlatform) {
-      document.querySelectorAll('form[data-waitlist]').forEach((f) => renderSuccess(f, savedEmail, savedPlatform));
+      document.querySelectorAll('form[data-waitlist]').forEach((f) => renderState(f, savedEmail, savedPlatform));
     }
   } catch (_) {}
 </script>
@@ -2451,5 +4665,6 @@
   setActive(0, { scroll: false });
 })();
 </script>
+
 </body>
 </html>
