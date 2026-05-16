@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="epti">
+  <style>
+    .bg { fill: #0A0A0A; }
+    .fg { fill: #F2F2EE; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #F2F2EE; }
+      .fg { fill: #0A0A0A; }
+    }
+  </style>
+  <rect class="bg" width="64" height="64" rx="12"/>
+  <text x="22" y="46"
+        font-family="'Helvetica Neue', 'Helvetica', 'Arial', sans-serif"
+        font-size="48"
+        font-weight="300"
+        letter-spacing="-1.5"
+        class="fg"
+        text-anchor="middle">e</text>
+  <circle cx="42" cy="43" r="5" fill="#02E7A2"/>
+</svg>
