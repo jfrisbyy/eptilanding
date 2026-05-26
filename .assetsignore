@@ -1,0 +1,29 @@
+# .assetsignore — keep Cloudflare Workers/Pages static-asset bundle small
+# Without this, Cloudflare tries to upload the whole repo (including .git pack files)
+# and fails with "Asset too large" because .git/objects/pack/*.pack exceeds 25 MiB.
+
+# Git internals (root cause of the 54.7 MiB pack file failure)
+.git
+.git/**
+.gitignore
+.gitattributes
+.github
+.github/**
+
+# Other non-asset files
+*.pack
+*.md
+README*
+node_modules
+node_modules/**
+.DS_Store
+
+# Dev-tooling source (JSX panels are dev-only, not served pages)
+tweaks.jsx
+tweaks-panel.jsx
+
+# Cloudflare config itself shouldn't be served as an asset
+wrangler.toml
+wrangler.jsonc
+.wrangler
+.wrangler/**
