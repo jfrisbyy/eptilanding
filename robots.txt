@@ -1,0 +1,11 @@
+# robots.txt — Epti landing
+User-agent: *
+Allow: /
+
+# Block any draft/internal files that shouldn't be indexed
+Disallow: /Epti%20App%20v1.html
+Disallow: /Epti%20SEO%20Strategy.html
+Disallow: /assets/
+Disallow: /screenshots/
+
+Sitemap: https://eptiapp.com/sitemap.xml
