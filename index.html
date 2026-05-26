@@ -4378,6 +4378,91 @@
   .disclaimer-foot { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
 </style>
+
+<!-- ====================== COMPOUND LIBRARY FOOTER NAV ====================== -->
+<section class="compound-footer-nav" data-screen-label="98 Compound Library Footer" aria-label="Compound library">
+  <style>
+    .compound-footer-nav { padding: 64px 0 32px; border-top: 1px solid rgba(0,0,0,.08); background: oklch(0.985 0.005 95); }
+    .compound-footer-nav .cfn-wrap { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .compound-footer-nav .cfn-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 16px; margin-bottom: 32px; }
+    .compound-footer-nav .cfn-title { font-family: 'Instrument Serif', serif; font-size: 36px; line-height: 1.05; margin: 0; letter-spacing: -.01em; }
+    .compound-footer-nav .cfn-title em { font-style: italic; }
+    .compound-footer-nav .cfn-sub { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(0,0,0,.55); }
+    .compound-footer-nav .cfn-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px 24px; }
+    .compound-footer-nav .cfn-col h3 { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: rgba(0,0,0,.55); margin: 0 0 14px; font-weight: 600; }
+    .compound-footer-nav .cfn-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .compound-footer-nav .cfn-col a { color: inherit; text-decoration: none; font-size: 14.5px; line-height: 1.4; transition: opacity .15s; }
+    .compound-footer-nav .cfn-col a:hover { opacity: .55; text-decoration: underline; }
+    .compound-footer-nav .cfn-all { margin-top: 28px; padding-top: 20px; border-top: 1px dashed rgba(0,0,0,.12); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .compound-footer-nav .cfn-all-link { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: .04em; color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+    .compound-footer-nav .cfn-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: rgba(0,0,0,.45); }
+    @media (max-width: 900px) { .compound-footer-nav .cfn-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .compound-footer-nav .cfn-grid { grid-template-columns: 1fr; gap: 24px; } .compound-footer-nav .cfn-title { font-size: 28px; } }
+  </style>
+  <div class="cfn-wrap">
+    <div class="cfn-head">
+      <h2 class="cfn-title">The <em>compound</em> library.</h2>
+      <span class="cfn-sub">78 live · 9 categories · reviewed quarterly</span>
+    </div>
+    <div class="cfn-grid">
+      <div class="cfn-col">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="/compounds/anabolic-steroid-compounds">Anabolic Steroid Compounds</a></li>
+          <li><a href="/compounds/glp-1-compounds">GLP-1 Compounds</a></li>
+          <li><a href="/compounds/growth-hormone-compounds">Growth Hormone Compounds</a></li>
+          <li><a href="/compounds/healing-repair-compounds">Healing Repair Compounds</a></li>
+          <li><a href="/compounds/longevity-compounds">Longevity Compounds</a></li>
+          <li><a href="/compounds/nootropic-compounds">Nootropic Compounds</a></li>
+          <li><a href="/compounds/pct-compounds">PCT Compounds</a></li>
+          <li><a href="/compounds/research-peptides">Research Peptides</a></li>
+          <li><a href="/compounds/sarm-compounds">SARM Compounds</a></li>
+        </ul>
+      </div>
+      <div class="cfn-col">
+        <h3>GLP-1 &amp; metabolic</h3>
+        <ul>
+          <li><a href="/compounds/tirzepatide">Tirzepatide</a></li>
+          <li><a href="/compounds/semaglutide">Semaglutide</a></li>
+          <li><a href="/compounds/retatrutide">Retatrutide</a></li>
+          <li><a href="/compounds/metformin">Metformin</a></li>
+          <li><a href="/compounds/5-amino-1mq">5-Amino-1MQ</a></li>
+          <li><a href="/compounds/tesofensine">Tesofensine</a></li>
+          <li><a href="/compounds/aod-9604">AOD-9604</a></li>
+        </ul>
+      </div>
+      <div class="cfn-col">
+        <h3>Growth hormone &amp; peptides</h3>
+        <ul>
+          <li><a href="/compounds/mk-677">MK-677</a></li>
+          <li><a href="/compounds/ipamorelin">Ipamorelin</a></li>
+          <li><a href="/compounds/cjc-1295-no-dac">CJC-1295 No DAC</a></li>
+          <li><a href="/compounds/sermorelin">Sermorelin</a></li>
+          <li><a href="/compounds/tesamorelin">Tesamorelin</a></li>
+          <li><a href="/compounds/hexarelin">Hexarelin</a></li>
+          <li><a href="/compounds/igf-1-lr3">IGF-1 LR3</a></li>
+        </ul>
+      </div>
+      <div class="cfn-col">
+        <h3>Healing &amp; longevity</h3>
+        <ul>
+          <li><a href="/compounds/bpc-157">BPC-157</a></li>
+          <li><a href="/compounds/tb-500">TB-500</a></li>
+          <li><a href="/compounds/ghk-cu">GHK-Cu</a></li>
+          <li><a href="/compounds/epitalon">Epitalon</a></li>
+          <li><a href="/compounds/mots-c">MOTS-c</a></li>
+          <li><a href="/compounds/rapamycin">Rapamycin</a></li>
+          <li><a href="/compounds/nmn">NMN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cfn-all">
+      <a class="cfn-all-link" href="/compounds">Browse all 78 compounds  →</a>
+      <span class="cfn-meta">A resource — not a recommendation</span>
+    </div>
+  </div>
+</section>
+
 <footer class="disclaimer" data-screen-label="13 Footer" aria-label="Footer with medical and safety disclaimer">
   <div class="wrap">
     <div class="disclaimer-brand">
