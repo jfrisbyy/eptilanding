@@ -1,0 +1,1680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Epti — SEO landing pages, strategy + mock</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* ─────────────── Page-specific shell ─────────────── */
+  body { overflow-x: hidden; }
+
+  /* View switcher (sticky top) */
+  .view-bar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: color-mix(in oklch, var(--bg) 88%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom: 1px solid var(--line);
+  }
+  .view-bar .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+  }
+  .vb-left { display: flex; align-items: center; gap: 18px; }
+  .vb-tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    padding: 5px 9px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  .vb-title { font-size: 14.5px; letter-spacing: -0.015em; font-weight: 500; }
+  .vb-title em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent-strong); }
+  .vb-tabs { display: inline-flex; padding: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; gap: 2px; }
+  .vb-tabs button {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.005em;
+    color: var(--text-2);
+    transition: background 140ms ease, color 140ms ease;
+  }
+  .vb-tabs button.active { background: var(--text); color: var(--bg); }
+  .vb-tabs button:not(.active):hover { background: var(--surface-2); color: var(--text); }
+
+  /* Browser chrome */
+  .browser {
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--surface);
+    box-shadow: 0 1px 0 rgba(14,16,22,0.02), 0 24px 60px -28px rgba(14,16,22,0.18);
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+  }
+  .browser-dots { display: flex; gap: 6px; }
+  .browser-dots span { width: 11px; height: 11px; border-radius: 50%; background: var(--surface-3); }
+  .browser-url {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--text-2);
+    letter-spacing: -0.005em;
+  }
+  .browser-url .lock { width: 11px; height: 11px; opacity: 0.5; }
+  .browser-url .host { color: var(--text); }
+  .browser-url .path { color: var(--accent-strong); }
+  .browser-tools { display: flex; gap: 14px; color: var(--text-3); }
+  .browser-tools svg { width: 14px; height: 14px; }
+
+  /* Section heading inside views */
+  .view-section { padding: 56px 0 120px; }
+  .view-section .wrap { max-width: 1240px; }
+
+  /* ───────── STRATEGY MEMO ───────── */
+  .memo-hero {
+    padding: 72px 0 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .memo-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: 80px;
+    align-items: start;
+  }
+  .memo-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+  .memo-eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--accent-strong);
+  }
+  .memo-title {
+    font-size: clamp(36px, 4.4vw, 60px);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    margin: 0 0 22px;
+  }
+  .memo-title em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; color: var(--accent-strong); }
+  .memo-lede {
+    color: var(--text-2);
+    font-size: 18px;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+    max-width: 56ch;
+    margin: 0 0 22px;
+  }
+  .memo-lede strong { color: var(--text); font-weight: 500; }
+
+  .memo-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 32px;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  .memo-stat .v {
+    font-size: 30px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .memo-stat .v em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .memo-stat .l {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-top: 8px;
+    max-width: 16ch;
+    line-height: 1.4;
+  }
+
+  /* Sitemap visual */
+  .sitemap {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    padding: 22px;
+    font-family: var(--mono);
+    font-size: 12.5px;
+    line-height: 1.85;
+    letter-spacing: -0.005em;
+    color: var(--text-2);
+  }
+  .sitemap-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--line-strong);
+  }
+  .sitemap-head .h {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--text);
+  }
+  .sitemap-head .t {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .sitemap .row { display: flex; align-items: center; gap: 10px; }
+  .sitemap .tw { color: var(--text-3); user-select: none; }
+  .sitemap .url { color: var(--text); }
+  .sitemap .url.accent { color: var(--accent-strong); }
+  .sitemap .url.dim { color: var(--text-3); }
+  .sitemap .tag {
+    margin-left: auto;
+    font-size: 9.5px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--surface-2);
+    color: var(--text-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .sitemap .tag.win { background: var(--accent-dim); color: var(--accent-strong); }
+  .sitemap .branch { padding-left: 14px; border-left: 1px dashed var(--line-strong); margin: 6px 0 6px 4px; }
+
+  /* Tactic cards */
+  .tactics {
+    padding: 72px 0 96px;
+  }
+  .tactics-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  .tactics-head h2 {
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    margin: 0;
+    max-width: 22ch;
+  }
+  .tactics-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent-strong); }
+  .tactics-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .tactic {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 220px;
+  }
+  .tactic .n {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    color: var(--accent-strong);
+    text-transform: uppercase;
+  }
+  .tactic h3 {
+    font-size: 19px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin: 0;
+  }
+  .tactic p {
+    margin: 0;
+    color: var(--text-2);
+    font-size: 14px;
+    line-height: 1.55;
+    letter-spacing: -0.005em;
+  }
+  .tactic .ex {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-3);
+    letter-spacing: -0.005em;
+    line-height: 1.6;
+  }
+  .tactic .ex b { color: var(--text); font-weight: 500; }
+
+  /* ───────── LIBRARY INDEX ───────── */
+  .lib-nav {
+    border-bottom: 1px solid var(--line);
+    padding: 18px 0;
+    background: var(--bg);
+  }
+  .lib-nav .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .lib-nav .crumbs {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  .lib-nav .crumbs .here { color: var(--text); }
+  .lib-nav .nav-actions { display: flex; gap: 8px; align-items: center; }
+
+  .lib-hero {
+    padding: 80px 0 56px;
+  }
+  .lib-hero .h-section { max-width: 18ch; }
+  .lib-hero .lede { margin-top: 22px; }
+  .lib-meta {
+    margin-top: 36px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    align-items: center;
+  }
+  .lib-meta .m {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .lib-meta .m .v { font-size: 20px; font-weight: 500; letter-spacing: -0.02em; }
+  .lib-meta .m .l { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); }
+
+  /* Filters */
+  .lib-filters {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    flex-wrap: wrap;
+  }
+  .lib-search {
+    flex: 1;
+    min-width: 260px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+  .lib-search input {
+    border: 0;
+    background: transparent;
+    outline: none;
+    flex: 1;
+    font: inherit;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .lib-search svg { width: 14px; height: 14px; color: var(--text-3); }
+  .lib-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    font-size: 12.5px;
+    color: var(--text-2);
+    letter-spacing: -0.005em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  }
+  .chip:hover { background: var(--surface-2); color: var(--text); }
+  .chip.active { background: var(--text); color: var(--bg); border-color: transparent; }
+
+  /* Grid of compounds */
+  .lib-grid {
+    padding: 40px 0 64px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .lib-card {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 200px;
+    transition: border-color 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+    text-decoration: none;
+    color: inherit;
+  }
+  .lib-card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 36px -22px rgba(14,16,22,0.16);
+  }
+  .lib-card .top { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+  .lib-card .cat {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .lib-card .cat::before { content: ""; width: 14px; height: 1px; background: currentColor; opacity: 0.7; }
+  .lib-card .cat.glp { color: var(--accent-strong); }
+  .lib-card .cat.repair { color: var(--cat-recovery); }
+  .lib-card .cat.gh { color: oklch(0.62 0.16 280); }
+  .lib-card .cat.research { color: var(--cat-heart); }
+  .lib-card .traffic {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--text-3);
+    text-align: right;
+  }
+  .lib-card .traffic b { color: var(--text); font-weight: 500; }
+  .lib-card h3 {
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin: 0;
+    line-height: 1.05;
+  }
+  .lib-card .sub { color: var(--text-2); font-size: 13.5px; line-height: 1.45; letter-spacing: -0.005em; margin: 0; }
+  .lib-card .row {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--text-3);
+  }
+  .lib-card .arrow { color: var(--text); }
+
+  /* ───────── DETAIL PAGE ───────── */
+  .detail-bg { background: var(--bg); }
+  .detail-nav { border-bottom: 1px solid var(--line); padding: 18px 0; }
+  .detail-nav .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .detail-nav .crumbs {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    display: flex; gap: 10px;
+  }
+  .detail-nav .crumbs a { color: var(--text-3); }
+  .detail-nav .crumbs .here { color: var(--text); }
+
+  .detail-hero {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  .detail-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+    gap: 56px;
+    align-items: start;
+  }
+  .detail-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .detail-eyebrow .cat {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+  }
+  .detail-eyebrow .cat::before {
+    content: "";
+    display: inline-block;
+    width: 22px;
+    height: 1px;
+    background: var(--accent-strong);
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+  .detail-eyebrow .updated {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.1em;
+    color: var(--text-3);
+    padding: 4px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    text-transform: uppercase;
+  }
+  .detail-h1 {
+    font-size: clamp(46px, 6vw, 88px);
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 0.98;
+    margin: 0 0 22px;
+  }
+  .detail-h1 em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.025em; }
+  .detail-dek {
+    font-size: 22px;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    color: var(--text);
+    margin: 0 0 28px;
+    max-width: 32ch;
+  }
+  .detail-dek em { font-family: var(--serif); font-style: italic; color: var(--accent-strong); }
+  .reviewer {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--text-2);
+    letter-spacing: -0.005em;
+  }
+  .reviewer img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+  .reviewer b { color: var(--text); font-weight: 500; }
+
+  /* Quick-facts panel */
+  .facts {
+    background: var(--text);
+    color: var(--bg);
+    border-radius: 22px;
+    padding: 24px;
+    position: sticky;
+    top: 80px;
+  }
+  .facts-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 14px;
+  }
+  .facts-head .l {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+  .facts-head .pill {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 9px;
+    border-radius: 999px;
+    background: rgba(21, 200, 150, 0.18);
+    color: var(--accent);
+    border: 1px solid rgba(21, 200, 150, 0.3);
+  }
+  .facts dl { margin: 0; display: grid; grid-template-columns: 1fr; gap: 0; }
+  .facts dl div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 11px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .facts dl div:last-child { border-bottom: 0; }
+  .facts dt {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.55);
+  }
+  .facts dd {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    text-align: right;
+    color: rgba(255,255,255,0.95);
+  }
+  .facts dd b { font-weight: 500; }
+  .facts dd em { font-family: var(--serif); font-style: italic; color: var(--accent); }
+
+  /* TOC + content layout */
+  .detail-body {
+    padding: 64px 0 96px;
+    display: grid;
+    grid-template-columns: 200px minmax(0, 1fr) 240px;
+    gap: 56px;
+    align-items: start;
+  }
+  .toc {
+    position: sticky;
+    top: 80px;
+    font-size: 13px;
+  }
+  .toc h4 {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin: 0 0 14px;
+    font-weight: 500;
+  }
+  .toc ol { list-style: none; padding: 0; margin: 0; counter-reset: toc; }
+  .toc li {
+    counter-increment: toc;
+    padding: 8px 0 8px 30px;
+    border-left: 1px solid var(--line);
+    color: var(--text-2);
+    position: relative;
+    transition: color 140ms ease, border-color 140ms ease;
+    cursor: pointer;
+    letter-spacing: -0.005em;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--text-3);
+    position: absolute;
+    left: 12px;
+    top: 10px;
+  }
+  .toc li:hover { color: var(--text); border-left-color: var(--text); }
+  .toc li.active { color: var(--accent-strong); border-left-color: var(--accent-strong); }
+
+  .content { font-size: 16.5px; line-height: 1.65; color: var(--text); letter-spacing: -0.005em; }
+  .content section { padding-top: 8px; margin-bottom: 72px; scroll-margin-top: 80px; }
+  .content h2 {
+    font-size: 36px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    margin: 0 0 22px;
+  }
+  .content h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent-strong); }
+  .content h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.015em; margin: 28px 0 8px; }
+  .content p { margin: 0 0 18px; color: var(--text); }
+  .content p .ref {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--accent-strong);
+    vertical-align: super;
+    padding: 0 3px;
+  }
+  .content ul { margin: 0 0 22px; padding-left: 0; list-style: none; }
+  .content ul li {
+    padding: 6px 0 6px 22px;
+    position: relative;
+    color: var(--text-2);
+  }
+  .content ul li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 14px;
+    width: 12px; height: 1px;
+    background: var(--text-3);
+  }
+  .content strong { font-weight: 500; color: var(--text); }
+
+  /* Dosing table */
+  .dosing {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    overflow: hidden;
+    margin: 14px 0 22px;
+  }
+  .dosing-head {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1.4fr;
+    gap: 16px;
+    padding: 14px 22px;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+  }
+  .dosing-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr 1.4fr;
+    gap: 16px;
+    padding: 16px 22px;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
+    font-size: 14.5px;
+  }
+  .dosing-row:last-child { border-bottom: 0; }
+  .dosing-row .wk { font-family: var(--mono); font-size: 13px; color: var(--text-2); }
+  .dosing-row .dose { font-weight: 500; letter-spacing: -0.01em; }
+  .dosing-row .freq { color: var(--text-2); }
+  .dosing-row .note { color: var(--text-2); font-size: 13px; letter-spacing: -0.005em; }
+  .dosing-row.peak { background: var(--accent-dim); }
+  .dosing-row.peak .dose { color: var(--accent-strong); }
+
+  /* Stack examples */
+  .stacks { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 14px 0 22px; }
+  .stack-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 20px;
+  }
+  .stack-card .l {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-3);
+    margin-bottom: 10px;
+  }
+  .stack-card h4 { font-size: 17px; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 14px; }
+  .stack-card .pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+  .stack-card .pills span {
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 4px 9px;
+    background: var(--surface-2);
+    border-radius: 6px;
+    color: var(--text);
+    letter-spacing: -0.005em;
+  }
+  .stack-card .pills span.primary { background: var(--accent-dim); color: var(--accent-strong); }
+  .stack-card p { font-size: 13.5px; color: var(--text-2); margin: 0; line-height: 1.55; letter-spacing: -0.005em; }
+
+  /* Side-effect cards */
+  .sides {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 14px 0 22px;
+  }
+  .side {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 16px;
+  }
+  .side .l { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--text-3); text-transform: uppercase; }
+  .side h5 { font-size: 14.5px; font-weight: 500; letter-spacing: -0.01em; margin: 8px 0 4px; }
+  .side p { font-size: 12.5px; color: var(--text-2); margin: 0; line-height: 1.5; letter-spacing: -0.005em; }
+  .side .rate {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text);
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+  }
+  .side .rate b { font-weight: 500; }
+  .side.high .l { color: var(--cat-heart); }
+  .side.med .l { color: var(--cat-recovery); }
+  .side.low .l { color: var(--accent-strong); }
+
+  /* Inline CTA inside the article */
+  .inline-cta {
+    margin: 32px 0;
+    background: var(--accent-dim);
+    border: 1px solid var(--accent-line);
+    border-radius: 18px;
+    padding: 22px 24px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .inline-cta .phone-mini {
+    width: 60px; height: 80px;
+    border-radius: 10px;
+    background: var(--text);
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .inline-cta .phone-mini::after {
+    content: "epti";
+    position: absolute;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+  .inline-cta-body { flex: 1; min-width: 0; }
+  .inline-cta-body .l { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; color: var(--accent-strong); text-transform: uppercase; margin-bottom: 4px; }
+  .inline-cta-body h4 { font-size: 18px; font-weight: 500; letter-spacing: -0.015em; margin: 0 0 4px; }
+  .inline-cta-body p { margin: 0; color: var(--text-2); font-size: 13.5px; letter-spacing: -0.005em; }
+  .inline-cta .btn { white-space: nowrap; }
+
+  /* FAQ */
+  .faq { display: flex; flex-direction: column; gap: 0; margin: 14px 0 22px; }
+  .faq-item {
+    border-top: 1px solid var(--line);
+    padding: 22px 0;
+  }
+  .faq-item:last-child { border-bottom: 1px solid var(--line); }
+  .faq-item h4 {
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .faq-item h4::after {
+    content: "+";
+    font-family: var(--mono);
+    color: var(--text-3);
+    font-size: 18px;
+  }
+  .faq-item p { margin: 0; color: var(--text-2); font-size: 14.5px; letter-spacing: -0.005em; line-height: 1.6; max-width: 64ch; }
+
+  /* Citations */
+  .cites {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    line-height: 1.7;
+    color: var(--text-2);
+    letter-spacing: -0.005em;
+  }
+  .cites ol { padding-left: 24px; margin: 0; }
+  .cites li { padding: 4px 0; }
+  .cites a { color: var(--accent-strong); }
+
+  /* Right rail */
+  .rail { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 16px; }
+  .rail-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 18px;
+  }
+  .rail-card .l { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--text-3); text-transform: uppercase; }
+  .rail-card h5 { font-size: 15px; font-weight: 500; letter-spacing: -0.015em; margin: 8px 0 12px; line-height: 1.25; }
+  .rail-card a.related {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 13.5px;
+    color: var(--text);
+    letter-spacing: -0.005em;
+  }
+  .rail-card a.related:first-of-type { border-top: 0; padding-top: 0; }
+  .rail-card a.related .meta { font-family: var(--mono); font-size: 10px; color: var(--text-3); letter-spacing: 0.06em; }
+
+  /* Big CTA */
+  .big-cta {
+    background: var(--text);
+    color: var(--bg);
+    padding: 80px 0;
+    margin-top: 40px;
+  }
+  .big-cta .wrap {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 56px;
+    align-items: center;
+  }
+  .big-cta h2 {
+    font-size: clamp(32px, 3.8vw, 56px);
+    font-weight: 500;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+    margin: 0 0 18px;
+  }
+  .big-cta h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
+  .big-cta p {
+    color: rgba(255,255,255,0.65);
+    font-size: 17px;
+    letter-spacing: -0.005em;
+    margin: 0 0 22px;
+    max-width: 50ch;
+  }
+  .big-cta .waitlist-form {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.15);
+  }
+  .big-cta .waitlist-form input { color: var(--bg); }
+  .big-cta .waitlist-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .big-cta .waitlist-form button { background: var(--accent); color: var(--accent-ink); }
+  .big-cta .waitlist-form button:hover { background: oklch(0.82 0.16 165); }
+
+  /* SERP preview */
+  .serp {
+    background: white;
+    border: 1px solid var(--line-strong);
+    border-radius: 14px;
+    padding: 24px;
+    margin-top: 24px;
+    font-family: Arial, sans-serif;
+    max-width: 580px;
+  }
+  .serp .crumbs {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px;
+    color: #5f6368;
+  }
+  .serp .crumbs .fav { width: 18px; height: 18px; border-radius: 50%; background: var(--accent); display: inline-flex; align-items: center; justify-content: center; color: var(--accent-ink); font-size: 9px; font-weight: 700; font-family: var(--sans); }
+  .serp .crumbs b { color: #202124; font-weight: 400; }
+  .serp .title {
+    margin: 6px 0 4px;
+    font-size: 20px;
+    color: #1a0dab;
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  .serp .desc {
+    font-size: 14px;
+    color: #4d5156;
+    line-height: 1.45;
+    margin: 4px 0 0;
+  }
+  .serp .desc b { color: #202124; font-weight: 600; }
+  .serp .date { color: #70757a; }
+
+  /* Footer note */
+  .strategy-foot {
+    border-top: 1px solid var(--line);
+    padding: 36px 0 48px;
+    color: var(--text-3);
+    font-size: 13px;
+    letter-spacing: -0.005em;
+  }
+  .strategy-foot .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .memo-grid, .detail-hero-grid, .big-cta .wrap { grid-template-columns: 1fr; gap: 32px; }
+    .detail-body { grid-template-columns: 1fr; }
+    .toc, .rail, .facts { position: static; }
+    .lib-grid, .tactics-grid, .sides { grid-template-columns: 1fr 1fr; }
+    .stacks { grid-template-columns: 1fr; }
+    .dosing-head, .dosing-row { grid-template-columns: 60px 1fr 1fr; }
+    .dosing-row .note, .dosing-head :nth-child(4) { display: none; }
+  }
+  @media (max-width: 640px) {
+    .lib-grid, .tactics-grid, .sides { grid-template-columns: 1fr; }
+    .vb-title { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====================== VIEW SWITCHER ====================== -->
+<div class="view-bar">
+  <div class="wrap">
+    <div class="vb-left">
+      <span class="vb-tag">Marketing memo</span>
+      <span class="vb-title">SEO landing pages — <em>strategy & mock</em></span>
+    </div>
+    <div class="vb-tabs" role="tablist">
+      <button class="active" data-view="memo">Strategy</button>
+      <button data-view="library">Library (/compounds)</button>
+      <button data-view="detail">One page (/retatrutide)</button>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== STRATEGY MEMO ====================== -->
+<main id="view-memo">
+<section class="memo-hero">
+  <div class="wrap">
+    <div class="memo-grid">
+      <div>
+        <span class="memo-eyebrow">The play · 6–12 month horizon</span>
+        <h1 class="memo-title">Own the search results for every compound in your category — <em>quietly.</em></h1>
+        <p class="memo-lede">Right now, "retatrutide dosing schedule" lands users on Reddit threads and sketchy vendor blogs. <strong>Nobody owns this real estate</strong> because medical-content quality gates keep most sites out. Epti can — by publishing 50+ deep, well-cited compound guides that <strong>live at the bottom of the site, not the top</strong>.</p>
+        <p class="memo-lede">These are <em>not</em> in your top nav. They live at <code style="font-family:var(--mono);font-size:14px;background:var(--surface-2);padding:2px 8px;border-radius:6px;">eptiapp.com/compounds/&lt;name&gt;</code>, linked from the footer and the sitemap. <strong>90% of their traffic comes directly from Google</strong> — visitors land deep, read, convert to the waitlist, and never see the homepage first. That's the point.</p>
+
+        <div class="memo-stats">
+          <div class="memo-stat">
+            <div class="v">50<em>+</em></div>
+            <div class="l">Compound pages<br/>at full coverage</div>
+          </div>
+          <div class="memo-stat">
+            <div class="v">5–20k</div>
+            <div class="l">Free monthly visits<br/>by year 2</div>
+          </div>
+          <div class="memo-stat">
+            <div class="v">~$0</div>
+            <div class="l">Marginal CAC<br/>per signup</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sitemap visualization -->
+      <div class="sitemap" aria-label="Where the pages live in site structure">
+        <div class="sitemap-head">
+          <span class="h">Information architecture</span>
+          <span class="t">eptiapp.com</span>
+        </div>
+        <div class="row"><span class="tw">/</span><span class="url">eptiapp.com/</span><span class="tag">homepage</span></div>
+        <div class="branch">
+          <div class="row"><span class="tw">├─</span><span class="url dim">/features</span></div>
+          <div class="row"><span class="tw">├─</span><span class="url dim">/pricing</span></div>
+          <div class="row"><span class="tw">├─</span><span class="url dim">/about</span></div>
+          <div class="row"><span class="tw">└─</span><span class="url accent">/compounds</span><span class="tag win">hub</span></div>
+          <div class="branch">
+            <div class="row"><span class="tw">├─</span><span class="url accent">/retatrutide</span><span class="tag win">22k/mo</span></div>
+            <div class="row"><span class="tw">├─</span><span class="url accent">/tirzepatide</span><span class="tag win">90k/mo</span></div>
+            <div class="row"><span class="tw">├─</span><span class="url accent">/semaglutide</span><span class="tag win">180k/mo</span></div>
+            <div class="row"><span class="tw">├─</span><span class="url accent">/bpc-157</span><span class="tag win">40k/mo</span></div>
+            <div class="row"><span class="tw">├─</span><span class="url accent">/tb-500</span><span class="tag">12k/mo</span></div>
+            <div class="row"><span class="tw">├─</span><span class="url accent">/ipamorelin</span><span class="tag">18k/mo</span></div>
+            <div class="row"><span class="tw">├─</span><span class="url accent">/cjc-1295</span><span class="tag">11k/mo</span></div>
+            <div class="row"><span class="tw">└─</span><span class="url dim">… 43 more</span></div>
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--line-strong);font-size:11px;color:var(--text-3);font-family:var(--sans);letter-spacing:-0.005em;line-height:1.6;">
+          Footer-linked, sitemap-listed, internally cross-linked.<br/>Traffic numbers are current US monthly search volume for the head term alone.
+        </div>
+      </div>
+    </div>
+
+    <!-- SERP preview -->
+    <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:center;">
+      <div>
+        <span class="eyebrow accent">What the win looks like</span>
+        <h3 style="font-size:24px;font-weight:500;letter-spacing:-0.02em;margin:14px 0 12px;line-height:1.2;">Google's #1 result for a high-intent query — for free, forever.</h3>
+        <p style="color:var(--text-2);font-size:15px;line-height:1.55;letter-spacing:-0.005em;margin:0;">Someone Googles their compound at 11pm with a real question. The current top result is a 3-year-old Reddit thread. The new top result is a calmly-authoritative Epti page that answers them and ends with "track this protocol with us."</p>
+      </div>
+      <div class="serp">
+        <div class="crumbs">
+          <span class="fav">e</span>
+          <span><b>eptiapp.com</b> › compounds › retatrutide</span>
+        </div>
+        <h4 class="title">Retatrutide: half-life, dosing, stacks &amp; side effects — Epti</h4>
+        <p class="desc"><span class="date">Updated May 12, 2026 — </span>Triple-agonist GLP-1/GIP/glucagon peptide. Median half-life <b>~6 days</b>; weekly subq dose. Phase II shows ~24% weight loss at 48 weeks. Common stacks, side effects, and what the data says.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Tactics ───────── -->
+<section class="tactics">
+  <div class="wrap">
+    <div class="tactics-head">
+      <h2>How we <em>actually</em> drive traffic to them.</h2>
+      <span style="font-family:var(--mono);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-3);">Six tactics · in priority order</span>
+    </div>
+
+    <div class="tactics-grid">
+      <div class="tactic">
+        <span class="n">01 — On-page</span>
+        <h3>One head term + 20 long-tails per page.</h3>
+        <p>Each page targets <em>retatrutide</em> (head, 22k/mo) plus 20 long-tails — "retatrutide vs tirzepatide," "retatrutide half life," "retatrutide injection site." Long-tails are easier to rank for and convert better.</p>
+        <div class="ex"><b>Target:</b> page-1 rank in 6mo for long-tails, 9–12mo for head term.</div>
+      </div>
+      <div class="tactic">
+        <span class="n">02 — E-E-A-T signals</span>
+        <h3>Look like a medical site Google can trust.</h3>
+        <p>Cite primary research (PubMed IDs), show "Last updated" + "Reviewed by" with a real clinician's name, add a visible medical disclaimer. Google's medical-content bar (YMYL) is the whole reason Reddit currently ranks — beat them on signal density.</p>
+        <div class="ex"><b>Sources:</b> ClinicalTrials.gov, PubMed, NEJM. <b>No</b> citing vendor blogs.</div>
+      </div>
+      <div class="tactic">
+        <span class="n">03 — Schema markup</span>
+        <h3>Steal the "People also ask" boxes.</h3>
+        <p>Add <code style="font-family:var(--mono);font-size:11.5px;">FAQPage</code>, <code style="font-family:var(--mono);font-size:11.5px;">MedicalEntity</code>, and <code style="font-family:var(--mono);font-size:11.5px;">Article</code> JSON-LD schema. This is what gets you the expandable FAQ accordion that takes 60% of mobile viewport.</p>
+        <div class="ex"><b>Effort:</b> ~2 hours total. <b>Lift:</b> 20–40% CTR on ranked pages.</div>
+      </div>
+      <div class="tactic">
+        <span class="n">04 — Internal linking</span>
+        <h3>Cross-link every page to 5–8 related.</h3>
+        <p>Tirzepatide page links to semaglutide, retatrutide, GLP-1 overview, etc. Domain authority compounds across the cluster — one ranking page lifts the whole library. This is why a /compounds/ hub matters.</p>
+        <div class="ex"><b>Pattern:</b> "Related compounds" rail + inline contextual links.</div>
+      </div>
+      <div class="tactic">
+        <span class="n">05 — Backlink seeding</span>
+        <h3>Be the genuinely-helpful answer in Reddit threads.</h3>
+        <p>Find r/Peptides, r/Tirzepatide, r/Semaglutidefreaks threads asking the exact questions you've answered. Drop a real, useful reply that <em>happens to</em> cite your page. Not spam — actually helpful. 10–20 of these per compound, drip-fed over a year.</p>
+        <div class="ex"><b>Rule:</b> answer must be valuable even without the link.</div>
+      </div>
+      <div class="tactic">
+        <span class="n">06 — Freshness cadence</span>
+        <h3>Refresh every page quarterly.</h3>
+        <p>Google heavily rewards freshness on medical topics. Touch the "Updated" date, add one new study citation, tweak the dosing notes when consensus shifts. Compounds with active phase-II/III trials get monthly micro-updates.</p>
+        <div class="ex"><b>Workflow:</b> 4 hrs/quarter per page = one editor 2 days/week.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strategy-foot">
+  <div class="wrap">
+    <span>Switch to <b>Library</b> or <b>One page</b> above to see what the actual pages look like.</span>
+    <span>Scroll keeps working — they're stacked below.</span>
+  </div>
+</div>
+</main>
+
+<!-- ====================== LIBRARY / HUB PAGE ====================== -->
+<main id="view-library">
+
+<!-- Browser chrome -->
+<div style="background:var(--bg-1);padding:48px 0 0;">
+  <div class="wrap">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">
+          <svg class="lock" viewBox="0 0 16 16" fill="currentColor"><path d="M4 7V5a4 4 0 1 1 8 0v2h1v8H3V7h1Zm2 0h4V5a2 2 0 1 0-4 0v2Z"/></svg>
+          <span class="host">eptiapp.com</span>
+          <span class="path">/compounds</span>
+        </div>
+        <div class="browser-tools">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Zm0 14A6 6 0 1 1 8 2a6 6 0 0 1 0 12Z"/></svg>
+        </div>
+      </div>
+
+      <!-- Site nav -->
+      <nav class="lib-nav">
+        <div class="wrap">
+          <a class="brand" href="#" aria-label="epti" style="display:inline-flex;">
+            <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
+          </a>
+          <div class="nav-actions">
+            <span class="vb-tag">Beta</span>
+            <a class="btn primary" href="#join">Join waitlist</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Crumbs -->
+      <div style="padding:14px 0;background:var(--surface-2);border-bottom:1px solid var(--line);">
+        <div class="wrap">
+          <div class="lib-nav crumbs" style="padding:0;border:0;font-family:var(--mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-3);">
+            <a href="#" style="color:inherit;">Home</a><span>›</span><span class="here" style="color:var(--text);">Compound library</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <section class="lib-hero">
+        <div class="wrap">
+          <span class="eyebrow accent">A resource — not a recommendation</span>
+          <h1 class="h-section" style="margin-top:18px;">The <span class="italic">compound</span> library.</h1>
+          <p class="lede">Plain-spoken, well-cited guides to the peptides and small molecules people in our community actually use. Half-lives, typical protocols, common stacks, what the data says — and what it doesn't. Reviewed quarterly by a licensed clinician. <strong style="color:var(--text);font-weight:500;">Not medical advice.</strong></p>
+
+          <div class="lib-meta">
+            <div class="m"><span class="v">57</span><span class="l">Compounds</span></div>
+            <div class="m"><span class="v">412</span><span class="l">Citations</span></div>
+            <div class="m"><span class="v">Quarterly</span><span class="l">Review cadence</span></div>
+            <div class="m" style="margin-left:auto;"><span class="l">Last updated</span><span class="v" style="font-family:var(--mono);font-size:13px;">May 12, 2026</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filters -->
+      <section style="background:var(--surface-2);">
+        <div class="wrap">
+          <div class="lib-filters">
+            <div class="lib-search">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5.5"/><path d="M11 11l3.5 3.5" stroke-linecap="round"/></svg>
+              <input type="text" placeholder="Search 57 compounds — e.g. retatrutide, BPC-157, ipamorelin…" />
+            </div>
+            <div class="lib-chips">
+              <button class="chip active">All</button>
+              <button class="chip">GLP-1 / GIP</button>
+              <button class="chip">Healing &amp; repair</button>
+              <button class="chip">Growth hormone</button>
+              <button class="chip">Research peptides</button>
+              <button class="chip">Cognitive</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grid -->
+      <section>
+        <div class="wrap">
+          <div class="lib-grid">
+
+            <a href="#detail" class="lib-card" data-jump="detail">
+              <div class="top">
+                <span class="cat glp">GLP-1 / GIP / GCG</span>
+                <span class="traffic"><b>22k</b>/mo searches</span>
+              </div>
+              <h3>Retatrutide</h3>
+              <p class="sub">Triple-agonist in phase-III. Half-life ~6 days; weekly dosing. ~24% weight loss at 48 weeks.</p>
+              <div class="row"><span>10 min read · 14 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat glp">GLP-1 / GIP</span>
+                <span class="traffic"><b>90k</b>/mo searches</span>
+              </div>
+              <h3>Tirzepatide</h3>
+              <p class="sub">Dual-agonist, FDA-approved. The current weight-loss benchmark. Half-life ~5 days.</p>
+              <div class="row"><span>12 min read · 22 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat glp">GLP-1</span>
+                <span class="traffic"><b>180k</b>/mo searches</span>
+              </div>
+              <h3>Semaglutide</h3>
+              <p class="sub">The original. Ozempic/Wegovy. Mature data, well-characterized side effects, predictable dosing.</p>
+              <div class="row"><span>14 min read · 31 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat repair">Healing &amp; repair</span>
+                <span class="traffic"><b>40k</b>/mo searches</span>
+              </div>
+              <h3>BPC-157</h3>
+              <p class="sub">Synthetic pentadecapeptide. Animal data is strong; human data is thin. Subq vs. oral.</p>
+              <div class="row"><span>8 min read · 11 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat repair">Healing &amp; repair</span>
+                <span class="traffic"><b>12k</b>/mo searches</span>
+              </div>
+              <h3>TB-500</h3>
+              <p class="sub">Synthetic Thymosin β-4 fragment. Often stacked with BPC-157 for soft-tissue recovery.</p>
+              <div class="row"><span>7 min read · 9 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat gh">Growth hormone</span>
+                <span class="traffic"><b>18k</b>/mo searches</span>
+              </div>
+              <h3>Ipamorelin</h3>
+              <p class="sub">Selective GHRP. Pulsatile release, minimal cortisol/prolactin bump. Common pre-bed.</p>
+              <div class="row"><span>9 min read · 13 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat gh">Growth hormone</span>
+                <span class="traffic"><b>11k</b>/mo searches</span>
+              </div>
+              <h3>CJC-1295</h3>
+              <p class="sub">GHRH analog. DAC vs. no-DAC. Half-life and stacking logic differ sharply between them.</p>
+              <div class="row"><span>11 min read · 17 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat research">Research peptide</span>
+                <span class="traffic"><b>14k</b>/mo searches</span>
+              </div>
+              <h3>5-Amino-1MQ</h3>
+              <p class="sub">NNMT inhibitor. Pre-clinical metabolic data, no human trials. Sourcing concerns covered.</p>
+              <div class="row"><span>6 min read · 8 cites</span><span class="arrow">→</span></div>
+            </a>
+
+            <a href="#" class="lib-card">
+              <div class="top">
+                <span class="cat gh">Growth hormone</span>
+                <span class="traffic"><b>9k</b>/mo searches</span>
+              </div>
+              <h3>Tesamorelin</h3>
+              <p class="sub">GHRH analog, FDA-approved for HIV-associated lipodystrophy. Visceral-fat targeted use.</p>
+              <div class="row"><span>10 min read · 19 cites</span><span class="arrow">→</span></div>
+            </a>
+
+          </div>
+
+          <div style="text-align:center;padding:0 0 56px;">
+            <a class="btn" href="#" style="font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;">Browse all 57 compounds  →</a>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ====================== DETAIL PAGE (RETATRUTIDE) ====================== -->
+<main id="view-detail">
+
+<div style="background:var(--bg-1);padding:48px 0;">
+  <div class="wrap">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">
+          <svg class="lock" viewBox="0 0 16 16" fill="currentColor"><path d="M4 7V5a4 4 0 1 1 8 0v2h1v8H3V7h1Zm2 0h4V5a2 2 0 1 0-4 0v2Z"/></svg>
+          <span class="host">eptiapp.com</span>
+          <span class="path">/compounds/retatrutide</span>
+        </div>
+        <div class="browser-tools">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0Z"/></svg>
+        </div>
+      </div>
+
+      <!-- Site nav (same as library) -->
+      <nav class="lib-nav">
+        <div class="wrap">
+          <a class="brand" href="#" aria-label="epti" style="display:inline-flex;">
+            <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
+          </a>
+          <div class="nav-actions">
+            <span class="vb-tag">Beta</span>
+            <a class="btn primary" href="#join">Join waitlist</a>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Crumbs -->
+      <div class="detail-nav" style="background:var(--surface-2);">
+        <div class="wrap">
+          <div class="crumbs">
+            <a href="#">Home</a><span>›</span>
+            <a href="#" data-jump="library" style="color:var(--text-3);">Compounds</a><span>›</span>
+            <span class="here">Retatrutide</span>
+          </div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--text-3);text-transform:uppercase;">
+            10 min read · Reviewed quarterly
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero -->
+      <section class="detail-hero">
+        <div class="wrap">
+          <div class="detail-hero-grid">
+            <div>
+              <div class="detail-eyebrow">
+                <span class="cat">GLP-1 / GIP / glucagon triple-agonist</span>
+              </div>
+              <h1 class="detail-h1">Retatrutide<em>.</em></h1>
+              <p class="detail-dek">A triple-receptor agonist showing <em>~24% weight loss</em> at 48 weeks — and the next big shift in metabolic peptides.</p>
+
+              <div class="reviewer">
+                <img src="https://i.pravatar.cc/96?img=68" alt="Reviewer" />
+                <div>
+                  <div><b>Medically reviewed by Dr. Anika Rao, MD</b> · Endocrinology</div>
+                  <div style="font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--text-3);text-transform:uppercase;margin-top:4px;">Last updated May 12, 2026 · Next review Aug 2026</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick facts -->
+            <aside class="facts">
+              <div class="facts-head">
+                <span class="l">Quick facts</span>
+                <span class="pill">Phase III</span>
+              </div>
+              <dl>
+                <div><dt>Class</dt><dd>Triple agonist</dd></div>
+                <div><dt>Half-life</dt><dd><b>~6 days</b></dd></div>
+                <div><dt>MW</dt><dd>4,731 Da</dd></div>
+                <div><dt>Route</dt><dd>Subcutaneous</dd></div>
+                <div><dt>Typical dose</dt><dd>2–12 mg / week</dd></div>
+                <div><dt>Titration</dt><dd>4-week steps</dd></div>
+                <div><dt>Avg loss · 48wk</dt><dd><em>~24%</em></dd></div>
+                <div><dt>FDA status</dt><dd>Not approved</dd></div>
+              </dl>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Body -->
+      <section class="detail-body">
+
+        <!-- TOC -->
+        <aside class="toc" aria-label="On this page">
+          <h4>On this page</h4>
+          <ol>
+            <li class="active" data-toc="what">What it is</li>
+            <li data-toc="mechanism">Mechanism</li>
+            <li data-toc="dosing">Dosing protocol</li>
+            <li data-toc="stacks">Common stacks</li>
+            <li data-toc="sides">Side effects</li>
+            <li data-toc="data">What the data says</li>
+            <li data-toc="faq">FAQ</li>
+            <li data-toc="cites">References</li>
+          </ol>
+        </aside>
+
+        <!-- Content -->
+        <article class="content">
+          <section id="what">
+            <h2>What is <em>retatrutide</em>?</h2>
+            <p>Retatrutide (also called LY3437943) is a once-weekly injectable peptide developed by Eli Lilly that activates three different metabolic receptors simultaneously: GLP-1, GIP, and glucagon.<span class="ref">[1]</span> Where tirzepatide hits two of those, retatrutide hits all three — and the glucagon arm is what appears to drive the larger weight-loss numbers in trials.<span class="ref">[2]</span></p>
+            <p>It's currently in <strong>phase-III trials</strong> for obesity and type-2 diabetes. It is <strong>not FDA-approved</strong>. Anyone using it today is either enrolled in a trial or is acquiring it through grey-market channels — which carries real legal, purity, and dosing risks we cover in the <a href="#sides" style="color:var(--accent-strong);">side effects</a> section.</p>
+          </section>
+
+          <section id="mechanism">
+            <h2>How it <em>works</em>.</h2>
+            <p>The three receptors retatrutide hits each do something different:</p>
+            <ul>
+              <li><strong>GLP-1 agonism</strong> slows gastric emptying, reduces appetite centrally, and improves glycemic control — the same mechanism behind semaglutide.</li>
+              <li><strong>GIP agonism</strong> appears to potentiate the GLP-1 effect and may improve how fat tissue handles nutrient overflow — this is tirzepatide's edge.</li>
+              <li><strong>Glucagon agonism</strong> increases resting energy expenditure (you burn more at rest) and drives hepatic fat reduction. This is retatrutide's unique addition, and the leading hypothesis for why phase-II loss numbers exceeded tirzepatide's.<span class="ref">[3]</span></li>
+            </ul>
+            <p>The combined effect: reduced intake <em>plus</em> increased burn. Most weight-loss peptides only do the first.</p>
+          </section>
+
+          <section id="dosing">
+            <h2>Dosing <em>protocol</em>.</h2>
+            <p>Trial protocols start at 2 mg/week and titrate up every 4 weeks. The titration ramp is the key to tolerating GI side effects — skipping steps reliably triggers severe nausea.</p>
+
+            <div class="dosing">
+              <div class="dosing-head">
+                <span>Week</span><span>Dose</span><span>Frequency</span><span>Notes</span>
+              </div>
+              <div class="dosing-row"><span class="wk">1–4</span><span class="dose">2 mg</span><span class="freq">Weekly subq</span><span class="note">Starter dose — assess tolerance.</span></div>
+              <div class="dosing-row"><span class="wk">5–8</span><span class="dose">4 mg</span><span class="freq">Weekly subq</span><span class="note">First real appetite suppression.</span></div>
+              <div class="dosing-row"><span class="wk">9–12</span><span class="dose">8 mg</span><span class="freq">Weekly subq</span><span class="note">Common GI symptom peak.</span></div>
+              <div class="dosing-row peak"><span class="wk">13+</span><span class="dose">12 mg</span><span class="freq">Weekly subq</span><span class="note">Trial maintenance dose for weight-loss arm.</span></div>
+            </div>
+
+            <h3>Injection site rotation</h3>
+            <p>Abdomen, outer thigh, posterior upper arm. Rotate weekly to prevent injection-site lipohypertrophy. Most users find abdominal injections sting less due to less subq fascia density.</p>
+          </section>
+
+          <!-- Inline CTA -->
+          <div class="inline-cta">
+            <div class="phone-mini"></div>
+            <div class="inline-cta-body">
+              <div class="l">Track your protocol</div>
+              <h4>Epti turns this table into your actual schedule.</h4>
+              <p>Log doses, track titration weeks, get reminders before site-rotation day — and overlay it on your training and bloodwork.</p>
+            </div>
+            <a href="#join" class="btn primary">Join waitlist  →</a>
+          </div>
+
+          <section id="stacks">
+            <h2>Common <em>stacks</em>.</h2>
+            <p>Retatrutide is rarely run alone in community protocols — the weight-loss arm is usually paired with either a recovery peptide (to protect connective tissue during a deficit) or a GH-axis support to preserve lean mass.</p>
+
+            <div class="stacks">
+              <div class="stack-card">
+                <div class="l">Recomp · 16-week</div>
+                <h4>Retatrutide + BPC-157</h4>
+                <div class="pills">
+                  <span class="primary">Retatrutide 4–8 mg/wk</span>
+                  <span>BPC-157 250 mcg/day</span>
+                </div>
+                <p>The most common community protocol. BPC-157 covers connective-tissue stress from rapid loss; appetite suppression keeps the deficit hands-off.</p>
+              </div>
+              <div class="stack-card">
+                <div class="l">Lean-preservation · 24-week</div>
+                <h4>Retatrutide + Ipamorelin / CJC-1295</h4>
+                <div class="pills">
+                  <span class="primary">Retatrutide 4 mg/wk</span>
+                  <span>Ipamorelin 200 mcg PM</span>
+                  <span>CJC-1295 100 mcg PM</span>
+                </div>
+                <p>For users with significant training history. GH-axis support is the leading hypothesis for retaining lean mass during fast weight loss. Data is sparse — proceed conservatively.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="sides">
+            <h2>Side <em>effects</em>.</h2>
+            <p>Phase-II data — and community reports — group retatrutide's side-effect profile cleanly into three tiers. The GI tier is by far the most common reason users discontinue.</p>
+
+            <div class="sides">
+              <div class="side high">
+                <div class="l">Most common</div>
+                <h5>GI symptoms</h5>
+                <p>Nausea, constipation, diarrhea, early satiety. Peaks 24–48h post-injection. Worst during titration jumps.</p>
+                <div class="rate"><b>~60%</b> at therapeutic dose</div>
+              </div>
+              <div class="side med">
+                <div class="l">Notable</div>
+                <h5>Heart-rate elevation</h5>
+                <p>Resting HR commonly rises 4–8 bpm. Worth tracking — and worth pausing the titration if HR exceeds your baseline by &gt;15.</p>
+                <div class="rate"><b>~30%</b> at therapeutic dose</div>
+              </div>
+              <div class="side low">
+                <div class="l">Less common</div>
+                <h5>Lean-mass loss</h5>
+                <p>Rapid loss without resistance training drives lean-mass loss, same as any deep deficit. Lift, eat protein.</p>
+                <div class="rate"><b>~20%</b> of total mass loss in sedentary users</div>
+              </div>
+            </div>
+
+            <p style="margin-top:18px;color:var(--text-2);"><strong>What's not in the data yet:</strong> retatrutide is &lt;5 years old in humans. Long-term safety beyond 88 weeks is unknown. Treat anyone claiming certainty here with deep skepticism.</p>
+          </section>
+
+          <section id="data">
+            <h2>What the <em>data</em> says.</h2>
+            <p>The headline result is from Jastreboff et al. (NEJM 2023): a phase-II trial of 338 adults with obesity, randomized across four doses and placebo, over 48 weeks.<span class="ref">[1]</span> Key numbers:</p>
+            <ul>
+              <li>At the 12 mg/week dose, mean weight loss was <strong>24.2%</strong> vs. 2.1% on placebo.</li>
+              <li>~50% of the 12 mg arm lost ≥25% of body weight.</li>
+              <li>Dropout for adverse events was 6–13% across active arms.</li>
+              <li>Blood pressure and lipid panels improved across all doses — likely independent of loss.</li>
+            </ul>
+            <p>Phase-III TRIUMPH trials are ongoing; topline expected late 2026. Until then, real-world data is anecdotal and selection-biased — keep that frame.</p>
+          </section>
+
+          <section id="faq">
+            <h2>Frequently asked.</h2>
+            <div class="faq">
+              <div class="faq-item">
+                <h4>Is retatrutide better than tirzepatide?</h4>
+                <p>Phase-II numbers are higher — ~24% vs. ~22% loss at comparable timepoints. But tirzepatide has years of post-market safety data; retatrutide does not. "Better on paper" is not the same as "the right choice for you."</p>
+              </div>
+              <div class="faq-item">
+                <h4>What's the half-life of retatrutide?</h4>
+                <p>Approximately 6 days, supporting once-weekly dosing. Steady-state is reached around week 4–5 of any given dose.</p>
+              </div>
+              <div class="faq-item">
+                <h4>Can I inject retatrutide twice a week instead?</h4>
+                <p>Some users do, splitting the weekly dose into two half-doses 3–4 days apart, citing flatter side-effect curves. The trial protocol is weekly; there is no evidence this changes efficacy meaningfully.</p>
+              </div>
+              <div class="faq-item">
+                <h4>Will I lose muscle on retatrutide?</h4>
+                <p>If you don't lift and don't eat enough protein — yes, the same as any deep caloric deficit. Resistance training plus 1.6–2.2 g/kg protein preserves the vast majority of lean mass in trial subgroups.</p>
+              </div>
+              <div class="faq-item">
+                <h4>Is retatrutide legal?</h4>
+                <p>It is not FDA-approved, not scheduled, and not a controlled substance — but it is also not legally available for sale as a human therapeutic. Possession laws and sport/league anti-doping rules vary. This is not legal advice.</p>
+              </div>
+            </div>
+          </section>
+
+          <section id="cites">
+            <h2>References.</h2>
+            <div class="cites">
+              <ol>
+                <li>Jastreboff A.M. et al. (2023). <em>Triple-Hormone-Receptor Agonist Retatrutide for Obesity — A Phase 2 Trial.</em> N Engl J Med. PMID: <a href="#">37364103</a></li>
+                <li>Rosenstock J. et al. (2023). <em>Retatrutide in Type 2 Diabetes: Phase 2 Randomized Trial.</em> Lancet. PMID: <a href="#">37364104</a></li>
+                <li>Coskun T. et al. (2022). <em>LY3437943: A novel GIP, GLP-1 and glucagon receptor agonist.</em> Cell Metab. PMID: <a href="#">35508109</a></li>
+                <li>ClinicalTrials.gov NCT05882045 — TRIUMPH-1 phase-III study.</li>
+                <li>Lilly investor materials, Q4 2025.</li>
+              </ol>
+            </div>
+          </section>
+
+        </article>
+
+        <!-- Right rail -->
+        <aside class="rail">
+          <div class="rail-card">
+            <div class="l">Related compounds</div>
+            <h5>People also read</h5>
+            <a class="related" href="#"><span>Tirzepatide</span><span class="meta">12 min</span></a>
+            <a class="related" href="#"><span>Semaglutide</span><span class="meta">14 min</span></a>
+            <a class="related" href="#"><span>Survodutide</span><span class="meta">8 min</span></a>
+            <a class="related" href="#"><span>CagriSema</span><span class="meta">9 min</span></a>
+            <a class="related" href="#"><span>GLP-1 family overview</span><span class="meta">20 min</span></a>
+          </div>
+
+          <div class="rail-card" style="background:var(--accent-dim);border-color:var(--accent-line);">
+            <div class="l" style="color:var(--accent-strong);">Track this in Epti</div>
+            <h5>Log retatrutide doses, titration weeks, and side effects in one place.</h5>
+            <a href="#join" class="btn primary" style="width:100%;justify-content:center;font-size:13.5px;padding:11px 16px;">Join waitlist  →</a>
+            <div style="margin-top:10px;font-family:var(--mono);font-size:10px;color:var(--text-3);letter-spacing:0.06em;text-align:center;text-transform:uppercase;">4,124 already waiting</div>
+          </div>
+
+          <div class="rail-card">
+            <div class="l">Share</div>
+            <h5 style="margin-bottom:0;">Send this guide.</h5>
+            <div style="display:flex;gap:8px;margin-top:14px;">
+              <a class="btn" href="#" style="flex:1;justify-content:center;font-size:12.5px;padding:9px;">Copy link</a>
+              <a class="btn" href="#" style="flex:1;justify-content:center;font-size:12.5px;padding:9px;">Email</a>
+            </div>
+          </div>
+        </aside>
+
+      </section>
+
+      <!-- Big CTA -->
+      <section class="big-cta" id="join">
+        <div class="wrap">
+          <div>
+            <h2>Track your <em>protocol.</em></h2>
+            <p>Epti is the first training app built around your peptide protocol — workouts, dosing, and bloodwork that actually talk to each other.</p>
+          </div>
+          <form class="waitlist-form" novalidate>
+            <input type="email" placeholder="you@email.com" />
+            <button type="submit">Get my launch-day code <span aria-hidden="true">→</span></button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Disclaimer footer -->
+      <footer style="padding:48px 0;border-top:1px solid var(--line);font-size:12px;color:var(--text-3);letter-spacing:-0.005em;line-height:1.7;background:var(--surface-2);">
+        <div class="wrap">
+          <p style="margin:0 0 12px;"><strong style="color:var(--text);font-weight:500;">Epti is not a medical device.</strong> Information on this page is for general informational and personal-tracking purposes only and is not a substitute for professional medical advice from a qualified physician, pharmacist, or other licensed healthcare provider. Always consult a licensed healthcare professional before starting, changing, or stopping any protocol — including any compound referenced on this page.</p>
+          <p style="margin:0;">Epti does not sell, source, prescribe, or recommend the purchase of any medication, peptide, or controlled substance. © 2026 Epti, Inc.</p>
+        </div>
+      </footer>
+
+    </div>
+  </div>
+</div>
+
+</main>
+
+<!-- ====================== VIEW SWITCHER JS ====================== -->
+<script>
+  const views = {
+    memo: document.getElementById('view-memo'),
+    library: document.getElementById('view-library'),
+    detail: document.getElementById('view-detail'),
+  };
+  const buttons = document.querySelectorAll('.vb-tabs button');
+
+  function showView(name) {
+    Object.entries(views).forEach(([k, el]) => {
+      el.style.display = (k === name) ? '' : 'none';
+    });
+    buttons.forEach(b => b.classList.toggle('active', b.dataset.view === name));
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  buttons.forEach(b => b.addEventListener('click', () => showView(b.dataset.view)));
+
+  // Library card jump → detail
+  document.querySelectorAll('[data-jump]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      showView(el.dataset.jump);
+    });
+  });
+
+  // Default
+  showView('memo');
+
+  // TOC scroll-spy
+  const tocItems = document.querySelectorAll('.toc li[data-toc]');
+  const sections = document.querySelectorAll('.content section[id]');
+  function onScroll() {
+    let active = null;
+    const offset = window.scrollY + 140;
+    sections.forEach(s => {
+      if (s.offsetTop <= offset) active = s.id;
+    });
+    tocItems.forEach(li => li.classList.toggle('active', li.dataset.toc === active));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  tocItems.forEach(li => li.addEventListener('click', () => {
+    const sec = document.getElementById(li.dataset.toc);
+    if (sec) {
+      const top = sec.getBoundingClientRect().top + window.scrollY - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  }));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1778 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Compound library — Epti</title>
+<meta name="description" content="Plain-spoken, well-cited guides to the peptides and small molecules our community uses. Half-lives, typical protocols, common stacks, what the data says — and what it doesn't. Reviewed quarterly." />
+
+<link rel="canonical" href="https://eptiapp.com/compounds" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+  /* ─── Page-specific styles for /compounds index ─── */
+
+  /* Top crumbs */
+  .compound-nav { border-bottom: 1px solid var(--line); }
+  .compound-nav .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; padding-bottom: 18px; }
+  .crumbs {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3);
+    display: flex; gap: 10px; align-items: center;
+  }
+  .crumbs a { color: var(--text-3); transition: color 140ms ease; }
+  .crumbs a:hover { color: var(--text); }
+  .crumbs .here { color: var(--text); }
+  .nav-meta { font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; color: var(--text-3); text-transform: uppercase; }
+  .nav-meta b { color: var(--text); font-weight: 500; }
+
+  /* Hero */
+  .lib-hero { padding: 88px 0 56px; }
+  .lib-eyebrow {
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-strong);
+    display: inline-flex; align-items: center; gap: 12px; margin-bottom: 26px;
+  }
+  .lib-eyebrow::before { content: ""; width: 28px; height: 1px; background: var(--accent-strong); }
+
+  .lib-title {
+    font-size: clamp(56px, 8vw, 108px);
+    font-weight: 500; letter-spacing: -0.04em; line-height: 0.96;
+    margin: 0 0 28px;
+    max-width: 14ch;
+  }
+  .lib-title em { font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -0.02em; }
+  .lib-title .dot { color: var(--accent); }
+
+  .lib-lede {
+    font-size: 22px; line-height: 1.4; letter-spacing: -0.01em;
+    color: var(--text); margin: 0 0 36px; max-width: 56ch;
+  }
+  .lib-lede em { font-family: var(--serif); font-style: italic; color: var(--accent-strong); font-weight: 400; }
+  .lib-lede strong { font-weight: 500; }
+
+  .lib-meta {
+    display: flex; gap: 36px; padding: 26px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); flex-wrap: wrap; align-items: baseline;
+  }
+  .lib-meta .m { display: flex; gap: 12px; align-items: baseline; }
+  .lib-meta .m .v { font-size: 26px; font-weight: 500; letter-spacing: -0.025em; }
+  .lib-meta .m .v em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .lib-meta .m .l { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-3); max-width: 16ch; line-height: 1.4; }
+  .lib-meta .updated { margin-left: auto; }
+
+  /* Filters bar */
+  .lib-filters-wrap { background: var(--surface-2); border-bottom: 1px solid var(--line); }
+  .lib-filters {
+    padding: 22px 0;
+    display: flex; gap: 24px; align-items: center; flex-wrap: wrap;
+  }
+  .lib-search {
+    flex: 1; min-width: 280px;
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 18px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 999px;
+  }
+  .lib-search input {
+    border: 0; background: transparent; outline: none; flex: 1;
+    font: inherit; font-size: 14.5px; color: var(--text); letter-spacing: -0.005em;
+  }
+  .lib-search input::placeholder { color: var(--text-3); }
+  .lib-search svg { width: 15px; height: 15px; color: var(--text-3); }
+  .lib-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chip {
+    padding: 9px 16px; border-radius: 999px;
+    border: 1px solid var(--line); background: var(--surface);
+    font-size: 12.5px; color: var(--text-2); letter-spacing: -0.005em;
+    font-weight: 500; cursor: pointer;
+    transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
+  }
+  .chip:hover { background: var(--surface-2); color: var(--text); }
+  .chip.active { background: var(--text); color: var(--bg); border-color: transparent; }
+
+  /* Grid */
+  .lib-grid-wrap { padding: 48px 0 96px; }
+  .lib-section-head {
+    display: flex; justify-content: space-between; align-items: end; gap: 20px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+  .lib-section-head h2 { font-size: 26px; font-weight: 500; letter-spacing: -0.025em; margin: 0; }
+  .lib-section-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+  .lib-section-head .count { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--text-3); text-transform: uppercase; }
+
+  .lib-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+  .lib-card {
+    position: relative;
+    display: flex; flex-direction: column; gap: 14px;
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 20px; padding: 26px;
+    min-height: 240px;
+    text-decoration: none; color: inherit;
+    transition: border-color 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+  }
+  .lib-card:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 40px -22px rgba(14,16,22,0.18);
+  }
+  .lib-card.coming { opacity: 0.65; pointer-events: none; }
+  .lib-card .top { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+  .lib-card .cat {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .lib-card .cat::before { content: ""; width: 14px; height: 1px; background: currentColor; opacity: 0.7; }
+  .lib-card .cat.glp { color: var(--accent-strong); }
+  .lib-card .cat.repair { color: var(--cat-recovery); }
+  .lib-card .cat.gh { color: oklch(0.62 0.16 280); }
+  .lib-card .cat.research { color: var(--cat-heart); }
+  .lib-card .cat.pct { color: oklch(0.58 0.14 30); }
+  .lib-card .cat.aas { color: oklch(0.55 0.18 25); }
+  .lib-card .cat.sarm { color: oklch(0.58 0.16 270); }
+  .lib-card .cat.longevity { color: oklch(0.58 0.16 200); }
+  .lib-card .cat.nootropic { color: oklch(0.58 0.16 320); }
+  .lib-card .traffic {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.05em; color: var(--text-3);
+    text-align: right; white-space: nowrap;
+  }
+  .lib-card .traffic b { color: var(--text); font-weight: 500; }
+  .lib-card h3 {
+    font-size: 28px; font-weight: 500; letter-spacing: -0.03em; margin: 0;
+    line-height: 1.04;
+  }
+  .lib-card .aliases-mini {
+    font-family: var(--mono); font-size: 11px; color: var(--text-3); letter-spacing: -0.005em;
+    line-height: 1.5; margin: 0;
+  }
+  .lib-card .sub {
+    color: var(--text-2); font-size: 13.5px; line-height: 1.5;
+    letter-spacing: -0.005em; margin: 0;
+  }
+  .lib-card .row {
+    margin-top: auto;
+    display: flex; justify-content: space-between; align-items: center;
+    padding-top: 16px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--text-3);
+  }
+  .lib-card .arrow { color: var(--text); font-size: 14px; }
+  .lib-card .badges { display: flex; gap: 4px; flex-wrap: wrap; }
+  .lib-card .badge-mini {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 7px; border-radius: 4px;
+  }
+  .lib-card .badge-mini.wada { color: var(--cat-heart); background: var(--cat-heart-dim); border: 1px solid oklch(0.7 0.18 25 / 0.3); }
+  .lib-card .badge-mini.rx { color: var(--accent-strong); background: var(--accent-dim); border: 1px solid var(--accent-line); }
+  .lib-card .badge-mini.line { color: var(--text-3); border: 1px solid var(--line); }
+
+  /* Coming-soon badge */
+  .lib-card .soon {
+    position: absolute; top: 14px; right: 14px;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 4px 9px; border-radius: 4px;
+    background: var(--surface-3); color: var(--text-3);
+  }
+
+  /* About strip */
+  .about-strip {
+    padding: 64px 0; border-top: 1px solid var(--line); background: var(--surface-2);
+  }
+  .about-strip .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 64px; align-items: center; }
+  .about-strip h2 {
+    font-size: clamp(28px, 3.4vw, 44px);
+    font-weight: 500; letter-spacing: -0.03em; line-height: 1.04;
+    margin: 0;
+  }
+  .about-strip h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent-strong); }
+  .about-strip .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .about-strip .l-card {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 14px; padding: 16px;
+  }
+  .about-strip .l-card .conf {
+    display: inline-block;
+    font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 4px; margin-bottom: 8px;
+    border: 1px solid currentColor;
+  }
+  .about-strip .l-card .conf.we { color: var(--accent-strong); background: var(--accent-dim); border-color: var(--accent-line); }
+  .about-strip .l-card .conf.em { color: oklch(0.55 0.14 60); background: oklch(0.96 0.04 60); border-color: oklch(0.78 0.1 60 / 0.4); }
+  .about-strip .l-card .conf.co { color: var(--text-2); background: var(--surface-2); border-color: var(--line); }
+  .about-strip .l-card .conf.un { color: var(--text-3); background: transparent; border-color: var(--line-strong); border-style: dashed; }
+  .about-strip .l-card p { margin: 0; font-size: 13px; line-height: 1.5; color: var(--text-2); letter-spacing: -0.005em; }
+
+  /* Big CTA */
+  .big-cta { background: var(--text); color: var(--bg); padding: 88px 0; }
+  .big-cta .wrap { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+  .big-cta h2 { font-size: clamp(34px, 4.2vw, 60px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 18px; }
+  .big-cta h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent); }
+  .big-cta p { color: rgba(255,255,255,0.65); font-size: 17px; letter-spacing: -0.005em; margin: 0 0 22px; max-width: 50ch; line-height: 1.55; }
+  .big-cta .waitlist-form { background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.15); }
+  .big-cta .waitlist-form input { color: var(--bg); }
+  .big-cta .waitlist-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .big-cta .waitlist-form button { background: var(--accent); color: var(--accent-ink); }
+  .big-cta .waitlist-form button:hover { background: oklch(0.82 0.16 165); }
+
+  /* Footer */
+  .footer-disc {
+    border-top: 1px solid var(--line); padding: 56px 0;
+    font-size: 12.5px; color: var(--text-3); letter-spacing: -0.005em; line-height: 1.7;
+  }
+  .footer-disc strong { color: var(--text); font-weight: 500; }
+  .footer-disc .last {
+    margin-top: 24px; padding-top: 24px; border-top: 1px dashed var(--line);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+
+  
+
+  /* Head-to-head comparisons strip */
+  .cmp-strip { padding: 88px 0; border-top: 1px solid var(--line); background: var(--bg); }
+  .cmp-strip-head { margin-bottom: 36px; max-width: 60ch; }
+  .cmp-strip-head .cmp-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent-strong); display: inline-block; margin-bottom: 14px; }
+  .cmp-strip-head h2 { font-size: clamp(32px, 4vw, 52px); font-weight: 500; letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 14px; }
+  .cmp-strip-head h2 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent-strong); }
+  .cmp-strip-head p { font-size: 17px; color: var(--text-2); margin: 0; line-height: 1.5; }
+  .cmp-strip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .cmp-strip-card {
+    position: relative;
+    display: block; padding: 24px 26px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 16px;
+    text-decoration: none; color: inherit;
+    transition: border-color 160ms ease, transform 120ms ease, box-shadow 160ms ease;
+  }
+  .cmp-strip-card:hover { border-color: var(--line-strong); transform: translateY(-2px); box-shadow: 0 14px 40px -22px rgba(14,16,22,0.16); }
+  .cmp-strip-card .cmp-tag {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--text-3); display: inline-block; margin-bottom: 10px;
+  }
+  .cmp-strip-card h3 { font-size: 22px; font-weight: 500; letter-spacing: -0.025em; line-height: 1.1; margin: 0 0 8px; }
+  .cmp-strip-card h3 em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--accent-strong); padding: 0 4px; }
+  .cmp-strip-card p { font-size: 13.5px; color: var(--text-2); line-height: 1.5; margin: 0; }
+  .cmp-strip-card .arrow {
+    position: absolute; top: 24px; right: 24px;
+    font-family: var(--mono); font-size: 16px; color: var(--text-3);
+  }
+  @media (max-width: 720px) { .cmp-strip-grid { grid-template-columns: 1fr; } }
+
+  /* Responsive */
+  @media (max-width: 980px) {
+    .lib-grid { grid-template-columns: 1fr 1fr; }
+    .about-strip .wrap { grid-template-columns: 1fr; gap: 32px; }
+    .big-cta .wrap { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 640px) {
+    .lib-grid { grid-template-columns: 1fr; }
+    .about-strip .legend { grid-template-columns: 1fr; }
+    .lib-meta { gap: 18px; }
+    .lib-meta .updated { margin-left: 0; }
+  }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://eptiapp.com/"},{"@type":"ListItem","position":2,"name":"Compound library","item":"https://eptiapp.com/compounds"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Epti compound library","numberOfItems":78,"itemListElement":[{"@type":"ListItem","position":1,"name":"Tirzepatide","url":"https://eptiapp.com/compounds/tirzepatide"},{"@type":"ListItem","position":2,"name":"Semaglutide","url":"https://eptiapp.com/compounds/semaglutide"},{"@type":"ListItem","position":3,"name":"Retatrutide","url":"https://eptiapp.com/compounds/retatrutide"},{"@type":"ListItem","position":4,"name":"MK-677","url":"https://eptiapp.com/compounds/mk-677"},{"@type":"ListItem","position":5,"name":"Ipamorelin","url":"https://eptiapp.com/compounds/ipamorelin"},{"@type":"ListItem","position":6,"name":"CJC-1295 No DAC","url":"https://eptiapp.com/compounds/cjc-1295-no-dac"},{"@type":"ListItem","position":7,"name":"CJC-1295 with DAC","url":"https://eptiapp.com/compounds/cjc-1295-with-dac"},{"@type":"ListItem","position":8,"name":"Sermorelin","url":"https://eptiapp.com/compounds/sermorelin"},{"@type":"ListItem","position":9,"name":"Tesamorelin","url":"https://eptiapp.com/compounds/tesamorelin"},{"@type":"ListItem","position":10,"name":"Hexarelin","url":"https://eptiapp.com/compounds/hexarelin"},{"@type":"ListItem","position":11,"name":"GHRP-2","url":"https://eptiapp.com/compounds/ghrp-2"},{"@type":"ListItem","position":12,"name":"GHRP-6","url":"https://eptiapp.com/compounds/ghrp-6"},{"@type":"ListItem","position":13,"name":"PEG-MGF","url":"https://eptiapp.com/compounds/peg-mgf"},{"@type":"ListItem","position":14,"name":"IGF-1 LR3","url":"https://eptiapp.com/compounds/igf-1-lr3"},{"@type":"ListItem","position":15,"name":"IGF-1 DES","url":"https://eptiapp.com/compounds/igf-1-des"},{"@type":"ListItem","position":16,"name":"IGF-1 (Native)","url":"https://eptiapp.com/compounds/igf-1-native"},{"@type":"ListItem","position":17,"name":"BPC-157","url":"https://eptiapp.com/compounds/bpc-157"},{"@type":"ListItem","position":18,"name":"TB-500","url":"https://eptiapp.com/compounds/tb-500"},{"@type":"ListItem","position":19,"name":"GHK-Cu","url":"https://eptiapp.com/compounds/ghk-cu"},{"@type":"ListItem","position":20,"name":"KPV","url":"https://eptiapp.com/compounds/kpv"},{"@type":"ListItem","position":21,"name":"LL-37","url":"https://eptiapp.com/compounds/ll-37"},{"@type":"ListItem","position":22,"name":"Thymosin α-1","url":"https://eptiapp.com/compounds/thymosin-alpha-1"},{"@type":"ListItem","position":23,"name":"SS-31","url":"https://eptiapp.com/compounds/ss-31"},{"@type":"ListItem","position":24,"name":"MOTS-c","url":"https://eptiapp.com/compounds/mots-c"},{"@type":"ListItem","position":25,"name":"Humanin","url":"https://eptiapp.com/compounds/humanin"},{"@type":"ListItem","position":26,"name":"VIP","url":"https://eptiapp.com/compounds/vip"},{"@type":"ListItem","position":27,"name":"PT-141","url":"https://eptiapp.com/compounds/pt-141"},{"@type":"ListItem","position":28,"name":"Melanotan II","url":"https://eptiapp.com/compounds/melanotan-ii"},{"@type":"ListItem","position":29,"name":"Melanotan I","url":"https://eptiapp.com/compounds/melanotan-i"},{"@type":"ListItem","position":30,"name":"Tesofensine","url":"https://eptiapp.com/compounds/tesofensine"},{"@type":"ListItem","position":31,"name":"YK-11","url":"https://eptiapp.com/compounds/yk-11"},{"@type":"ListItem","position":32,"name":"5-Amino-1MQ","url":"https://eptiapp.com/compounds/5-amino-1mq"},{"@type":"ListItem","position":33,"name":"AOD-9604","url":"https://eptiapp.com/compounds/aod-9604"},{"@type":"ListItem","position":34,"name":"Follistatin 344","url":"https://eptiapp.com/compounds/follistatin-344"},{"@type":"ListItem","position":35,"name":"ACE-031","url":"https://eptiapp.com/compounds/ace-031"},{"@type":"ListItem","position":36,"name":"Epitalon","url":"https://eptiapp.com/compounds/epitalon"},{"@type":"ListItem","position":37,"name":"Kisspeptin-10","url":"https://eptiapp.com/compounds/kisspeptin-10"},{"@type":"ListItem","position":38,"name":"Epicatechin","url":"https://eptiapp.com/compounds/epicatechin"},{"@type":"ListItem","position":39,"name":"5-HTP","url":"https://eptiapp.com/compounds/5-htp"},{"@type":"ListItem","position":40,"name":"L-Carnitine","url":"https://eptiapp.com/compounds/l-carnitine"},{"@type":"ListItem","position":41,"name":"HCG","url":"https://eptiapp.com/compounds/hcg"},{"@type":"ListItem","position":42,"name":"HMG","url":"https://eptiapp.com/compounds/hmg"},{"@type":"ListItem","position":43,"name":"Clomid","url":"https://eptiapp.com/compounds/clomid"},{"@type":"ListItem","position":44,"name":"Enclomiphene","url":"https://eptiapp.com/compounds/enclomiphene"},{"@type":"ListItem","position":45,"name":"Nolvadex","url":"https://eptiapp.com/compounds/nolvadex"},{"@type":"ListItem","position":46,"name":"Raloxifene","url":"https://eptiapp.com/compounds/raloxifene"},{"@type":"ListItem","position":47,"name":"Arimidex","url":"https://eptiapp.com/compounds/arimidex"},{"@type":"ListItem","position":48,"name":"Aromasin","url":"https://eptiapp.com/compounds/aromasin"},{"@type":"ListItem","position":49,"name":"Letrozole","url":"https://eptiapp.com/compounds/letrozole"},{"@type":"ListItem","position":50,"name":"Cabergoline","url":"https://eptiapp.com/compounds/cabergoline"},{"@type":"ListItem","position":51,"name":"Testosterone","url":"https://eptiapp.com/compounds/testosterone"},{"@type":"ListItem","position":52,"name":"Trenbolone","url":"https://eptiapp.com/compounds/trenbolone"},{"@type":"ListItem","position":53,"name":"Anavar","url":"https://eptiapp.com/compounds/anavar"},{"@type":"ListItem","position":54,"name":"Dianabol","url":"https://eptiapp.com/compounds/dianabol"},{"@type":"ListItem","position":55,"name":"Winstrol","url":"https://eptiapp.com/compounds/winstrol"},{"@type":"ListItem","position":56,"name":"Nandrolone","url":"https://eptiapp.com/compounds/nandrolone"},{"@type":"ListItem","position":57,"name":"Masteron","url":"https://eptiapp.com/compounds/masteron"},{"@type":"ListItem","position":58,"name":"Anadrol","url":"https://eptiapp.com/compounds/anadrol"},{"@type":"ListItem","position":59,"name":"Boldenone","url":"https://eptiapp.com/compounds/boldenone"},{"@type":"ListItem","position":60,"name":"Ostarine","url":"https://eptiapp.com/compounds/ostarine"},{"@type":"ListItem","position":61,"name":"RAD-140","url":"https://eptiapp.com/compounds/rad-140"},{"@type":"ListItem","position":62,"name":"LGD-4033","url":"https://eptiapp.com/compounds/lgd-4033"},{"@type":"ListItem","position":63,"name":"Cardarine","url":"https://eptiapp.com/compounds/cardarine"},{"@type":"ListItem","position":64,"name":"S-23","url":"https://eptiapp.com/compounds/s23"},{"@type":"ListItem","position":65,"name":"Andarine","url":"https://eptiapp.com/compounds/andarine"},{"@type":"ListItem","position":66,"name":"LGD-3303","url":"https://eptiapp.com/compounds/lgd-3303"},{"@type":"ListItem","position":67,"name":"Metformin","url":"https://eptiapp.com/compounds/metformin"},{"@type":"ListItem","position":68,"name":"Rapamycin","url":"https://eptiapp.com/compounds/rapamycin"},{"@type":"ListItem","position":69,"name":"NMN","url":"https://eptiapp.com/compounds/nmn"},{"@type":"ListItem","position":70,"name":"NR","url":"https://eptiapp.com/compounds/nr"},{"@type":"ListItem","position":71,"name":"Oxytocin","url":"https://eptiapp.com/compounds/oxytocin"},{"@type":"ListItem","position":72,"name":"Semax","url":"https://eptiapp.com/compounds/semax"},{"@type":"ListItem","position":73,"name":"Cerebrolysin","url":"https://eptiapp.com/compounds/cerebrolysin"},{"@type":"ListItem","position":74,"name":"Selank","url":"https://eptiapp.com/compounds/selank"},{"@type":"ListItem","position":75,"name":"DSIP","url":"https://eptiapp.com/compounds/dsip"},{"@type":"ListItem","position":76,"name":"Dihexa","url":"https://eptiapp.com/compounds/dihexa"},{"@type":"ListItem","position":77,"name":"P21","url":"https://eptiapp.com/compounds/p21"},{"@type":"ListItem","position":78,"name":"Pinealon","url":"https://eptiapp.com/compounds/pinealon"}]}</script>
+</head>
+<body>
+
+<!-- ====================== NAV ====================== -->
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="Epti Landing.html" aria-label="epti">
+      <span class="wordmark"><span>epti</span><span class="dot" aria-hidden="true"></span></span>
+    </a>
+    <div class="nav-links"></div>
+    <div class="nav-right">
+      <a class="btn primary" href="Epti Landing.html#join">Join waitlist</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================== CRUMBS ====================== -->
+<div class="compound-nav">
+  <div class="wrap">
+    <div class="crumbs">
+      <a href="Epti Landing.html">Home</a><span>›</span>
+      <span class="here">Compound library</span>
+    </div>
+    <div class="nav-meta">78 live · <b>9 categories</b> · reviewed quarterly</div>
+  </div>
+</div>
+
+<!-- ====================== HERO ====================== -->
+<header class="lib-hero">
+  <div class="wrap">
+    <span class="lib-eyebrow">A resource — not a recommendation</span>
+
+    <h1 class="lib-title">The <em>compound</em> library<span class="dot">.</span></h1>
+
+    <p class="lib-lede">Plain-spoken, well-cited guides to the peptides and small molecules people in our community actually use. <strong>Half-lives, typical protocols, common stacks, side effects, and what the data actually says.</strong> Reviewed quarterly by a licensed clinician. <em>Not medical advice.</em></p>
+
+    <div class="lib-meta">
+      <div class="m"><span class="v">78</span><span class="l">Live compounds</span></div>
+      <div class="m"><span class="v">9</span><span class="l">Categories</span></div>
+      <div class="m"><span class="v">800<em>+</em></span><span class="l">Citations</span></div>
+      <div class="m"><span class="v">Quarterly</span><span class="l">Review cadence</span></div>
+      <div class="m updated"><span class="l">Last updated</span><span class="v" style="font-family:var(--mono);font-size:14px;">May 20, 2026</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ====================== FILTERS ====================== -->
+<div class="lib-filters-wrap">
+  <div class="wrap">
+    <div class="lib-filters">
+      <div class="lib-search">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5.5"/><path d="M11 11l3.5 3.5" stroke-linecap="round"/></svg>
+        <input id="lib-search-input" type="text" placeholder="Search 78 compounds — testosterone, BPC-157, RAD-140, rapamycin…" />
+      </div>
+      <div class="lib-chips" id="lib-chips">
+        <button class="chip active" data-filter="all">All</button>
+        <button class="chip" data-filter="glp">GLP-1</button>
+        <button class="chip" data-filter="gh">Growth hormone</button>
+        <button class="chip" data-filter="repair">Healing &amp; repair</button>
+        <button class="chip" data-filter="research">Research peptides</button>
+        <button class="chip" data-filter="pct">PCT</button>
+        <button class="chip" data-filter="aas">AAS</button>
+        <button class="chip" data-filter="sarm">SARMs</button>
+        <button class="chip" data-filter="longevity">Longevity</button>
+        <button class="chip" data-filter="nootropic">Nootropics</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ====================== GRID ====================== -->
+<section class="lib-grid-wrap">
+  <div class="wrap">
+
+    
+    
+    <div class="lib-section-head">
+      <h2><a href="Epti GLP-1 Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>GLP-1</em> & metabolic.</a></h2>
+      <span class="count">3 compounds  ·  Weight loss, glycemic control, and the new triple-agonist frontier  ·  <a href="Epti GLP-1 Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti Tirzepatide.html" class="lib-card" data-cat="glp">
+        <div class="top">
+          <span class="cat glp">GLP-1 / GIP</span>
+          <span class="traffic"><b>90k</b>/mo searches</span>
+        </div>
+        <h3>Tirzepatide</h3>
+        <p class="aliases-mini">Mounjaro · Zepbound · LY3298176</p>
+        <p class="sub">Dual GLP-1 / GIP agonist. FDA-approved. The current weight-loss benchmark.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">FDA-approved</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Semaglutide.html" class="lib-card" data-cat="glp">
+        <div class="top">
+          <span class="cat glp">GLP-1</span>
+          <span class="traffic"><b>180k</b>/mo searches</span>
+        </div>
+        <h3>Semaglutide</h3>
+        <p class="aliases-mini">Ozempic · Wegovy · Rybelsus</p>
+        <p class="sub">The original GLP-1. Mature data, well-characterized side effects, predictable dosing.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">FDA-approved</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Retatrutide.html" class="lib-card" data-cat="glp">
+        <div class="top">
+          <span class="cat glp">GLP-1 / GIP / GCG</span>
+          <span class="traffic"><b>22k</b>/mo searches</span>
+        </div>
+        <h3>Retatrutide</h3>
+        <p class="aliases-mini">LY3437943 · Triple-G</p>
+        <p class="sub">Triple GLP-1 / GIP / GCG agonist in Phase III. ~24% weight loss at 48 weeks.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Phase III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti Growth Hormone Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>Growth</em> hormone.</a></h2>
+      <span class="count">13 compounds  ·  Secretagogues, GHRH analogues, IGF-1 — natural-rhythm GH  ·  <a href="Epti Growth Hormone Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti MK-677.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone (oral)</span>
+          <span class="traffic"><b>301k</b>/mo searches</span>
+        </div>
+        <h3>MK-677</h3>
+        <p class="aliases-mini">Ibutamoren · Nutrobal</p>
+        <p class="sub">The oral GH secretagogue — deepest human trial data in its category, heaviest side-effect profile.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Ipamorelin.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>110k</b>/mo searches</span>
+        </div>
+        <h3>Ipamorelin</h3>
+        <p class="aliases-mini">NNC 26-0161</p>
+        <p class="sub">The cleanest GH secretagogue — a GH pulse without cortisol, prolactin, or appetite spike.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti CJC-1295 No DAC.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>11k</b>/mo searches</span>
+        </div>
+        <h3>CJC-1295 No DAC</h3>
+        <p class="aliases-mini">Mod GRF (1-29) · Modified GHRH</p>
+        <p class="sub">30-min half-life GHRH analogue. Most common stack partner for ipamorelin.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti CJC-1295 with DAC.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>8k</b>/mo searches</span>
+        </div>
+        <h3>CJC-1295 with DAC</h3>
+        <p class="aliases-mini">DAC-CJC · Drug Affinity Complex</p>
+        <p class="sub">Albumin-bound version with a ~8-day half-life. Sustained GH elevation — different side-effect calculus.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Sermorelin.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>18k</b>/mo searches</span>
+        </div>
+        <h3>Sermorelin</h3>
+        <p class="aliases-mini">GHRH(1-29) · GRF(1-29) · Geref</p>
+        <p class="sub">The original natural-rhythm GH approach — your pituitary stays in charge.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span><span class="badge-mini rx">Rx · compounding</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Tesamorelin.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>9k</b>/mo searches</span>
+        </div>
+        <h3>Tesamorelin</h3>
+        <p class="aliases-mini">Egrifta · TH9507</p>
+        <p class="sub">FDA-approved GHRH analogue for HIV-associated lipodystrophy. Visceral-fat targeted.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">FDA-approved</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Hexarelin.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>5k</b>/mo searches</span>
+        </div>
+        <h3>Hexarelin</h3>
+        <p class="aliases-mini">HEX · Examorelin</p>
+        <p class="sub">Potent GHRP — strongest GH pulse of its class, but with cortisol and prolactin elevation.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti GHRP-2.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>6k</b>/mo searches</span>
+        </div>
+        <h3>GHRP-2</h3>
+        <p class="aliases-mini">Pralmorelin · KP-102</p>
+        <p class="sub">Older-generation GHRP. Strong GH pulse with some cortisol/prolactin spike.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti GHRP-6.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>7k</b>/mo searches</span>
+        </div>
+        <h3>GHRP-6</h3>
+        <p class="aliases-mini">Histrelin analogue</p>
+        <p class="sub">Strong GHRP with significant appetite stimulation — the class hunger driver.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti PEG-MGF.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">Growth hormone</span>
+          <span class="traffic"><b>4k</b>/mo searches</span>
+        </div>
+        <h3>PEG-MGF</h3>
+        <p class="aliases-mini">PEGylated Mechano Growth Factor</p>
+        <p class="sub">Pegylated IGF-1 splice variant. Targets satellite cells at sites of mechanical loading.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti IGF-1 LR3.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">IGF-1 analogue</span>
+          <span class="traffic"><b>23k</b>/mo searches</span>
+        </div>
+        <h3>IGF-1 LR3</h3>
+        <p class="aliases-mini">Long R3 IGF-1</p>
+        <p class="sub">Long-acting IGF-1 analogue — half-life ~20-30 hours. The systemic anabolic.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti IGF-1 DES.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">IGF-1 analogue</span>
+          <span class="traffic"><b>4k</b>/mo searches</span>
+        </div>
+        <h3>IGF-1 DES</h3>
+        <p class="aliases-mini">DES(1-3) IGF-1</p>
+        <p class="sub">Truncated IGF-1 analogue. Local, site-specific hypertrophy.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti IGF-1 Native.html" class="lib-card" data-cat="gh">
+        <div class="top">
+          <span class="cat gh">IGF-1 (rhIGF-1)</span>
+          <span class="traffic"><b>12k</b>/mo searches</span>
+        </div>
+        <h3>IGF-1 (Native)</h3>
+        <p class="aliases-mini">Mecasermin · Increlex</p>
+        <p class="sub">Recombinant human IGF-1. FDA-approved for severe primary IGF-1 deficiency.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti Healing Repair Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>Healing</em> & repair.</a></h2>
+      <span class="count">10 compounds  ·  Soft-tissue, mitochondrial, and immune peptides for recovery  ·  <a href="Epti Healing Repair Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti BPC-157.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>135k</b>/mo searches</span>
+        </div>
+        <h3>BPC-157</h3>
+        <p class="aliases-mini">Body Protection Compound 157 · PLD-116</p>
+        <p class="sub">Synthetic pentadecapeptide. Strong animal data, almost no human data — and the most-Googled healing peptide of the decade.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti TB-500.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>91k</b>/mo searches</span>
+        </div>
+        <h3>TB-500</h3>
+        <p class="aliases-mini">Thymosin Beta-4 · Tβ4</p>
+        <p class="sub">The systemic healing peptide — built for muscle tears and full-body inflammation.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti GHK-Cu.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>14k</b>/mo searches</span>
+        </div>
+        <h3>GHK-Cu</h3>
+        <p class="aliases-mini">Copper peptide · Lamin</p>
+        <p class="sub">Copper tripeptide for collagen synthesis, skin repair, and cosmetic recovery.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Topical / SC</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti KPV.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>4k</b>/mo searches</span>
+        </div>
+        <h3>KPV</h3>
+        <p class="aliases-mini">α-MSH (11-13) · Lys-Pro-Val</p>
+        <p class="sub">Anti-inflammatory tripeptide fragment of α-MSH. Mast-cell stabilizer for gut and skin.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti LL-37.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>6k</b>/mo searches</span>
+        </div>
+        <h3>LL-37</h3>
+        <p class="aliases-mini">Cathelicidin · hCAP-18</p>
+        <p class="sub">Endogenous antimicrobial peptide. Investigated for chronic infection, biofilm, and skin.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Thymosin Alpha-1.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>7k</b>/mo searches</span>
+        </div>
+        <h3>Thymosin α-1</h3>
+        <p class="aliases-mini">Tα1 · Zadaxin</p>
+        <p class="sub">28-aa immunomodulatory peptide. Approved in 30+ countries for hepatitis B/C and immune support.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx (intl.)</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti SS-31.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>5k</b>/mo searches</span>
+        </div>
+        <h3>SS-31</h3>
+        <p class="aliases-mini">Elamipretide · Bendavia</p>
+        <p class="sub">Mitochondrial-targeted peptide. Restores cristae integrity. Phase III for primary mitochondrial myopathy.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Phase III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti MOTS-c.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>6k</b>/mo searches</span>
+        </div>
+        <h3>MOTS-c</h3>
+        <p class="aliases-mini">Mitochondrial Open Reading Frame of 12S rRNA-c</p>
+        <p class="sub">Mitochondrial-derived peptide. AMPK activator. Investigated for metabolic and exercise capacity.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Humanin.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>4k</b>/mo searches</span>
+        </div>
+        <h3>Humanin</h3>
+        <p class="aliases-mini">Rattin · MDP</p>
+        <p class="sub">Mitochondrial-derived peptide. Cyto-protective. Investigated for Alzheimer and metabolic disease.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti VIP.html" class="lib-card" data-cat="repair">
+        <div class="top">
+          <span class="cat repair">Healing & repair</span>
+          <span class="traffic"><b>5k</b>/mo searches</span>
+        </div>
+        <h3>VIP</h3>
+        <p class="aliases-mini">Vasoactive Intestinal Peptide</p>
+        <p class="sub">28-aa neuropeptide. Anti-inflammatory, immunomodulatory. Used for CIRS and Sjogren investigationally.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti Research Peptides.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>Research</em> peptides.</a></h2>
+      <span class="count">14 compounds  ·  Pre-clinical, investigational, and OTC compounds — caveat emptor  ·  <a href="Epti Research Peptides.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti PT-141.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>60k</b>/mo searches</span>
+        </div>
+        <h3>PT-141</h3>
+        <p class="aliases-mini">Bremelanotide · Vyleesi</p>
+        <p class="sub">Melanocortin receptor agonist. FDA-approved for HSDD. The non-vascular libido peptide.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">FDA-approved</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Melanotan II.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>40k</b>/mo searches</span>
+        </div>
+        <h3>Melanotan II</h3>
+        <p class="aliases-mini">MT-II · MT2</p>
+        <p class="sub">α-MSH analogue. Tanning, libido, appetite suppression — and a significant melanoma risk profile.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Research only</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Melanotan I.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>11k</b>/mo searches</span>
+        </div>
+        <h3>Melanotan I</h3>
+        <p class="aliases-mini">Afamelanotide · Scenesse · MT-I</p>
+        <p class="sub">α-MSH analogue. EMA/FDA-approved (Scenesse) for erythropoietic protoporphyria.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx (EPP)</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Tesofensine.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research / metabolic</span>
+          <span class="traffic"><b>12k</b>/mo searches</span>
+        </div>
+        <h3>Tesofensine</h3>
+        <p class="aliases-mini">NS2330</p>
+        <p class="sub">Triple monoamine reuptake inhibitor. ~10% weight loss in Phase II. Late-stage development.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Phase III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti YK-11.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research / SARM</span>
+          <span class="traffic"><b>14k</b>/mo searches</span>
+        </div>
+        <h3>YK-11</h3>
+        <p class="aliases-mini">Steroidal SARM</p>
+        <p class="sub">Steroidal SARM and myostatin modulator. Hepatotoxic — not a peptide; a synthetic steroid.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti 5-Amino-1MQ.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>14k</b>/mo searches</span>
+        </div>
+        <h3>5-Amino-1MQ</h3>
+        <p class="aliases-mini">NNMT inhibitor</p>
+        <p class="sub">Small-molecule NNMT inhibitor. Strong preclinical metabolic data, no human trials.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Research only</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti AOD-9604.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>8k</b>/mo searches</span>
+        </div>
+        <h3>AOD-9604</h3>
+        <p class="aliases-mini">GH fragment (177-191)</p>
+        <p class="sub">GH fragment marketed for fat-loss. Mixed clinical data — most trials negative.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Follistatin 344.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>5k</b>/mo searches</span>
+        </div>
+        <h3>Follistatin 344</h3>
+        <p class="aliases-mini">FST-344</p>
+        <p class="sub">Myostatin inhibitor. Powerful muscle-growth signal in animal models. Significant safety concerns.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti ACE-031.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>3k</b>/mo searches</span>
+        </div>
+        <h3>ACE-031</h3>
+        <p class="aliases-mini">ActRIIB-Fc · Ramatercept</p>
+        <p class="sub">ActRIIB-Fc decoy receptor. Development discontinued due to side effects in trials.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Discontinued</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Epitalon.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>5k</b>/mo searches</span>
+        </div>
+        <h3>Epitalon</h3>
+        <p class="aliases-mini">Epithalon · AEDG</p>
+        <p class="sub">Tetrapeptide investigated for telomerase activation. Russian-language source base. Thin evidence.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Research only</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Kisspeptin-10.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Research peptide</span>
+          <span class="traffic"><b>4k</b>/mo searches</span>
+        </div>
+        <h3>Kisspeptin-10</h3>
+        <p class="aliases-mini">KP-10 · Metastin (45-54)</p>
+        <p class="sub">Upstream HPG-axis trigger. Studied for hypothalamic infertility and as a GnRH alternative.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Epicatechin.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Supplement</span>
+          <span class="traffic"><b>9k</b>/mo searches</span>
+        </div>
+        <h3>Epicatechin</h3>
+        <p class="aliases-mini">cocoa flavanol</p>
+        <p class="sub">Flavanol from cocoa. Modest myostatin inhibition. Best evidence: vascular function.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">OTC supplement</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti 5-HTP.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Supplement</span>
+          <span class="traffic"><b>60k</b>/mo searches</span>
+        </div>
+        <h3>5-HTP</h3>
+        <p class="aliases-mini">5-Hydroxytryptophan</p>
+        <p class="sub">Direct serotonin precursor. Used for mood, sleep, and appetite. NEVER combine with SSRIs.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">OTC supplement</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti L-Carnitine.html" class="lib-card" data-cat="research">
+        <div class="top">
+          <span class="cat research">Supplement</span>
+          <span class="traffic"><b>110k</b>/mo searches</span>
+        </div>
+        <h3>L-Carnitine</h3>
+        <p class="aliases-mini">L-Carnitine L-tartrate · ALCAR</p>
+        <p class="sub">Fatty-acid shuttle. Modest endurance and recovery benefits. Cognitive variant (ALCAR) for brain.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">OTC supplement</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti PCT Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>Hormone</em> support & PCT.</a></h2>
+      <span class="count">10 compounds  ·  SERMs, AIs, gonadotropins, and prolactin control  ·  <a href="Epti PCT Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti HCG.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / hormone support</span>
+          <span class="traffic"><b>170k</b>/mo searches</span>
+        </div>
+        <h3>HCG</h3>
+        <p class="aliases-mini">Human Chorionic Gonadotropin · Pregnyl</p>
+        <p class="sub">LH analogue. Mimics LH to maintain testicular function on TRT or restart after a cycle.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti HMG.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / hormone support</span>
+          <span class="traffic"><b>20k</b>/mo searches</span>
+        </div>
+        <h3>HMG</h3>
+        <p class="aliases-mini">Human Menopausal Gonadotropin · Menopur</p>
+        <p class="sub">Mixed LH/FSH gonadotropin. Used for full HPG restart and fertility.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Clomid.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / SERM</span>
+          <span class="traffic"><b>90k</b>/mo searches</span>
+        </div>
+        <h3>Clomid</h3>
+        <p class="aliases-mini">Clomiphene Citrate · Serophene</p>
+        <p class="sub">The original SERM PCT. Two isomers — one helpful, one notorious for emotional side effects.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Enclomiphene.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / SERM</span>
+          <span class="traffic"><b>40k</b>/mo searches</span>
+        </div>
+        <h3>Enclomiphene</h3>
+        <p class="aliases-mini">Trans-clomiphene · Androxal</p>
+        <p class="sub">The clean half of Clomid. Pure trans-isomer — endogenous testosterone without side effects.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Investigational</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Nolvadex.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / SERM</span>
+          <span class="traffic"><b>60k</b>/mo searches</span>
+        </div>
+        <h3>Nolvadex</h3>
+        <p class="aliases-mini">Tamoxifen Citrate</p>
+        <p class="sub">SERM. Gold standard for gynecomastia prevention and PCT — gentler than Clomid emotionally.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Raloxifene.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / SERM</span>
+          <span class="traffic"><b>70k</b>/mo searches</span>
+        </div>
+        <h3>Raloxifene</h3>
+        <p class="aliases-mini">Evista · Keoxifene</p>
+        <p class="sub">SERM. Stronger anti-estrogen action in breast tissue. The gyno-reversal compound.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Arimidex.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / AI</span>
+          <span class="traffic"><b>80k</b>/mo searches</span>
+        </div>
+        <h3>Arimidex</h3>
+        <p class="aliases-mini">Anastrozole</p>
+        <p class="sub">Aromatase inhibitor. The stronger, surgical AI for high-dose AAS cycles.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Aromasin.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / AI</span>
+          <span class="traffic"><b>50k</b>/mo searches</span>
+        </div>
+        <h3>Aromasin</h3>
+        <p class="aliases-mini">Exemestane</p>
+        <p class="sub">Suicide AI — permanently inactivates aromatase. No estrogen rebound on discontinuation.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Letrozole.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / AI</span>
+          <span class="traffic"><b>90k</b>/mo searches</span>
+        </div>
+        <h3>Letrozole</h3>
+        <p class="aliases-mini">Femara</p>
+        <p class="sub">The most potent AI. Crushes estrogen — useful for emergency gyno, dangerous for general use.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Cabergoline.html" class="lib-card" data-cat="pct">
+        <div class="top">
+          <span class="cat pct">PCT / prolactin</span>
+          <span class="traffic"><b>60k</b>/mo searches</span>
+        </div>
+        <h3>Cabergoline</h3>
+        <p class="aliases-mini">Caber · Dostinex</p>
+        <p class="sub">Dopamine D2 agonist. Crushes prolactin from 19-nor compounds and GH peptides.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti Anabolic Steroid Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>Anabolic</em> steroids.</a></h2>
+      <span class="count">9 compounds  ·  The base, the 19-nors, and the orals — what cycles are built from  ·  <a href="Epti Anabolic Steroid Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti Testosterone.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · base</span>
+          <span class="traffic"><b>820k</b>/mo searches</span>
+        </div>
+        <h3>Testosterone</h3>
+        <p class="aliases-mini">Cypionate · Enanthate · Propionate · Sustanon</p>
+        <p class="sub">The base of nearly every cycle. Endogenous androgen, exogenous ester — TRT to supraphysiologic, on one molecule.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx · Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Trenbolone.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · 19-nor</span>
+          <span class="traffic"><b>200k</b>/mo searches</span>
+        </div>
+        <h3>Trenbolone</h3>
+        <p class="aliases-mini">Tren · Finaplix · Parabolan</p>
+        <p class="sub">19-nor steroid. Most potent on the market — and the most punishing on sleep, cardiovascular, and mental health.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Vet · Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Anavar.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · oral DHT</span>
+          <span class="traffic"><b>180k</b>/mo searches</span>
+        </div>
+        <h3>Anavar</h3>
+        <p class="aliases-mini">Oxandrolone · Var</p>
+        <p class="sub">The mild oral. DHT-derived, low side-effect profile — the most expensive and most counterfeited steroid on earth.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx · Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Dianabol.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · oral</span>
+          <span class="traffic"><b>130k</b>/mo searches</span>
+        </div>
+        <h3>Dianabol</h3>
+        <p class="aliases-mini">D-bol · Methandrostenolone</p>
+        <p class="sub">The original mass-builder. Fast water and strength — and the original liver-toxicity warning.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Winstrol.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · oral / inj.</span>
+          <span class="traffic"><b>140k</b>/mo searches</span>
+        </div>
+        <h3>Winstrol</h3>
+        <p class="aliases-mini">Stanozolol · Winny</p>
+        <p class="sub">The track-and-field cut-cycle classic. Hardening and strength without water, at a cost to joints and lipids.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx · Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Nandrolone.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · 19-nor</span>
+          <span class="traffic"><b>90k</b>/mo searches</span>
+        </div>
+        <h3>Nandrolone</h3>
+        <p class="aliases-mini">Deca-Durabolin · Deca · NPP</p>
+        <p class="sub">19-nor anabolic. Joint relief and slow, steady mass — and the highest prolactin profile in the class.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx · Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Masteron.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · DHT</span>
+          <span class="traffic"><b>70k</b>/mo searches</span>
+        </div>
+        <h3>Masteron</h3>
+        <p class="aliases-mini">Drostanolone · Mast</p>
+        <p class="sub">DHT-derived hardener. Anti-estrogenic. The classic stage-prep finisher with low side-effect noise.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Anadrol.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · oral</span>
+          <span class="traffic"><b>70k</b>/mo searches</span>
+        </div>
+        <h3>Anadrol</h3>
+        <p class="aliases-mini">Oxymetholone · A-bombs · A50</p>
+        <p class="sub">17α-alkylated oral. Fastest mass and strength of any compound. Hardest on the liver and lipids.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx · Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Boldenone.html" class="lib-card" data-cat="aas">
+        <div class="top">
+          <span class="cat aas">AAS · long-ester</span>
+          <span class="traffic"><b>40k</b>/mo searches</span>
+        </div>
+        <h3>Boldenone</h3>
+        <p class="aliases-mini">Equipoise · EQ · Bold</p>
+        <p class="sub">Long-ester veterinary anabolic. Slow, lean gains and notable appetite increase.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Vet · Schedule III</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti SARM Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>SARMs</em> & receptor mods.</a></h2>
+      <span class="count">7 compounds  ·  Selective androgen receptor modulators and adjacent compounds  ·  <a href="Epti SARM Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti Ostarine.html" class="lib-card" data-cat="sarm">
+        <div class="top">
+          <span class="cat sarm">SARM</span>
+          <span class="traffic"><b>90k</b>/mo searches</span>
+        </div>
+        <h3>Ostarine</h3>
+        <p class="aliases-mini">MK-2866 · Enobosarm</p>
+        <p class="sub">The most-studied SARM. Mildest profile — bridging tool for recomp and injury recovery.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti RAD-140.html" class="lib-card" data-cat="sarm">
+        <div class="top">
+          <span class="cat sarm">SARM</span>
+          <span class="traffic"><b>80k</b>/mo searches</span>
+        </div>
+        <h3>RAD-140</h3>
+        <p class="aliases-mini">Testolone</p>
+        <p class="sub">High-potency SARM, near testosterone-level anabolic signal. Hepatotoxicity reports in users.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti LGD-4033.html" class="lib-card" data-cat="sarm">
+        <div class="top">
+          <span class="cat sarm">SARM</span>
+          <span class="traffic"><b>70k</b>/mo searches</span>
+        </div>
+        <h3>LGD-4033</h3>
+        <p class="aliases-mini">Ligandrol · VK-5211</p>
+        <p class="sub">Potent SARM — clean, strength-focused. Strongest HPG suppression of the SARMs.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Cardarine.html" class="lib-card" data-cat="sarm">
+        <div class="top">
+          <span class="cat sarm">PPAR-δ</span>
+          <span class="traffic"><b>45k</b>/mo searches</span>
+        </div>
+        <h3>Cardarine</h3>
+        <p class="aliases-mini">GW-501516 · GW</p>
+        <p class="sub">PPAR-δ agonist. Endurance and fat oxidation — also flagged for tumor formation in rodents.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti S23.html" class="lib-card" data-cat="sarm">
+        <div class="top">
+          <span class="cat sarm">SARM</span>
+          <span class="traffic"><b>20k</b>/mo searches</span>
+        </div>
+        <h3>S-23</h3>
+        <p class="aliases-mini">S23</p>
+        <p class="sub">Strongest SARM in binding affinity. Investigated as a male contraceptive — full HPG shutdown.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Andarine.html" class="lib-card" data-cat="sarm">
+        <div class="top">
+          <span class="cat sarm">SARM</span>
+          <span class="traffic"><b>18k</b>/mo searches</span>
+        </div>
+        <h3>Andarine</h3>
+        <p class="aliases-mini">S-4 · GTx-007</p>
+        <p class="sub">Older SARM with vision side effects (yellow tint). Recomp and lean dryness profile.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti LGD-3303.html" class="lib-card" data-cat="sarm">
+        <div class="top">
+          <span class="cat sarm">SARM</span>
+          <span class="traffic"><b>5k</b>/mo searches</span>
+        </div>
+        <h3>LGD-3303</h3>
+        <p class="aliases-mini">LGD3303</p>
+        <p class="sub">Less-known LGD analogue. Stronger anabolic ratio than LGD-4033 in rodents, minimal human data.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini wada">WADA</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti Longevity Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>Longevity</em> stack.</a></h2>
+      <span class="count">4 compounds  ·  NAD+ precursors, mTOR inhibitors, and AMPK activators  ·  <a href="Epti Longevity Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti Metformin.html" class="lib-card" data-cat="longevity">
+        <div class="top">
+          <span class="cat longevity">Longevity</span>
+          <span class="traffic"><b>1.2M</b>/mo searches</span>
+        </div>
+        <h3>Metformin</h3>
+        <p class="aliases-mini">Glucophage · Fortamet</p>
+        <p class="sub">The most-studied small molecule on earth. AMPK activator. Off-label longevity use is now mainstream.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Rapamycin.html" class="lib-card" data-cat="longevity">
+        <div class="top">
+          <span class="cat longevity">Longevity</span>
+          <span class="traffic"><b>170k</b>/mo searches</span>
+        </div>
+        <h3>Rapamycin</h3>
+        <p class="aliases-mini">Sirolimus</p>
+        <p class="sub">mTOR inhibitor. The most-cited longevity drug. Weekly off-label dosing is the standard human protocol.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx · off-label</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti NMN.html" class="lib-card" data-cat="longevity">
+        <div class="top">
+          <span class="cat longevity">Longevity</span>
+          <span class="traffic"><b>90k</b>/mo searches</span>
+        </div>
+        <h3>NMN</h3>
+        <p class="aliases-mini">Nicotinamide Mononucleotide</p>
+        <p class="sub">NAD+ precursor. The Sinclair supplement. Strong cellular data, modest clinical effect sizes.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">OTC supplement</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti NR.html" class="lib-card" data-cat="longevity">
+        <div class="top">
+          <span class="cat longevity">Longevity</span>
+          <span class="traffic"><b>60k</b>/mo searches</span>
+        </div>
+        <h3>NR</h3>
+        <p class="aliases-mini">Nicotinamide Riboside · Niagen</p>
+        <p class="sub">NAD+ precursor. Better bioavailability than NMN. The pharma-backed competitor.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">OTC supplement</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+    <div class="lib-section-head">
+      <h2><a href="Epti Nootropic Compounds.html" style="color:inherit;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 140ms;" onmouseover="this.style.borderBottomColor='var(--text)'" onmouseout="this.style.borderBottomColor='transparent'"><em>Nootropics</em> & cognitive.</a></h2>
+      <span class="count">8 compounds  ·  Russian intranasals, neurotrophic peptides, and sleep peptides  ·  <a href="Epti Nootropic Compounds.html" style="color:var(--accent-strong);text-decoration:none;">View category guide  →</a></span>
+    </div>
+    <div class="lib-grid">
+      
+      <a href="Epti Oxytocin.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>600k</b>/mo searches</span>
+        </div>
+        <h3>Oxytocin</h3>
+        <p class="aliases-mini">Pitocin · Syntocinon</p>
+        <p class="sub">The bonding hormone. Used investigationally for social anxiety, autism, and PTSD.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Semax.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>18k</b>/mo searches</span>
+        </div>
+        <h3>Semax</h3>
+        <p class="aliases-mini">ACTH(4-10) Pro-Gly-Pro · Semax NA</p>
+        <p class="sub">Russian intranasal nootropic. ACTH(4-10) fragment. BDNF up-regulator. Best-studied in stroke.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx (Russia)</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Cerebrolysin.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>14k</b>/mo searches</span>
+        </div>
+        <h3>Cerebrolysin</h3>
+        <p class="aliases-mini">Cerebrolysate · FPF-1070</p>
+        <p class="sub">Porcine-brain-derived neurotrophic peptide cocktail. Approved in 50+ countries for stroke and dementia.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx (intl.)</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Selank.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>12k</b>/mo searches</span>
+        </div>
+        <h3>Selank</h3>
+        <p class="aliases-mini">TP-7 · Tuftsin analogue</p>
+        <p class="sub">Russian intranasal anxiolytic. Non-benzodiazepine. GABA-modulating without sedation or tolerance.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini rx">Rx (Russia)</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti DSIP.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>8k</b>/mo searches</span>
+        </div>
+        <h3>DSIP</h3>
+        <p class="aliases-mini">Delta Sleep-Inducing Peptide</p>
+        <p class="sub">9-aa neuropeptide. Investigated for chronic pain, alcohol/opioid withdrawal, and sleep architecture.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Research only</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Dihexa.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>7k</b>/mo searches</span>
+        </div>
+        <h3>Dihexa</h3>
+        <p class="aliases-mini">PNB-0408</p>
+        <p class="sub">Hepatocyte growth factor mimic. Oral, BBB-permeable. Investigated for Alzheimer disease.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Research only</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti P21.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>3k</b>/mo searches</span>
+        </div>
+        <h3>P21</h3>
+        <p class="aliases-mini">CNTF (148-163) · P021</p>
+        <p class="sub">CNTF fragment peptide. Investigated for neurogenesis and memory in Alzheimer models.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Research only</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+
+      <a href="Epti Pinealon.html" class="lib-card" data-cat="nootropic">
+        <div class="top">
+          <span class="cat nootropic">Nootropic</span>
+          <span class="traffic"><b>2k</b>/mo searches</span>
+        </div>
+        <h3>Pinealon</h3>
+        <p class="aliases-mini">Glu-Asp-Arg · EDR</p>
+        <p class="sub">Pineal tripeptide. Khavinson bioregulator — sparse human data, used for neuroprotection.</p>
+        <div class="row">
+          <div class="badges"><span class="badge-mini line">Research only</span></div>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+  
+
+    <div style="text-align:center;margin-top:32px;padding-top:32px;border-top:1px dashed var(--line);">
+      <p style="font-family:var(--mono);font-size:12px;letter-spacing:0.08em;color:var(--text-3);text-transform:uppercase;margin:0 0 14px;">Reviewed quarterly · next audit Aug 20, 2026</p>
+      <a href="Epti Landing.html#join" class="btn primary" style="display:inline-flex;">Get notified when we update the library  →</a>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================== COMPARISONS STRIP ====================== -->
+<section class="cmp-strip">
+  <div class="wrap">
+    <div class="cmp-strip-head">
+      <span class="cmp-eyebrow">Head-to-head</span>
+      <h2>The <em>comparisons</em> people actually search for.</h2>
+      <p>Side-by-side guides on the 8 most-Googled comparison questions in the compound world.</p>
+    </div>
+    <div class="cmp-strip-grid">
+      <a href="Epti Semaglutide vs Tirzepatide.html" class="cmp-strip-card">
+        <span class="cmp-tag">GLP-1</span>
+        <h3>Semaglutide <em>vs</em> Tirzepatide</h3>
+        <p>Ozempic / Wegovy against Mounjaro / Zepbound — what SURMOUNT-5 actually showed.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a href="Epti BPC-157 vs TB-500.html" class="cmp-strip-card">
+        <span class="cmp-tag">Healing</span>
+        <h3>BPC-157 <em>vs</em> TB-500</h3>
+        <p>The two most-stacked healing peptides. When to pick which, and the "Wolverine" stack.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a href="Epti MK-677 vs Ipamorelin.html" class="cmp-strip-card">
+        <span class="cmp-tag">Growth hormone</span>
+        <h3>MK-677 <em>vs</em> Ipamorelin</h3>
+        <p>Oral convenience vs injectable cleanliness. Same hormone, very different side-effects.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a href="Epti RAD-140 vs LGD-4033 vs Ostarine.html" class="cmp-strip-card">
+        <span class="cmp-tag">SARMs</span>
+        <h3>RAD-140 <em>vs</em> LGD-4033 <em>vs</em> Ostarine</h3>
+        <p>The three most-used SARMs ranked. Anabolic effect vs HPG suppression.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a href="Epti Clomid vs Nolvadex.html" class="cmp-strip-card">
+        <span class="cmp-tag">PCT</span>
+        <h3>Clomid <em>vs</em> Nolvadex</h3>
+        <p>The two SERMs that built PCT. Mood, vision, and the isomer problem.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a href="Epti NMN vs NR.html" class="cmp-strip-card">
+        <span class="cmp-tag">Longevity</span>
+        <h3>NMN <em>vs</em> NR</h3>
+        <p>Two NAD+ precursors, two academic schools. What the human data actually shows.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a href="Epti Anavar vs Winstrol.html" class="cmp-strip-card">
+        <span class="cmp-tag">AAS</span>
+        <h3>Anavar <em>vs</em> Winstrol</h3>
+        <p>Two DHT-derived "cutting" orals. How they differ on joints, lipids, hardening.</p>
+        <span class="arrow">→</span>
+      </a>
+      <a href="Epti Sermorelin vs Tesamorelin vs CJC-1295.html" class="cmp-strip-card">
+        <span class="cmp-tag">GHRH</span>
+        <h3>Sermorelin <em>vs</em> Tesamorelin <em>vs</em> CJC-1295</h3>
+        <p>The three GHRH analogues. Half-lives, FDA status, and which to pick.</p>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== ABOUT / LEGEND STRIP ====================== -->
+<section class="about-strip">
+  <div class="wrap">
+    <div>
+      <h2>Every claim, <em>labeled</em>.</h2>
+      <p style="margin:18px 0 0;color:var(--text-2);font-size:15.5px;line-height:1.55;letter-spacing:-0.005em;max-width:46ch;">
+        Most peptide content on the internet treats every number as fact. We don't. Every claim on every page carries one of these four labels — so you know whether a half-life is from a Phase-III trial or a Reddit thread before you act on it.
+      </p>
+    </div>
+    <div class="legend">
+      <div class="l-card">
+        <span class="conf we">well-established</span>
+        <p>Replicated trials with n &gt; 100, mature peer-reviewed evidence, FDA precedent.</p>
+      </div>
+      <div class="l-card">
+        <span class="conf em">emerging</span>
+        <p>Small or single trials, animal-to-human extrapolation, early Phase 2 data.</p>
+      </div>
+      <div class="l-card">
+        <span class="conf co">community</span>
+        <p>User reports, dated forum threads, community surveys — cited and verifiable, not invented.</p>
+      </div>
+      <div class="l-card">
+        <span class="conf un">unknown</span>
+        <p>No data exists. We say so plainly rather than fill space.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================== BIG CTA ====================== -->
+<section class="big-cta" id="join">
+  <div class="wrap">
+    <div>
+      <h2>Track your <em>protocol.</em></h2>
+      <p>Epti is the first training app built around your peptide protocol — workouts, dosing, side effects, and bloodwork that actually talk to each other.</p>
+    </div>
+    <form class="waitlist-form" novalidate onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Thanks  ✓';">
+      <input type="email" placeholder="you@email.com" required />
+      <button type="submit">Get my launch-day code <span aria-hidden="true">→</span></button>
+    </form>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="footer-disc">
+  <div class="wrap">
+    <p><strong>Epti is not a medical device.</strong> Information on this library is for general informational and personal-tracking purposes only and is not a substitute for professional medical advice from a qualified physician, pharmacist, or other licensed healthcare provider. Always consult a licensed healthcare professional before starting, changing, or stopping any protocol — including any compound referenced on this site.</p>
+    <p>Epti does not sell, source, prescribe, or recommend the purchase of any medication, peptide, or controlled substance. Users are solely responsible for the legality of any substance they choose to track and for compliance with the laws of their jurisdiction and the rules of any sport, league, or anti-doping body they participate in. © 2026 Epti, Inc.</p>
+    <div class="last">
+      <span>© 2026 Epti, Inc.</span>
+      <span>Last updated May 17, 2026 · Next library audit Aug 17, 2026</span>
+      <span>Not medical advice</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Search-results landing (shown only when querying) -->
+<style>
+  #search-results-wrap { display: none; padding: 32px 0 0; }
+  #search-results-wrap.on { display: block; }
+  #search-results-wrap .lib-section-head h2 em { color: var(--accent-strong); }
+  body.is-searching .lib-grid-wrap > .wrap > .lib-section-head,
+  body.is-searching .lib-grid-wrap > .wrap > .lib-grid,
+  body.is-searching .lib-grid-wrap > .wrap > div[style*="text-align:center"] { display: none !important; }
+  #search-results-grid .lib-card { animation: none; }
+  #search-empty {
+    text-align: center; padding: 64px 24px;
+    font-family: var(--mono); font-size: 13px; color: var(--text-3);
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  #search-empty b { color: var(--text); font-weight: 500; text-transform: none; letter-spacing: -0.005em; font-family: var(--sans, inherit); font-size: 16px; }
+</style>
+
+<script>
+  // ─── Filter chips + smart search ───
+  const chips = document.querySelectorAll('.chip');
+  const cards = Array.from(document.querySelectorAll('.lib-card'));
+  const searchInput = document.getElementById('lib-search-input');
+  const gridWrap = document.querySelector('.lib-grid-wrap > .wrap');
+  let activeFilter = 'all';
+  let activeQuery = '';
+
+  // Build a search results container + header injected at the top of the wrap
+  const resultsWrap = document.createElement('div');
+  resultsWrap.id = 'search-results-wrap';
+  resultsWrap.innerHTML = `
+    <div class="lib-section-head">
+      <h2><em>Top</em> results.</h2>
+      <span class="count" id="search-results-count">—</span>
+    </div>
+    <div class="lib-grid" id="search-results-grid"></div>
+    <div id="search-empty" style="display:none;"><b>No compounds match that query.</b><br>Try a different name, alias, or category.</div>
+  `;
+  gridWrap.insertBefore(resultsWrap, gridWrap.firstChild);
+  const resultsGrid = document.getElementById('search-results-grid');
+  const resultsCount = document.getElementById('search-results-count');
+  const emptyEl = document.getElementById('search-empty');
+
+  // Precompute searchable fields per card
+  const cardData = cards.map(card => {
+    const name = (card.querySelector('h3')?.textContent || '').toLowerCase();
+    const aliases = (card.querySelector('.aliases-mini')?.textContent || '').toLowerCase();
+    const sub = (card.querySelector('.sub')?.textContent || '').toLowerCase();
+    const cat = card.dataset.cat || '';
+    return { card, name, aliases, sub, cat };
+  });
+
+  function scoreCard(d, q) {
+    if (!q) return 0;
+    // higher = better
+    let s = 0;
+    if (d.name === q) s += 1000;
+    if (d.name.startsWith(q)) s += 500;
+    if (d.name.includes(q)) s += 200;
+    if (d.aliases.includes(q)) s += 80;
+    if (d.sub.includes(q)) s += 20;
+    if (d.cat.includes(q)) s += 10;
+    return s;
+  }
+
+  function applyFilters() {
+    const q = activeQuery;
+    const filter = activeFilter;
+
+    if (q) {
+      // Search mode: show single ranked results grid, hide category sections
+      document.body.classList.add('is-searching');
+      resultsWrap.classList.add('on');
+
+      // Score and sort matches
+      const matches = cardData
+        .map(d => ({ d, s: scoreCard(d, q) }))
+        .filter(x => x.s > 0 && (filter === 'all' || x.d.cat === filter))
+        .sort((a, b) => b.s - a.s);
+
+      // Clear and repopulate
+      resultsGrid.innerHTML = '';
+      matches.forEach(({ d }) => {
+        const clone = d.card.cloneNode(true);
+        resultsGrid.appendChild(clone);
+      });
+
+      resultsCount.textContent = `${matches.length} match${matches.length === 1 ? '' : 'es'}  ·  "${q}"`;
+      emptyEl.style.display = matches.length ? 'none' : 'block';
+      resultsGrid.style.display = matches.length ? '' : 'none';
+    } else {
+      // No query: restore category view, apply filter only
+      document.body.classList.remove('is-searching');
+      resultsWrap.classList.remove('on');
+      resultsGrid.innerHTML = '';
+
+      cardData.forEach(d => {
+        const visible = filter === 'all' || d.cat === filter;
+        d.card.style.display = visible ? '' : 'none';
+      });
+
+      // Hide section heads + grids that have no visible cards
+      const heads = gridWrap.querySelectorAll(':scope > .lib-section-head');
+      const grids = gridWrap.querySelectorAll(':scope > .lib-grid');
+      grids.forEach((grid, idx) => {
+        const visibleCount = Array.from(grid.querySelectorAll('.lib-card')).filter(c => c.style.display !== 'none').length;
+        grid.style.display = visibleCount ? '' : 'none';
+        const head = heads[idx];
+        if (head) head.style.display = visibleCount ? '' : 'none';
+      });
+    }
+  }
+
+  chips.forEach(chip => chip.addEventListener('click', () => {
+    chips.forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    activeFilter = chip.dataset.filter;
+    applyFilters();
+  }));
+
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      activeQuery = e.target.value.trim().toLowerCase();
+      applyFilters();
+    });
+    // Esc clears
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        searchInput.value = '';
+        activeQuery = '';
+        applyFilters();
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
